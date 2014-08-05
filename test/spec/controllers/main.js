@@ -5,18 +5,14 @@ describe('Controller: MainCtrl', function () {
   // load the controller's module
   beforeEach(module('scanprintMobile'));
 
-  var MainCtrl,
-    scope;
+  var MainCtrl;
 
   // Initialize the controller and a mock scope
-  beforeEach(inject(function ($controller, $rootScope) {
-    scope = $rootScope.$new();
-    MainCtrl = $controller('MainCtrl', {
-      $scope: scope
-    });
+  beforeEach(inject(function ($controller) {
+    MainCtrl = $controller('MainCtrl');
   }));
 
   it('should attach a list of awesomeThings to the scope', function () {
-    expect(scope.awesomeThings.length).toBe(3);
+    expect(MainCtrl.awesomeThings.length).toBe(3);
   });
 });

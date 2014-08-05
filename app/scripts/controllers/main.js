@@ -19,13 +19,13 @@
 
     angular
         .module('scanprintMobile')
-        .controller('MainCtrl', ['$scope', form]);
+        .controller('MainCtrl', form);
 
-    function form($scope) {
+    function form() {
         /*jshint validthis:true */
         var vm = this;
 
-        $scope.awesomeThings = [
+        vm.awesomeThings = [
             'HTML5 Boilerplate',
             'AngularJS',
             'Karma'
