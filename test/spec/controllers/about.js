@@ -1,5 +1,7 @@
 'use strict';
 
+//example of test with $scope usage / $rootScope injection
+
 describe('Controller: AboutCtrl', function () {
 
   // load the controller's module

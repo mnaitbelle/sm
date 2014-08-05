@@ -10,9 +10,11 @@
         var authService = {};
 
         authService.login = function (credentials) {
-            return $http
-                .post(config.authTokenRoot + '/token', {
-                    params: {
+            return $http(
+                {
+                    method: 'POST',
+                    url: config.authTokenRoot + '/token',
+                    data: {
                         /* jshint camelcase:false */
                         grant_type: 'password',
                         /* jshint camelcase:true */
@@ -21,6 +23,9 @@
                     },
                     headers: {
                         'Content-type': 'application/x-www-form-urlencoded'
+                    },
+                    transformRequest:function(data) {
+                        return $.param(data);
                     }
                 })
                 .then(function (res) {

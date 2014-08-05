@@ -1,0 +1,22 @@
+<div ng-controller="loginController as vm">
+    <form>
+        <div class="form-group">
+
+            <div class="form-control">
+                <div ng-if="currentUser">Welcome, {{ currentUser.name }}</div>
+                <div ng-if="loggedRoleEquals(userRoles.admin)">You're admin.</div>
+                <div ng-switch on="currentUser.role">
+                    <div ng-switch-when="userRoles.admin">You're admin.</div>
+                    <div ng-switch-when="userRoles.editor">You're editor.</div>
+                    <div ng-switch-default>You're something else.</div>
+                </div>
+            </div>
+
+            <input type="text" placeholder="login" ng-model="vm.credentials.login" class="form-control">
+        </div>
+        <div class="form-group">
+            <input type="password" placeholder="Password" ng-model="vm.credentials.password" class="form-control">
+        </div>
+        <button type="submit" ng-click="vm.loginUser(vm.credentials)" class="btn btn-success">Sign in</button>
+    </form>
+</div>
