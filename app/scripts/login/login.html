@@ -1,22 +1,31 @@
-<div ng-controller="loginController as vm">
-    <form>
-        <div class="form-group">
-
-            <div class="form-control">
-                <div ng-if="currentUser">Welcome, {{ currentUser.name }}</div>
-                <div ng-if="loggedRoleEquals(userRoles.admin)">You're admin.</div>
-                <div ng-switch on="currentUser.role">
-                    <div ng-switch-when="userRoles.admin">You're admin.</div>
-                    <div ng-switch-when="userRoles.editor">You're editor.</div>
-                    <div ng-switch-default>You're something else.</div>
+<div class="container" ng-controller="loginController as vm">
+    <div class="row">
+        <div class="col-md-4 col-md-offset-4">
+            <div class="login-panel panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Please Sign In</h3>
+                </div>
+                <div class="panel-body">
+                    <form role="form">
+                        <fieldset>
+                            <div class="form-group">
+                                <!--add type="email" below...-->
+                                <input ng-model="vm.credentials.login" class="form-control" placeholder="E-mail" name="email" autofocus/>
+                            </div>
+                            <div class="form-group">
+                                <input ng-model="vm.credentials.password" class="form-control" placeholder="Password" name="password" type="password" value=""/>
+                            </div>
+                            <div class="checkbox">
+                                <label>
+                                    <input name="remember" type="checkbox" value="Remember Me">Remember Me
+                                </label>
+                            </div>
+                            <!-- Change this to a button or input when using this as a form -->
+                            <button ng-click="vm.loginUser(vm.credentials)" class="btn btn-lg btn-success btn-block">Login</button>
+                        </fieldset>
+                    </form>
                 </div>
             </div>
-
-            <input type="text" placeholder="login" ng-model="vm.credentials.login" class="form-control">
         </div>
-        <div class="form-group">
-            <input type="password" placeholder="Password" ng-model="vm.credentials.password" class="form-control">
-        </div>
-        <button type="submit" ng-click="vm.loginUser(vm.credentials)" class="btn btn-success">Sign in</button>
-    </form>
+    </div>
 </div>

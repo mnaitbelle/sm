@@ -23,11 +23,11 @@
             password: ''
         };
 
-        vm.loginUser = function (credentials) {
-            AuthService.login(credentials).then(function (user) {
+        vm.loginUser = function(credentials) {
+            AuthService.login(credentials).then(function(user) {
                 $rootScope.$broadcast(AuthEvents.loginSuccess);
                 vm.setCurrentUser(user);
-            }, function () {
+            }, function() {
                 $rootScope.$broadcast(AuthEvents.loginFailed);
             });
         };
