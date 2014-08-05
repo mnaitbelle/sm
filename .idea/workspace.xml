@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="1efbc968-3429-4839-af14-afc3a00491f8" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.jshintrc" afterPath="$PROJECT_DIR$/.jshintrc" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/.jshintrc" afterPath="$PROJECT_DIR$/test/.jshintrc" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/scripts/controllers/main.js" afterPath="$PROJECT_DIR$/app/scripts/controllers/main.js" />
+    <list default="true" id="1efbc968-3429-4839-af14-afc3a00491f8" name="Default" comment="misc plumbing">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/scripts/appController.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/scripts/config.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/scripts/config.routes.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="sm.iws" />
@@ -558,7 +558,11 @@
       <created>1407264026782</created>
       <updated>1407264026782</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="misc plumbing">
+      <created>1407264285260</created>
+      <updated>1407264285260</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TodoView" selected-index="0">
