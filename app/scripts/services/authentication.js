@@ -1,6 +1,7 @@
 /**
  * Created by vgrafe on 8/4/14.
  */
+/*global $:false */
 (function () {
     'use strict';
 
