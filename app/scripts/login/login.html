@@ -23,8 +23,7 @@
                             <!-- Change this to a button or input when using this as a form -->
                             <button id="loginButton" ng-hide="vm.isLoading" ng-click="vm.loginUser(vm.credentials)" class="btn btn-lg btn-success btn-block">Login</button>
                             <button ng-show="vm.isLoading" ng-click="vm.loginUser(vm.credentials)" class="btn btn-lg btn-success btn-block disabled">Login</button>
-                            <br/>
-                            <p class="text-danger">{{vm.errorMessage}}</p>
+                            <p ng-if="vm.errorMessage" style="margin-top:10px;" id="errorMessage" class="text-danger">{{vm.errorMessage}}</p>
                         </fieldset>
                     </form>
                 </div>
