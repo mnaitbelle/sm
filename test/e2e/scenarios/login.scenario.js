@@ -1,33 +1,37 @@
 /**
  * Created by vgrafe on 8/6/14.
  */
+
+var LoginPage = require("../mocks/login.js");
+
 describe('scanprintMobile login scenarios', function () {
 
     var ptor;
+    var loginPage = new LoginPage();
 
     beforeEach(function () {
-        browser.get('http://m.scanprint.net/');
+        loginPage.visitPage();
         ptor = protractor.getInstance();
     });
 
-    it('should not log random user', function () {
+    it('should load the page', function () {
         expect(browser.getTitle()).toEqual('http://m.scanprint.net/');
     });
 
     it('should not display an error message', function () {
-        expect(ptor.isElementPresent(by.id('errorMessage'))).toBe(false);
+        expect(loginPage.hasErrorMessage()).toBe(false);
     });
 
     describe('when loggin a wrong user', function () {
 
         beforeEach(function () {
-            element(by.model('vm.credentials.login')).sendKeys('oisajoaij sdioj');
-            element(by.model('vm.credentials.password')).sendKeys('asdasd');
-            element(by.id('loginButton')).click();
+            loginPage.fillLogin('asdasaa');
+            loginPage.fillPassword('asdasaa');
+            loginPage.login();
         });
 
         it('should display an error message', function () {
-            expect(ptor.isElementPresent(by.id('errorMessage'))).toBe(true);
+            expect(loginPage.hasErrorMessage()).toBe(true);
         });
     });
 });
