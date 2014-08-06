@@ -5,31 +5,37 @@
         .module('scanprintMobile')
         .controller('loginController',
         [
-            '$rootScope',
+            '$scope',
             'AuthService',
-            'AuthEvents',
             login
         ]);
 
-    function login($rootScope, AuthService, AuthEvents) {
+    function login($scope, AuthService) {
         /*jshint validthis:true */
         var vm = this;
 
         vm.activate = activate;
         vm.title = 'login';
+        vm.isLoading = false;
+        vm.errorMessage = '';
 
         vm.credentials = {
             login: '',
             password: ''
         };
 
-        vm.loginUser = function(credentials) {
-            AuthService.login(credentials).then(function(user) {
-                $rootScope.$broadcast(AuthEvents.loginSuccess);
-                vm.setCurrentUser(user);
-            }, function() {
-                $rootScope.$broadcast(AuthEvents.loginFailed);
-            });
+        vm.loginUser = function (credentials) {
+            vm.isLoading = true;
+            AuthService.login(credentials)
+                .then(function () {
+                    vm.isLoading = false;
+                    $scope.setCurrentSession(AuthService.session);
+                }, function (err) {
+                    //code if error here
+                    vm.isLoading = false;
+                    /*jshint camelcase: false */
+                    vm.errorMessage = err.error_description;
+                });
         };
 
         activate();

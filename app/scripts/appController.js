@@ -18,12 +18,12 @@
         vm.activate = activate;
         vm.title = 'appController';
 
-        $scope.currentUser = null;
+        $scope.currentSession = null;
         $scope.userRoles = UserRoles;
         $scope.loggedRoleEquals = AuthService.loggedRoleEquals;
 
-        vm.setCurrentUser = function (user) {
-            $scope.currentUser = user;
+        $scope.setCurrentSession = function (session) {
+            $scope.currentSession = session;
         };
 
         activate();

@@ -9,6 +9,11 @@
  * Main module of the application.
  */
 angular
-  .module('scanprintMobile', [
-    'ngRoute'
-  ]);
+    .module('scanprintMobile', [
+        'ngRoute'
+    ])
+
+    //inits the app
+    .run(['AuthService', function (authService) {
+        authService.logOut();
+    }]);

@@ -15,7 +15,7 @@
     <link rel="stylesheet" href="styles/main.css">
     <!-- endbuild -->
 </head>
-<body ng-app="scanprintMobile">
+<body ng-app="scanprintMobile" ng-controller="appController">
 <!--[if lt IE 7]>
 <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade
     your browser</a> to improve your experience.</p>
@@ -84,10 +84,8 @@
 <script src="scripts/config.js"></script>
 <script src="scripts/appController.js"></script>
 <script src="scripts/config.routes.js"></script>
-<script src="scripts/controllers/main.js"></script>
-<script src="scripts/controllers/about.js"></script>
 <script src="scripts/services/authentication.js"></script>
-<script src="scripts/services/session.js"></script>
+<script src="scripts/services/authInterceptorService.js"></script>
 <script src="scripts/login/login.js"></script>
 <!-- endbuild -->
 </body>
