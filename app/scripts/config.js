@@ -19,15 +19,20 @@
             $logProvider.debugEnabled(true);
         }
     }]);
-//
-//    app.constant('AuthEvents', {
-//        loginSuccess: 'auth-login-success',
-//        loginFailed: 'auth-login-failed',
-//        logoutSuccess: 'auth-logout-success',
-//        sessionTimeout: 'auth-session-timeout',
-//        notAuthenticated: 'auth-not-authenticated',
-//        notAuthorized: 'auth-not-authorized'
-//    });
+
+    app.constant('authEvents', {
+        loginSuccess: 'auth-login-success',
+        loginFailed: 'auth-login-failed',
+        logoutSuccess: 'auth-logout-success',
+        sessionTimeout: 'auth-session-timeout',
+        notAuthenticated: 'auth-not-authenticated',
+        notAuthorized: 'auth-not-authorized'
+    });
+
+    app.constant('localStorageFiles', {
+        previousLogin: 'previousLogin',
+        sessionData: 'sessionData'
+    });
 //
 //    app.constant('UserRoles', {
 //        allRoles: '*',
@@ -39,9 +44,9 @@
 //    app.run(function ($rootScope, AuthEvents, AuthService) {
 //        $rootScope.$on('$stateChangeStart', function (event, next) {
 //            var authorizedRoles = next.data.authorizedRoles;
-//            if (!AuthService.isAuthorized(authorizedRoles)) {
+//            if (!authService.isAuthorized(authorizedRoles)) {
 //                event.preventDefault();
-//                if (AuthService.isAuthenticated()) {
+//                if (authService.isAuthenticated()) {
 //                    // user is not allowed
 //                    $rootScope.$broadcast(AuthEvents.notAuthorized);
 //                } else {

@@ -6,12 +6,21 @@
 
     var app = angular.module('scanprintMobile');
 
-    app.factory('AuthService', function ($http, $q, config) {
+    app.factory('authService', [
+        '$http',
+        '$q',
+        '$rootScope',
+        'config',
+        'localStorageService',
+        'sessionService',
+        'localStorageFiles',
+        'authEvents',
+
+        function ($http, $q, $rootScope, config, localStorageService, sessionService, localStorageFiles, authEvents) {
 
         var authService = {
             login: _login,
-            logOut: _logOut,
-            session: _authData
+            logOut: _logOut
         };
 
         return authService;
@@ -25,10 +34,25 @@
             $http.post(config.authTokenRoot + '/token', data, { headers: { 'Content-Type': 'application/x-www-form-urlencoded' } })
                 .success(function (response) {
 
-                    localStorage.sessionData = JSON.stringify({
+                    if (loginData.remember) {
+                        localStorageService.set(localStorageFiles.previousLogin, loginData.login);
+                    }
+                    else
+                    {
+                        localStorageService.remove(localStorageFiles.previousLogin);
+                    }
+
+                    var sessionData = {
                         /*jshint camelcase: false */
                         token: response.access_token,
                         userName: loginData.login
+                    }
+
+                    /*jshint camelcase: false */
+                    sessionService.setSession(sessionData);
+
+                    $rootScope.$broadcast(authEvents.loginSuccess, {
+                        data: sessionData
                     });
 
                     deferred.resolve(response);
@@ -42,11 +66,7 @@
         }
 
         function _logOut() {
-            localStorage.removeItem('sessionData');
+            sessionService.destroy();
         }
-
-        function _authData() {
-            return localStorage.getItem('sessionData');
-        }
-    });
+    }]);
 })();

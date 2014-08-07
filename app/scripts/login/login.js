@@ -6,11 +6,12 @@
         .controller('loginController',
         [
             '$scope',
-            'AuthService',
+            'authService',
+            'localStorageService',
             login
         ]);
 
-    function login($scope, AuthService) {
+    function login($scope, authService, localStorageService) {
         /*jshint validthis:true */
         var vm = this;
 
@@ -19,17 +20,26 @@
         vm.isLoading = false;
         vm.errorMessage = '';
 
-        vm.credentials = {
-            login: '',
-            password: ''
-        };
+        if (localStorageService.get('previouslogin')) {
+            vm.credentials = {
+                login: localStorageService.get('previouslogin'),
+                password: '',
+                remember: true
+            };
+        }
+        else {
+            vm.credentials = {
+                login: '',
+                password: '',
+                remember: false
+            };
+        }
 
         vm.loginUser = function (credentials) {
             vm.isLoading = true;
-            AuthService.login(credentials)
+            authService.login(credentials)
                 .then(function () {
                     vm.isLoading = false;
-                    $scope.setCurrentSession(AuthService.session);
                 }, function (err) {
                     //code if error here
                     vm.isLoading = false;

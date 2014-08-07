@@ -6,10 +6,13 @@
         .controller('appController',
         [
             '$scope',
+            '$rootScope',
+            'sessionService',
+            'authEvents',
             appController
         ]);
 
-    function appController($scope) {
+    function appController($scope, $rootScope, sessionService, authEvents) {
         /*jshint validthis:true */
         var vm = this;
 
@@ -18,9 +21,10 @@
 
         $scope.currentSession = null;
 
-        $scope.setCurrentSession = function (session) {
-            $scope.currentSession = session;
-        };
+        $rootScope.$on(authEvents.loginSuccess, function (session) {
+                $scope.currentSession = session;
+            }
+        );
 
         activate();
 

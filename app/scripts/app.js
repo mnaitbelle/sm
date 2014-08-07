@@ -10,10 +10,13 @@
  */
 angular
     .module('scanprintMobile', [
-        'ngRoute'
+        'ngRoute',
+        'LocalStorageModule'
     ])
-
-    //inits the app
-    .run(['AuthService', function (authService) {
-        authService.logOut();
-    }]);
+//
+//    //inits the app
+//    .run(['authService', function (authService) {
+//        //debug mode
+//        authService.logOut();
+//    }])
+;
