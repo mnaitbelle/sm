@@ -1,6 +1,6 @@
 'use strict';
 
-describe('Controller: appController', function () {
+describe('appController', function () {
 
     // load the controller's module
     beforeEach(module('scanprintMobile'));
@@ -15,8 +15,8 @@ describe('Controller: appController', function () {
         });
     }));
 
-    it('title should be "appController"', function () {
-        expect(vm.title).toBe('appController');
+    it('should be defined', function () {
+        expect(vm).toBeDefined();
     });
 
     it('currentSession should be null', function () {

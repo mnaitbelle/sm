@@ -9,14 +9,13 @@
     app.factory('authService', [
         '$http',
         '$q',
-        '$rootScope',
         'config',
         'localStorageService',
         'sessionService',
         'localStorageFiles',
         'authEvents',
 
-        function ($http, $q, $rootScope, config, localStorageService, sessionService, localStorageFiles, authEvents) {
+        function ($http, $q, config, localStorageService, sessionService, localStorageFiles) {
 
         var authService = {
             login: _login,
@@ -46,14 +45,10 @@
                         /*jshint camelcase: false */
                         token: response.access_token,
                         userName: loginData.login
-                    }
+                    };
 
                     /*jshint camelcase: false */
                     sessionService.setSession(sessionData);
-
-                    $rootScope.$broadcast(authEvents.loginSuccess, {
-                        data: sessionData
-                    });
 
                     deferred.resolve(response);
 

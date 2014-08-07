@@ -1,5 +1,5 @@
 <div ng-if="!currentSession" ng-include="'scripts/login/login.html'"></div>
 <div ng-if="currentSession">
     <div ng-include="'views/topNavbar.html'"></div>
-    {{JSON.stringify(currentSession)}}
+    <div ng-include="'scripts/dashboard/dashboard.html'"></div>
 </div>

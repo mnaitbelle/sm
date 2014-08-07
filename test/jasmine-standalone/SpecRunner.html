@@ -18,18 +18,20 @@
     <script src="../../bower_components/bootstrap/dist/js/bootstrap.js"></script>
     <script src="../../bower_components/angular-route/angular-route.js"></script>
     <script src="../../bower_components/angular-mocks/angular-mocks.js"></script>
+    <script src="../../app/scripts/vendor/ngLocalStorage.js"></script>
 
     <script src="../../app/scripts/app.js"></script>
     <script src="../../app/scripts/config.js"></script>
     <script src="../../app/scripts/appController.js"></script>
     <script src="../../app/scripts/config.routes.js"></script>
-    <script src="../../app/scripts/services/authentication.js"></script>
+    <script src="../../app/scripts/services/sessionService.js"></script>
+    <script src="../../app/scripts/services/authService.js"></script>
     <script src="../../app/scripts/services/authInterceptorService.js"></script>
     <script src="../../app/scripts/login/login.js"></script>
 
     <!-- include spec files here... -->
-    <script type="text/javascript" src="../spec/controllers/login.js"></script>
-
+    <script type="text/javascript" src="../../app/scripts/appController.spec.js"></script>
+    <script type="text/javascript" src="../../app/scripts/login/login.spec.js"></script>
 </head>
 
 <body>
