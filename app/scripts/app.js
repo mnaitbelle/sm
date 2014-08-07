@@ -13,10 +13,10 @@ angular
         'ngRoute',
         'LocalStorageModule'
     ])
-//
-//    //inits the app
-//    .run(['authService', function (authService) {
-//        //debug mode
-//        authService.logOut();
-//    }])
+
+    //inits the app
+    .run(['authService', function (authService) {
+        //debug mode
+        authService.logOut();
+    }])
 ;

@@ -5,7 +5,7 @@
 
 var app = angular.module('scanprintMobile');
 
-app.factory('authInterceptorService', ['$q', '$location', 'authService', function ($q, $location, authService) {
+app.factory('authInterceptorService', ['$q', '$location', 'sessionService', function ($q, $location, sessionService) {
 
     var authInterceptorServiceFactory = {};
 
@@ -13,7 +13,7 @@ app.factory('authInterceptorService', ['$q', '$location', 'authService', functio
 
         config.headers = config.headers || {};
 
-        var authData = authService.authData;
+        var authData = sessionService.getCurrent();
         if (authData) {
             config.headers.Authorization = 'Bearer ' + authData.token;
         }

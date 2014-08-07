@@ -3,13 +3,15 @@
 
     angular
         .module('scanprintMobile')
-        .controller('dashboardController', dashboard);
+        .controller('dashboardController', ['ordersService', dashboard]);
 
-    function dashboard() {
+    function dashboard(ordersService) {
         /*jshint validthis:true */
         var vm = this;
 
-        debugger;
+        ordersService.getOrders().success(function(data) {
+            vm.aaa = data;
+        });
 
         activate();
 

@@ -9,7 +9,7 @@
     app.factory('sessionService', function (localStorageService, localStorageFiles) {
 
         var sessionService = {
-            current: _current,
+            getCurrent: _current,
             setSession: _setSession,
             destroy: _destroy
         };
