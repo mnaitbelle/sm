@@ -13,55 +13,53 @@
         'localStorageService',
         'sessionService',
         'localStorageFiles',
-        'authEvents',
 
         function ($http, $q, config, localStorageService, sessionService, localStorageFiles) {
 
-        var authService = {
-            login: _login,
-            logout: _logout
-        };
+            var authService = {
+                login: _login,
+                isAuth: _isAuth
+            };
 
-        return authService;
+            return authService;
 
-        function _login(loginData) {
+            function _isAuth() {
+                return sessionService.getCurrent();
+            }
 
-            var data = 'grant_type=password&username=' + loginData.login + '&password=' + loginData.password;
+            function _login(loginData) {
 
-            var deferred = $q.defer();
+                var data = 'grant_type=password&username=' + loginData.login + '&password=' + loginData.password;
 
-            $http.post(config.authTokenRoot + '/token', data, { headers: { 'Content-Type': 'application/x-www-form-urlencoded' } })
-                .success(function (response) {
+                var deferred = $q.defer();
 
-                    if (loginData.remember) {
-                        localStorageService.set(localStorageFiles.previousLogin, loginData.login);
-                    }
-                    else
-                    {
-                        localStorageService.remove(localStorageFiles.previousLogin);
-                    }
+                $http.post(config.authTokenRoot + '/token', data, { headers: { 'Content-Type': 'application/x-www-form-urlencoded' } })
+                    .success(function (response) {
 
-                    var sessionData = {
+                        if (loginData.remember) {
+                            localStorageService.set(localStorageFiles.previousLogin, loginData.login);
+                        }
+                        else {
+                            localStorageService.remove(localStorageFiles.previousLogin);
+                        }
+
+                        var sessionData = {
+                            /*jshint camelcase: false */
+                            token: response.access_token,
+                            userName: loginData.login
+                        };
+
                         /*jshint camelcase: false */
-                        token: response.access_token,
-                        userName: loginData.login
-                    };
+                        sessionService.setSession(sessionData);
 
-                    /*jshint camelcase: false */
-                    sessionService.setSession(sessionData);
+                        deferred.resolve(response);
 
-                    deferred.resolve(response);
+                    }).error(function (err) {
+                        sessionService.destroy();
+                        deferred.reject(err);
+                    });
 
-                }).error(function (err) {
-                    _logOut();
-                    deferred.reject(err);
-                });
-
-            return deferred.promise;
-        }
-
-        function _logout() {
-            sessionService.destroy();
-        }
-    }]);
+                return deferred.promise;
+            }
+        }]);
 })();

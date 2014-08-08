@@ -21,6 +21,9 @@
         activate();
 
         function activate() {
+//            $q.all([promise1, promise2 ... promiseN]).then(function(data) {
+//                $scope.viewLoading = false;
+//            });
         }
     }
 })();

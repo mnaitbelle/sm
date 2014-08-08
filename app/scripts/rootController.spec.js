@@ -1,6 +1,6 @@
 'use strict';
 
-describe('appController', function () {
+describe('rootController', function () {
 
     // load the controller's module
     beforeEach(module('scanprintMobile'));
@@ -10,7 +10,7 @@ describe('appController', function () {
     // Initialize the controller and a mock scope
     beforeEach(inject(function ($controller, $rootScope) {
         scope = $rootScope.$new();
-        vm = $controller('appController', {
+        vm = $controller('rootController', {
             $scope: scope
         });
     }));

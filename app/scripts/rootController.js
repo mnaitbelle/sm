@@ -1,16 +1,20 @@
+/**
+ * Created by vgrafe on 8/8/14.
+ */
 (function () {
     'use strict';
 
     angular
         .module('scanprintMobile')
-        .controller('appController',
+        .controller('rootController',
         [
             '$scope',
+            '$location',
             'sessionService',
-            appController
+            rootController
         ]);
 
-    function appController($scope, sessionService) {
+    function rootController($scope, $location, sessionService) {
         /*jshint validthis:true */
         var vm = this;
 
@@ -21,6 +25,11 @@
 
         $scope.setCurrentSession = function (session) {
             $scope.currentSession = session;
+        };
+
+        $scope.logout = function () {
+            sessionService.destroy();
+            $location.path('/login');
         };
 
         activate();

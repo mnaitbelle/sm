@@ -3,19 +3,28 @@
 
     var app = angular.module('scanprintMobile');
 
-    app.config(function ($routeProvider) {
-        $routeProvider
-            .when('/dashboard', {
-                templateUrl: 'dashboard/dashboard.html'
+    app.config(function($stateProvider, $urlRouterProvider) {
+        //
+        // for any unmatched url, redirect to /login
+        $urlRouterProvider.otherwise('/login');
+        //
+        // set up the states
+        $stateProvider
+            .state('login', {
+                url: '/login',
+                templateUrl: 'scripts/login/login.html'
             })
-            .when('/about', {
-                templateUrl: 'views/about.html'
+            .state('dashboard', {
+                url: '/dashboard',
+                templateUrl: 'scripts/dashboard/dashboard.html'
             })
-            .when('/form/:formid', {
-                templateUrl: 'form/form.html'
+            .state('dashboard.online', {
+                url: '/list',
+                templateUrl: 'scripts/dashboard/dashboard.online.html'
             })
-            .otherwise({
-                redirectTo: '/dashboard'
+            .state('dashboard.offline', {
+                url: '/list',
+                templateUrl: 'scripts/dashboard/dashboard.offline.html'
             });
     });
 })();

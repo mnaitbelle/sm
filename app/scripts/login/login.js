@@ -6,12 +6,13 @@
         .controller('loginController',
         [
             '$scope',
+            '$state',
             'authService',
             'localStorageService',
             login
         ]);
 
-    function login($scope, authService, localStorageService) {
+    function login($scope, $state, authService, localStorageService) {
         /*jshint validthis:true */
         var vm = this;
 
@@ -49,6 +50,7 @@
                         .then(function (sessionData) {
                             vm.isLoading = false;
                             $scope.setCurrentSession(sessionData);
+                            $state.go('dashboard');
                         }, function (err) {
                             //code if error here
                             vm.isLoading = false;
@@ -62,6 +64,9 @@
         activate();
 
         function activate() {
+            if (authService.isAuth()) {
+                $state.go('dashboard');
+            }
         }
     }
 })();

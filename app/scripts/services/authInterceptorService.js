@@ -24,7 +24,7 @@
 
         var _responseError = function (rejection) {
             if (rejection.status === 401) {
-                //redirect to login!
+                $location.path('/login');
             }
             return $q.reject(rejection);
         };
