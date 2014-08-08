@@ -17,6 +17,6 @@ angular
     //inits the app
     .run(['authService', function (authService) {
         //debug mode
-        authService.logOut();
+        //authService.logOut();
     }])
 ;

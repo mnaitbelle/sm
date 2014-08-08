@@ -6,17 +6,18 @@
         .controller('appController',
         [
             '$scope',
+            'sessionService',
             appController
         ]);
 
-    function appController($scope) {
+    function appController($scope, sessionService) {
         /*jshint validthis:true */
         var vm = this;
 
         vm.activate = activate;
         vm.title = 'appController';
 
-        $scope.currentSession = null;
+        $scope.currentSession = sessionService.getCurrent();
 
         $scope.setCurrentSession = function (session) {
             $scope.currentSession = session;

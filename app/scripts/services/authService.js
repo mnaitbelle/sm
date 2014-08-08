@@ -19,7 +19,7 @@
 
         var authService = {
             login: _login,
-            logOut: _logOut
+            logout: _logout
         };
 
         return authService;
@@ -60,7 +60,7 @@
             return deferred.promise;
         }
 
-        function _logOut() {
+        function _logout() {
             sessionService.destroy();
         }
     }]);

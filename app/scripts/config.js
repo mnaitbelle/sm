@@ -13,10 +13,6 @@
 
     app.value('config', config);
 
-    app.config(function ($httpProvider) {
-        $httpProvider.interceptors.push('authInterceptorService');
-    });
-
     app.config(['$logProvider', function($logProvider) {
         //turn debugging on/off
         if ($logProvider.debugEnabled) {

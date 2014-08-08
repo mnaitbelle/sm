@@ -1,35 +1,41 @@
 /**
  * Created by vgrafe on 8/6/14.
  */
-'use strict';
+(function () {
+    'use strict';
 
-var app = angular.module('scanprintMobile');
+    var app = angular.module('scanprintMobile');
 
-app.factory('authInterceptorService', ['$q', '$location', 'sessionService', function ($q, $location, sessionService) {
+    app.factory('authInterceptorService', ['$q', '$location', 'sessionService', function ($q, $location, sessionService) {
 
-    var authInterceptorServiceFactory = {};
+        var authInterceptorServiceFactory = {};
 
-    var _request = function (config) {
+        var _request = function (config) {
 
-        config.headers = config.headers || {};
+            config.headers = config.headers || {};
 
-        var authData = sessionService.getCurrent();
-        if (authData) {
-            config.headers.Authorization = 'Bearer ' + authData.token;
-        }
+            var authData = sessionService.getCurrent();
+            if (authData) {
+                config.headers.Authorization = 'Bearer ' + authData.token;
+            }
 
-        return config;
-    };
+            return config;
+        };
 
-    var _responseError = function (rejection) {
-        if (rejection.status === 401) {
-            //redirect to login!
-        }
-        return $q.reject(rejection);
-    };
+        var _responseError = function (rejection) {
+            if (rejection.status === 401) {
+                //redirect to login!
+            }
+            return $q.reject(rejection);
+        };
 
-    authInterceptorServiceFactory.request = _request;
-    authInterceptorServiceFactory.responseError = _responseError;
+        authInterceptorServiceFactory.request = _request;
+        authInterceptorServiceFactory.responseError = _responseError;
 
-    return authInterceptorServiceFactory;
-}]);
+        return authInterceptorServiceFactory;
+    }]);
+
+    app.config(function ($httpProvider) {
+        $httpProvider.interceptors.push('authInterceptorService');
+    });
+})();
