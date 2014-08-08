@@ -9,17 +9,19 @@
         .controller('rootController',
         [
             '$scope',
-            '$location',
+            '$state',
             'sessionService',
             rootController
         ]);
 
-    function rootController($scope, $location, sessionService) {
+    function rootController($scope, $state, sessionService) {
         /*jshint validthis:true */
         var vm = this;
 
         vm.activate = activate;
         vm.title = 'appController';
+
+        $scope.viewLoading = false;
 
         $scope.currentSession = sessionService.getCurrent();
 
@@ -29,7 +31,7 @@
 
         $scope.logout = function () {
             sessionService.destroy();
-            $location.path('/login');
+            $state.go('login');
         };
 
         activate();

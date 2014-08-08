@@ -10,16 +10,16 @@
 
         var authInterceptorServiceFactory = {};
 
-        var _request = function (config) {
+        var _request = function (req) {
 
-            config.headers = config.headers || {};
+            req.headers = req.headers || {};
 
             var authData = sessionService.getCurrent();
             if (authData) {
-                config.headers.Authorization = 'Bearer ' + authData.token;
+                req.headers.Authorization = 'Bearer ' + authData.token;
             }
 
-            return config;
+            return req;
         };
 
         var _responseError = function (rejection) {

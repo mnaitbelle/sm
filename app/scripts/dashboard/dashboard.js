@@ -3,27 +3,17 @@
 
     angular
         .module('scanprintMobile')
-        .controller('dashboardController', ['$scope', 'ordersService', 'authService', dashboard]);
+        .controller('dashboardController', ['ordersData', dashboard]);
 
-    function dashboard($scope, ordersService, authService) {
+    function dashboard(ordersData) {
         /*jshint validthis:true */
         var vm = this;
 
-        ordersService.getOrders().success(function(data) {
-            vm.aaa = data;
-        });
-
-        vm.logout = function() {
-            authService.logout();
-            $scope.currentSession = null;
-        };
+        vm.aaa = ordersData;
 
         activate();
 
         function activate() {
-//            $q.all([promise1, promise2 ... promiseN]).then(function(data) {
-//                $scope.viewLoading = false;
-//            });
         }
     }
 })();

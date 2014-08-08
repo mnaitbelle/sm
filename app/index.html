@@ -24,9 +24,7 @@
 
 <!-- main site html -->
 <div ng-controller="rootController as vm">
-    <ui-view>
-        <i>Some content will load here!</i>
-    </ui-view>
+    <ui-view></ui-view>
 </div>
 
 <!-- Add your site or application content here
@@ -87,7 +85,7 @@
 <script src="scripts/app.js"></script>
 <script src="scripts/config.js"></script>
 <script src="scripts/rootController.js"></script>
-<script src="scripts/config.routes.js"></script>
+<script src="scripts/config.states.js"></script>
 
 <script src="scripts/services/sessionService.js"></script>
 <script src="scripts/services/authService.js"></script>
@@ -98,6 +96,8 @@
 <script src="scripts/dashboard/dashboard.js"></script>
 
 <script src="scripts/vendor/ngLocalStorage.js"></script>
+
+<script src="scripts/models/asset.js"></script>
 
 <!-- endbuild -->
 </body>

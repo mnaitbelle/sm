@@ -48,7 +48,6 @@
                     vm.isLoading = true;
                     authService.login(credentials)
                         .then(function (sessionData) {
-                            vm.isLoading = false;
                             $scope.setCurrentSession(sessionData);
                             $state.go('dashboard');
                         }, function (err) {
