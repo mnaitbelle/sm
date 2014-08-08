@@ -3,13 +3,11 @@
 
     angular
         .module('scanprintMobile')
-        .controller('dashboardController', ['ordersData', dashboard]);
+        .controller('dashboardController', ['$scope', 'randomData', dashboard]);
 
-    function dashboard(ordersData) {
-        /*jshint validthis:true */
-        var vm = this;
+    function dashboard($scope, randomData) {
 
-        vm.aaa = ordersData;
+        $scope.aaa = randomData;
 
         activate();
 

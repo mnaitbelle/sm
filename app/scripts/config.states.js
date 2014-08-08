@@ -10,10 +10,6 @@
         //
         // set up the states
         $stateProvider
-//            .state('notfound', {
-//                url: '/notfound',
-//                templateUrl: '404.html'
-//            })
             .state('login', {
                 url: '/login',
                 templateUrl: 'scripts/login/login.html'
@@ -21,8 +17,9 @@
             .state('dashboard', {
                 url: '/dashboard',
                 templateUrl: 'scripts/dashboard/dashboard.html',
+                controller:'dashboardController',
                 resolve: {
-                    ordersData: function(ordersService) {
+                    randomData: function(ordersService) {
                         return ordersService.getOrders();
                     }
                 }
