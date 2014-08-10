@@ -2,6 +2,13 @@
     <div ng-include="'../../views/topNavBar.html'"></div>
     <div class="dashboard-content">
         <p>{{currentSession}}</p>
-        <p>{{aaa}}</p>
+        <ul>
+            <li ng-repeat="item in vm.aaa.data">
+                {{item}}
+            </li>
+        </ul>
+        <ui-view>
+            <i>loading...</i>
+        </ui-view>
     </div>
 </div>

@@ -7,7 +7,9 @@
 
     function dashboard($scope, randomData) {
 
-        $scope.aaa = randomData;
+        var vm = this;
+
+        vm.aaa = randomData;
 
         activate();
 

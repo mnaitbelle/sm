@@ -18,8 +18,4 @@ describe('rootController', function () {
     it('should be defined', function () {
         expect(vm).toBeDefined();
     });
-
-    it('currentSession should be null', function () {
-        expect(scope.currentSession).toBeNull();
-    });
 });

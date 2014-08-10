@@ -6,7 +6,9 @@
 
     var app = angular.module('scanprintMobile');
 
-    app.factory('authInterceptorService', ['$q', '$location', 'sessionService', function ($q, $location, sessionService) {
+    app.factory('authInterceptorService', ['$q', '$rootScope', 'sessionService', 'authEvents',
+
+        function ($q, $rootScope, sessionService, authEvents) {
 
         var authInterceptorServiceFactory = {};
 
@@ -24,7 +26,7 @@
 
         var _responseError = function (rejection) {
             if (rejection.status === 401) {
-                $location.path('/login');
+                $rootScope.$broadcast(authEvents.notAuthorized); //can add args, like requested page...
             }
             return $q.reject(rejection);
         };

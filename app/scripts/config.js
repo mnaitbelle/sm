@@ -33,27 +33,4 @@
         previousLogin: 'previousLogin',
         sessionData: 'sessionData'
     });
-//
-//    app.constant('UserRoles', {
-//        allRoles: '*',
-//        admin: 'admin',
-//        editor: 'editor',
-//        guest: 'guest'
-//    });
-//
-//    app.run(function ($rootScope, AuthEvents, AuthService) {
-//        $rootScope.$on('$stateChangeStart', function (event, next) {
-//            var authorizedRoles = next.data.authorizedRoles;
-//            if (!authService.isAuthorized(authorizedRoles)) {
-//                event.preventDefault();
-//                if (authService.isAuthenticated()) {
-//                    // user is not allowed
-//                    $rootScope.$broadcast(AuthEvents.notAuthorized);
-//                } else {
-//                    // user is not logged in
-//                    $rootScope.$broadcast(AuthEvents.notAuthenticated);
-//                }
-//            }
-//        });
-//    });
 })();

@@ -21,14 +21,6 @@
         vm.activate = activate;
         vm.title = 'appController';
 
-        $scope.viewLoading = false;
-
-        $scope.currentSession = sessionService.getCurrent();
-
-        $scope.setCurrentSession = function (session) {
-            $scope.currentSession = session;
-        };
-
         $scope.logout = function () {
             sessionService.destroy();
             $state.go('login');

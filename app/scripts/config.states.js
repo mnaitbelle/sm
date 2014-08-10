@@ -17,19 +17,15 @@
             .state('dashboard', {
                 url: '/dashboard',
                 templateUrl: 'scripts/dashboard/dashboard.html',
-                controller:'dashboardController',
+                controller:'dashboardController as vm',
                 resolve: {
                     randomData: function(ordersService) {
                         return ordersService.getOrders();
                     }
                 }
             })
-            .state('dashboard.online', {
-                url: '/list',
-                templateUrl: 'scripts/dashboard/dashboard.online.html'
-            })
             .state('dashboard.offline', {
-                url: '/list',
+                url: '/offline',
                 templateUrl: 'scripts/dashboard/dashboard.offline.html'
             });
     });
