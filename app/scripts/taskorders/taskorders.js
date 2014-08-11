@@ -6,7 +6,7 @@
         .controller('taskordersController', ['taskOrdersService', '$state', taskorders]);
 
     function taskorders(taskOrdersService, $state) {
-
+        /*jshint validthis:true */
         var vm = this;
 
         vm.taskorders = taskOrdersService.taskorders;

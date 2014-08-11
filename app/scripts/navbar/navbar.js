@@ -6,6 +6,7 @@
         .controller('navbarController', ['$scope', navbar]);
 
     function navbar($scope) {
+        /*jshint validthis:true */
         var vm = this;
 
         vm.activate = activate;

@@ -3,7 +3,8 @@
 
     var app = angular.module('scanprintMobile');
 
-    app.config(function ($stateProvider, $urlRouterProvider) {
+    app.config(['$stateProvider', '$urlRouterProvider',
+        function ($stateProvider, $urlRouterProvider) {
         //
         // for any unmatched url, redirect to /login
         $urlRouterProvider.otherwise('/login');
@@ -37,5 +38,5 @@
                     }
                 }
             });
-    });
+    }]);
 })();
