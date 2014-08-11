@@ -1,9 +1,9 @@
-(function() {
+(function () {
     'use strict';
 
     var app = angular.module('scanprintMobile');
 
-    app.config(function($stateProvider, $urlRouterProvider) {
+    app.config(function ($stateProvider, $urlRouterProvider) {
         //
         // for any unmatched url, redirect to /login
         $urlRouterProvider.otherwise('/login');
@@ -16,17 +16,26 @@
             })
             .state('dashboard', {
                 url: '/dashboard',
-                templateUrl: 'scripts/dashboard/dashboard.html',
-                controller:'dashboardController as vm',
-                resolve: {
-                    randomData: function(ordersService) {
-                        return ordersService.getOrders();
+                templateUrl: 'scripts/dashboard/dashboard.html'
+            })
+            .state('dashboard.taskorders', {
+                url: '/taskorders',
+                views: {
+                    'navbar': {
+                        templateUrl: 'scripts/navbar/navbar.html'
+                    },
+                    '': {
+                        url: '/taskorders',
+                        templateUrl: 'scripts/taskorders/taskorders.html',
+                        controller: 'taskordersController',
+                        controllerAs: 'vm',
+                        resolve: {
+                            randomData: function (taskOrdersService) {
+                                return taskOrdersService.getTaskOrders();
+                            }
+                        }
                     }
                 }
-            })
-            .state('dashboard.offline', {
-                url: '/offline',
-                templateUrl: 'scripts/dashboard/dashboard.offline.html'
             });
     });
 })();

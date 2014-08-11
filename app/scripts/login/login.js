@@ -47,9 +47,8 @@
                 else {
                     vm.isLoading = true;
                     authService.login(credentials)
-                        .then(function (sessionData) {
-                            $scope.setCurrentSession(sessionData);
-                            $state.go('dashboard');
+                        .then(function () {
+                            $state.go('dashboard.taskorders');
                         }, function (err) {
                             //code if error here
                             vm.isLoading = false;
@@ -64,7 +63,7 @@
 
         function activate() {
             if (authService.isAuth()) {
-                $state.go('dashboard');
+                $state.go('dashboard.taskorders');
             }
         }
     }

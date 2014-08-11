@@ -49,7 +49,6 @@
                             userName: loginData.login
                         };
 
-                        /*jshint camelcase: false */
                         sessionService.setSession(sessionData);
 
                         deferred.resolve(response);

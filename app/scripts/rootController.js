@@ -29,6 +29,8 @@
         activate();
 
         function activate() {
+//            sessionService.destroy();
+//            $state.go('login');
         }
     }
 })();
