@@ -6,7 +6,8 @@
 
     var app = angular.module('scanprintMobile');
 
-    app.factory('sessionService', function (localStorageService, localStorageFiles) {
+    app.factory('sessionService', ['localStorageService', 'localStorageFiles',
+        function (localStorageService, localStorageFiles) {
 
         var sessionService = {
             getCurrent: _current,
@@ -27,5 +28,5 @@
         function _destroy() {
             localStorageService.remove(localStorageFiles.sessionData);
         }
-    });
+    }]);
 })();

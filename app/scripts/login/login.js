@@ -5,14 +5,13 @@
         .module('scanprintMobile')
         .controller('loginController',
         [
-            '$scope',
             '$state',
             'authService',
             'localStorageService',
             login
         ]);
 
-    function login($scope, $state, authService, localStorageService) {
+    function login($state, authService, localStorageService) {
         /*jshint validthis:true */
         var vm = this;
 
