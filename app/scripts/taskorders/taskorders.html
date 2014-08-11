@@ -1,7 +1,4 @@
-<div class="dashboard-content">
-    <ul>
-        <li ng-repeat="item in vm.taskorders">
-            {{item}} - <div class="btn" ng-click="dashboard.openTo(item.Id)">open</div>
-        </li>
-    </ul>
+<div ng-repeat="taskorder in vm.taskorders">
+    <div sm-task-order-master task="taskorder">
+    </div>
 </div>
