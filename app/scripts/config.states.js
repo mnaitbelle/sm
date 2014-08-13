@@ -29,13 +29,13 @@
                     '': {
                         url: '/taskorders',
                         templateUrl: 'scripts/taskorders/taskorders.html',
-                        controller: 'taskordersController',
-                        controllerAs: 'vm',
                         resolve: {
-                            onlineTasks: ['TaskOrderProjection', function (TaskOrderProjection) {
-                                return TaskOrderProjection.query();
+                            onlineTasks: ['TaskOrder', function (TaskOrder) {
+                                return TaskOrder.query().$promise;
                             }]
-                        }
+                        },
+                        controller: 'taskordersController',
+                        controllerAs: 'vm'
                     }
                 }
             });

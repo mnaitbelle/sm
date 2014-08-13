@@ -26,7 +26,7 @@
 
         var _responseError = function (rejection) {
             if (rejection.status === 401) {
-                $rootScope.$broadcast(authEvents.notAuthorized); //can add args, like requested page...
+                $rootScope.logout();
             }
             return $q.reject(rejection);
         };

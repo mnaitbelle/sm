@@ -12,9 +12,9 @@
         vm.taskorders = onlineTasks || [];
         vm.fullTaskOrder = {};
 
-        vm.select = function(taskorder) {
+        vm.select = function (taskorder) {
             vm.selectedTaskOrder = taskorder;
-            vm.fullTaskOrder = TaskOrder.get(taskorder.id);
+            vm.fullTaskOrder = TaskOrder.get({id: taskorder.id});
         };
 
         activate();

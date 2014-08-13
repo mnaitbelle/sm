@@ -10,18 +10,19 @@
         [
             '$scope',
             '$state',
+            '$rootScope',
             'sessionService',
             rootController
         ]);
 
-    function rootController($scope, $state, sessionService) {
+    function rootController($scope, $state, $rootScope, sessionService) {
         /*jshint validthis:true */
         var vm = this;
 
         vm.activate = activate;
         vm.title = 'appController';
 
-        $scope.logout = function () {
+        $rootScope.logout = function () {
             sessionService.destroy();
             $state.go('login');
         };
