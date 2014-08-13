@@ -31,6 +31,7 @@
 
     app.constant('localStorageFiles', {
         previousLogin: 'previousLogin',
-        sessionData: 'sessionData'
+        sessionData: 'sessionData',
+        screenState: 'screenState'
     });
 })();

@@ -23,9 +23,9 @@
             .state('dashboard.taskorders', {
                 url: '/taskorders',
                 views: {
-                    'navbar': {
-                        templateUrl: 'scripts/navbar/navbar.html'
-                    },
+//                    'navbar': {
+//                        templateUrl: 'scripts/navbar/navbar.html'
+//                    },
                     '': {
                         url: '/taskorders',
                         templateUrl: 'scripts/taskorders/taskorders.html',
