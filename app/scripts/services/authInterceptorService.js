@@ -6,9 +6,9 @@
 
     var app = angular.module('scanprintMobile');
 
-    app.factory('authInterceptorService', ['$q', '$rootScope', 'sessionService', 'authEvents',
+    app.factory('authInterceptorService', ['$q', '$rootScope', 'sessionService',
 
-        function ($q, $rootScope, sessionService, authEvents) {
+        function ($q, $rootScope, sessionService) {
 
         var authInterceptorServiceFactory = {};
 

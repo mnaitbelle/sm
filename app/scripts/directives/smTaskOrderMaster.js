@@ -11,7 +11,7 @@
         // Creates:
         // 
         var directive = {
-            link: link,
+           // link: link,
             restrict: 'EA',
             templateUrl: 'scripts/directives/smTaskOrderMaster.html',
             scope: {
@@ -21,8 +21,8 @@
             }
         };
         return directive;
-
-        function link(scope, element, attrs) {
-        }
+//
+//        function link(scope, element, attrs) {
+//        }
     }
 })();
