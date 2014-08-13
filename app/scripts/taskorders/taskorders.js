@@ -3,21 +3,18 @@
 
     angular
         .module('scanprintMobile')
-        .controller('taskordersController', ['taskOrdersService', taskorders]);
+        .controller('taskordersController', ['onlineTasks', 'TaskOrder', taskorders]);
 
-    function taskorders(taskOrdersService) {
+    function taskorders(onlineTasks, TaskOrder) {
         /*jshint validthis:true */
         var vm = this;
 
-        vm.taskorders = taskOrdersService.taskorders;
+        vm.taskorders = onlineTasks || [];
         vm.fullTaskOrder = {};
 
         vm.select = function(taskorder) {
             vm.selectedTaskOrder = taskorder;
-            taskOrdersService.getTaskOrder(taskorder.id)
-                .success(function(fullTaskOrder) {
-                    vm.fullTaskOrder = fullTaskOrder;
-                });
+            vm.fullTaskOrder = TaskOrder.get(taskorder.id);
         };
 
         activate();

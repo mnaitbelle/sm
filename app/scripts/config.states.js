@@ -32,9 +32,9 @@
                         controller: 'taskordersController',
                         controllerAs: 'vm',
                         resolve: {
-                            randomData: function (taskOrdersService) {
-                                return taskOrdersService.getTaskOrders();
-                            }
+                            onlineTasks: ['TaskOrderProjection', function (TaskOrderProjection) {
+                                return TaskOrderProjection.query();
+                            }]
                         }
                     }
                 }

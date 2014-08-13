@@ -11,5 +11,6 @@
 angular
     .module('scanprintMobile', [
         'ui.router',
+        'ngResource',
         'LocalStorageModule'
     ]);

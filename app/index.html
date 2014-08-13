@@ -82,6 +82,10 @@
 <!-- endbuild -->
 
 <!-- build:js({.tmp,app}) scripts/scripts.js -->
+<!-- ng-resource should be in the bower build, but won't appear. -->
+<script src="scripts/vendor/ng-resource.min.js"></script>
+<script src="scripts/vendor/ngLocalStorage.js"></script>
+
 <script src="scripts/app.js"></script>
 <script src="scripts/config.js"></script>
 <script src="scripts/rootController.js"></script>
@@ -89,16 +93,15 @@
 
 <script src="scripts/services/sessionService.js"></script>
 <script src="scripts/services/authService.js"></script>
-<script src="scripts/services/taskordersService.js"></script>
 <script src="scripts/services/authInterceptorService.js"></script>
 
 <script src="scripts/login/login.js"></script>
 <script src="scripts/taskorders/taskorders.js"></script>
 <script src="scripts/navbar/navbar.js"></script>
 
-<script src="scripts/vendor/ngLocalStorage.js"></script>
 <script src="scripts/directives/smTaskOrderMaster.js"></script>
-<script src="scripts/directives/smTaskOrderDetail.js"></script>
+
+<script src="scripts/models/taskorder.js"></script>
 
 <!-- endbuild -->
 </body>
