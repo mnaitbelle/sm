@@ -15,7 +15,9 @@
             restrict: 'EA',
             templateUrl: 'scripts/directives/smTaskOrderMaster.html',
             scope: {
-                task: '=task'
+                taskorder: '=taskorder',
+                highlight: '=highlight',
+                selectself: '&selectself'
             }
         };
         return directive;

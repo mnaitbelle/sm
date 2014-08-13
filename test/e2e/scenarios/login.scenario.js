@@ -15,7 +15,7 @@ describe('scanprintMobile login scenarios', function () {
     });
 
     it('should load the page', function () {
-        expect(browser.getTitle()).toEqual('http://m.scanprint.net/');
+        expect(browser.getTitle()).toEqual('http://m.scanprint.net/#/login');
     });
 
     it('should not display an error message', function () {

@@ -2,7 +2,8 @@ exports.config = {
     seleniumAddress: 'http://localhost:4444/wd/hub',
     baseUrl: 'http://m.scanprint.net/',
     specs: [
-        'scenarios/login.scenario.js'
+        'scenarios/login.scenario.js',
+        '../../app/scripts/login/login.spec.js'
     ]
 }
 

@@ -1,4 +1,30 @@
-<div ng-repeat="taskorder in vm.taskorders">
-    <div sm-task-order-master task="taskorder">
+<div class="row clearfix">
+    <div class="col-md-3">
+        <div ng-repeat="taskorder in vm.taskorders">
+            <div sm-task-order-master
+                 highlight="vm.selectedTaskOrder == taskorder"
+                 taskorder="taskorder"
+                 selectself="vm.select(taskorder)">
+            </div>
+        </div>
+    </div>
+    <div class="col-md-7 well">
+        <div class="row">
+            <div class="col-md-6">
+                <h1>{{vm.fullTaskOrder.number}}</h1>
+            </div>
+            <div class="col-md-6 text-right">
+                <h1><p class="small">{{vm.fullTaskOrder.assignmentDate | date : 'mediumDate'}}</p></h1>
+            </div>
+        </div>
+        <div class="row">
+            <p>{{vm.fullTaskOrder.comments}}</p>
+            <p>{{vm.fullTaskOrder}}</p>
+        </div>
+
+        <!--sm-task-order-detail-->
+    </div>
+    <div class="col-md-2">
+        <a href="#">save to disk</a>
     </div>
 </div>

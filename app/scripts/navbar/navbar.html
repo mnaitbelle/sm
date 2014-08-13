@@ -15,7 +15,9 @@
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
-                <li><a ui-sref="dashboard.taskorders" ui-sref-active="active">Task orders</a></li>
+                <li>
+                    <a ui-sref="dashboard.taskorders" ui-sref-active="active" ng-class="{active:$state.current}">Task orders</a>
+                </li>
             </ul>
             <!--<li>-->
             <!--<a href="/template-categories/popular"><i class="fa fa-star fa-fw"></i> Most Popular</a>-->

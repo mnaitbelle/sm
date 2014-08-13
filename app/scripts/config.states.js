@@ -17,6 +17,7 @@
             })
             .state('dashboard', {
                 url: '/dashboard',
+                abstract: true,
                 templateUrl: 'scripts/dashboard/dashboard.html'
             })
             .state('dashboard.taskorders', {
