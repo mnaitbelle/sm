@@ -1,26 +1,36 @@
 <div class="row clearfix">
-    <div class="col-md-3">
+    <div class="col-md-4">
         <div ng-repeat="taskorder in vm.taskorders">
             <div sm-task-order-master
+                 style="margin-bottom:12px;"
                  highlight="vm.selectedTaskOrder == taskorder"
                  taskorder="taskorder"
                  selectself="vm.select(taskorder)">
             </div>
         </div>
     </div>
-    <div class="col-md-7 well">
-        <div class="row">
-                <h1>{{vm.fullTaskOrder.number}} <small>{{vm.fullTaskOrder.assignmentDate | date : 'fullDate'}}</small></h1>
-        </div>
-        <div class="row">
-            <p>{{vm.fullTaskOrder.comments}}</p>
+    <div class="col-md-8">
+        <div class="widget">
+            <div class="widget-title">
+                <i class="fa fa-tasks"></i> {{vm.selectedTaskOrder.number}}
+                <p class="pull-right">{{vm.selectedTaskOrder.assignmentDate | date : 'fullDate'}}</p>
+            </div>
+            <div class="widget-body">
+                <div ng-show="vm.fullTaskOrder.isLoading">
+                    <loading></loading>
+                </div>
+                <div ng-hide="vm.fullTaskOrder.isLoading">
+                    <p>{{vm.fullTaskOrder.comments}}</p>
 
-            <p>{{vm.fullTaskOrder}}</p>
-        </div>
+                    <p>{{vm.fullTaskOrder.priority}}</p>
 
-        <!--sm-task-order-detail-->
-    </div>
-    <div class="col-md-2">
-        <a href="#">save to disk</a>
+                    <p>{{vm.fullTaskOrder.status}}</p>
+
+                    <p>{{vm.fullTaskOrder}}</p>
+
+                    <a href="#">Start work</a>
+                </div>
+            </div>
+        </div>
     </div>
 </div>

@@ -10,32 +10,40 @@
 
         function ($q, $rootScope, sessionService) {
 
-        var authInterceptorServiceFactory = {};
+            var authInterceptorServiceFactory = {};
 
-        var _request = function (req) {
+            var _request = function (req) {
 
-            req.headers = req.headers || {};
+                $rootScope.isLoading = true;
 
-            var authData = sessionService.getCurrent();
-            if (authData) {
-                req.headers.Authorization = 'Bearer ' + authData.token;
-            }
+                req.headers = req.headers || {};
 
-            return req;
-        };
+                var authData = sessionService.getCurrent();
+                if (authData) {
+                    req.headers.Authorization = 'Bearer ' + authData.token;
+                }
 
-        var _responseError = function (rejection) {
-            if (rejection.status === 401) {
-                $rootScope.logout();
-            }
-            return $q.reject(rejection);
-        };
+                return req;
+            };
 
-        authInterceptorServiceFactory.request = _request;
-        authInterceptorServiceFactory.responseError = _responseError;
+            var _response = function (response) {
+                $rootScope.isLoading = false;
+                return response;
+            };
 
-        return authInterceptorServiceFactory;
-    }]);
+            var _responseError = function (rejection) {
+                if (rejection.status === 401) {
+                    $rootScope.logout();
+                }
+                return $q.reject(rejection);
+            };
+
+            authInterceptorServiceFactory.request = _request;
+            authInterceptorServiceFactory.response = _response;
+            authInterceptorServiceFactory.responseError = _responseError;
+
+            return authInterceptorServiceFactory;
+        }]);
 
     app.config(function ($httpProvider) {
         $httpProvider.interceptors.push('authInterceptorService');

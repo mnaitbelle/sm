@@ -13,8 +13,9 @@
     <!-- endbower -->
     <!-- endbuild -->
     <!-- build:css(.tmp) styles/main.css -->
-    <link rel="stylesheet" href="styles/main.css">
     <link rel="stylesheet" href="styles/sidebar.css">
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/loading.css">
     <!-- endbuild -->
 </head>
 <body ng-app="scanprintMobile">
@@ -68,7 +69,8 @@
 <!-- build:js({.tmp,app}) scripts/scripts.js -->
 <!-- ng-resource should be in the bower build, but won't appear. -->
 <script src="scripts/vendor/ng-resource.js"></script>
-<script src="scripts/vendor/ngLocalStorage.js"></script>
+<script src="scripts/vendor/localStorage.js"></script>
+<script src="scripts/vendor/logger.js"></script>
 
 <script src="scripts/app.js"></script>
 <script src="scripts/config.js"></script>
@@ -83,6 +85,7 @@
 <script src="scripts/taskorders/taskorders.js"></script>
 
 <script src="scripts/directives/smTaskOrderMaster.js"></script>
+<script src="scripts/directives/loading.js"></script>
 
 <script src="scripts/models/taskorder.js"></script>
 

@@ -10,20 +10,28 @@
                         <fieldset>
                             <div class="form-group">
                                 <!--add type="email" below...-->
-                                <input ng-model="vm.credentials.login" class="form-control" placeholder="E-mail" name="email" autofocus/>
+                                <input ng-model="vm.credentials.login" class="form-control" placeholder="E-mail"
+                                       name="email" autofocus/>
                             </div>
                             <div class="form-group">
-                                <input ng-model="vm.credentials.password" class="form-control" placeholder="Password" name="password" type="password" value=""/>
+                                <input ng-model="vm.credentials.password" class="form-control" placeholder="Password"
+                                       name="password" type="password" value=""/>
                             </div>
                             <div class="checkbox">
                                 <label>
-                                    <input ng-model="vm.credentials.remember" name="remember" type="checkbox" value="Remember Me">Remember Me
+                                    <input ng-model="vm.credentials.remember" name="remember" type="checkbox"
+                                           value="Remember Me">Remember Me
                                 </label>
                             </div>
                             <!-- Change this to a button or input when using this as a form -->
-                            <button id="loginButton" ng-hide="vm.isLoading" ng-click="vm.loginUser(vm.credentials)" class="btn btn-lg btn-success btn-block">Login</button>
-                            <button ng-show="vm.isLoading" class="btn btn-lg btn-success btn-block disabled">please wait...</button>
-                            <p ng-if="vm.errorMessage" style="margin-top:10px;" id="errorMessage" class="text-danger">{{vm.errorMessage}}</p>
+                            <button id="loginButton" ng-hide="vm.isLoading" ng-click="vm.loginUser(vm.credentials)"
+                                    class="btn btn-lg btn-success btn-block">Login
+                            </button>
+                            <button ng-show="vm.isLoading" class="btn btn-lg btn-success btn-block disabled">
+                                <loading></loading>
+                            </button>
+                            <p ng-if="vm.errorMessage" style="margin-top:10px;" id="errorMessage" class="text-danger">
+                                {{vm.errorMessage}}</p>
                         </fieldset>
                     </form>
                 </div>

@@ -13,5 +13,6 @@ angular
         'ui.router',
         'ngResource',
         'ui.bootstrap',
-        'LocalStorageModule'
+        'sm.localStorage',
+        'sm.logger'
     ]);

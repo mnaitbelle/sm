@@ -1,7 +1,7 @@
 (function() {
     /* Start angularLocalStorage */
     'use strict';
-    var angularLocalStorage = angular.module('LocalStorageModule', []);
+    var angularLocalStorage = angular.module('sm.localStorage', []);
 
     angularLocalStorage.provider('localStorageService', function() {
 

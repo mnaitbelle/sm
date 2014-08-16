@@ -42,9 +42,9 @@
             return window.innerWidth;
         };
 
-        $scope.$watch($scope.getWidth, function (newValue, oldValue) {
+        $scope.$watch($scope.getWidth, function (newValue) {
             if (newValue >= mobileView) {
-                if (localStorageService.get(localStorageFiles.screenState) == false) {
+                if (localStorageService.get(localStorageFiles.screenState) === false) {
                     $scope.toggle = false;
                 }
                 else {

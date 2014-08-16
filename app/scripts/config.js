@@ -13,11 +13,9 @@
 
     app.value('config', config);
 
-    app.config(['$logProvider', function($logProvider) {
-        //turn debugging on/off
-        if ($logProvider.debugEnabled) {
-            $logProvider.debugEnabled(true);
-        }
+    app.config(['LoggerProvider', function(LoggerProvider) {
+        // We don't want the Logger service to be enabled in production
+        LoggerProvider.enabled(true);//!isProduction
     }]);
 
     app.constant('authEvents', {
