@@ -384,3 +384,7 @@ ul.sidebar .sidebar-list .menu-icon {
 .widget .widget-body.no-padding .message {
     padding: 20px;
 }
+
+.task-order-item {
+    margin-bottom:12px;
+}

@@ -2,7 +2,7 @@
     <div class="col-md-4">
         <div ng-repeat="taskorder in vm.taskorders">
             <div sm-task-order-master
-                 style="margin-bottom:12px;"
+                 class="task-order-item"
                  highlight="vm.selectedTaskOrder == taskorder"
                  taskorder="taskorder"
                  selectself="vm.select(taskorder)">
