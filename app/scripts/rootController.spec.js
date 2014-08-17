@@ -18,4 +18,8 @@ describe('rootController', function () {
     it('should be defined', function () {
         expect(vm).toBeDefined();
     });
+
+    it('should redirect to login when logout is called', function () {
+        scope.logout()
+    });
 });

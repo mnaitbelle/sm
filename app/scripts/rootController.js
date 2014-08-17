@@ -21,20 +21,12 @@
         /*jshint validthis:true */
         var vm = this;
 
-        vm.activate = activate;
         vm.title = 'appController';
 
         $rootScope.logout = function () {
             sessionService.destroy();
             $state.go('login');
         };
-
-        activate();
-
-        function activate() {
-//            sessionService.destroy();
-//            $state.go('login');
-        }
 
         var mobileView = 992;
 
@@ -54,7 +46,6 @@
             else {
                 $scope.toggle = false;
             }
-
         });
 
         $scope.toggleSidebar = function () {

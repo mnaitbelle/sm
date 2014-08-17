@@ -6,12 +6,7 @@
         .directive('smTaskOrderMaster', [smTaskOrderMaster]);
 
     function smTaskOrderMaster() {
-        // Usage:
-        // 
-        // Creates:
-        // 
         var directive = {
-           // link: link,
             restrict: 'EA',
             templateUrl: 'scripts/directives/smTaskOrderMaster.html',
             scope: {
@@ -21,8 +16,5 @@
             }
         };
         return directive;
-//
-//        function link(scope, element, attrs) {
-//        }
     }
 })();
