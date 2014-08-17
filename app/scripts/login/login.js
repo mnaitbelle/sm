@@ -49,7 +49,6 @@
                         .then(function () {
                             $state.go('dashboard.taskorders');
                         }, function (err) {
-                            //code if error here
                             vm.isLoading = false;
                             /*jshint camelcase: false */
                             vm.errorMessage = err.error_description;
