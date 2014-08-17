@@ -1,18 +1,17 @@
 <div class="row clearfix">
-    <div class="col-md-4">
-        <div ng-repeat="taskorder in vm.taskorders">
-            <div sm-task-order-master
-                 class="task-order-item"
-                 highlight="vm.selectedTaskOrder == taskorder"
-                 taskorder="taskorder"
-                 selectself="vm.select(taskorder)">
-            </div>
-        </div>
+    <div class="col-md-2">
+        <ul class="nav nav-pills nav-stacked">
+            <li ng-repeat="taskorder in vm.taskorders"
+                ng-class="{'active': vm.selectedTaskOrder == taskorder}">
+                <a ng-click="vm.select(taskorder)">{{taskorder.number}}
+                </a>
+            </li>
+        </ul>
     </div>
-    <div class="col-md-8">
-        <div class="widget">
+    <div class="col-md-10">
+        <div class="widget" style="margin-bottom: 8px;">
             <div class="widget-title">
-                <i class="fa fa-tasks"></i> {{vm.selectedTaskOrder.number}}
+                <i class="fa fa-sitemap"></i> {{vm.selectedTaskOrder.number}}
                 <p class="pull-right">{{vm.selectedTaskOrder.assignmentDate | date : 'fullDate'}}</p>
             </div>
             <div class="widget-body">
@@ -21,14 +20,32 @@
                 </div>
                 <div ng-hide="vm.fullTaskOrder.isLoading">
                     <p>{{vm.fullTaskOrder.comments}}</p>
+                    <!--<p>{{vm.fullTaskOrder.priority}}</p>-->
+                    <!--<p>{{vm.fullTaskOrder.status}}</p>-->
+                    <!--<p>{{vm.fullTaskOrder}}</p>-->
+                </div>
+            </div>
+        </div>
 
-                    <p>{{vm.fullTaskOrder.priority}}</p>
-
-                    <p>{{vm.fullTaskOrder.status}}</p>
-
-                    <p>{{vm.fullTaskOrder}}</p>
-
-                    <a href="#">Start work</a>
+        <div class="widget">
+            <div class="widget-title">
+                <i class="fa fa-tasks"></i>Tasks
+                <p class="pull-right"></p>
+            </div>
+            <div class="widget-body medium no-padding">
+                <div class="table-responsive">
+                    <table class="table">
+                        <tbody>
+                        <tr ng-repeat="taskorder in vm.taskorders">
+                            <td>{{taskorder.number}}</td>
+                            <td>238.103.133.37</td>
+                            <td><span ng-show="$index %3 ==0" class="text-success"><i class="fa fa-check"></i></span>
+                            <span ng-show="$index %3 ==1" class="text-danger ng-scope"><i class="fa fa-warning"></i></span>
+                            <span ng-show="$index %3 ==2" class="text-success"><i class="fa fa-flash"></i></span>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </div>

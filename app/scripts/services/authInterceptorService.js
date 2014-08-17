@@ -33,7 +33,7 @@
 
             var _responseError = function (rejection) {
                 if (rejection.status === 401) {
-                    $rootScope.logout();
+                    $rootScope.$broadcast('sessionExpired');
                 }
                 return $q.reject(rejection);
             };

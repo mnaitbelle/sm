@@ -21,6 +21,7 @@
                 templateUrl: 'scripts/dashboard/dashboard.html'
             })
             .state('dashboard.taskorders', {
+                displayName: 'Task orders',
                 url: '/taskorders',
                 views: {
 //                    'navbar': {
