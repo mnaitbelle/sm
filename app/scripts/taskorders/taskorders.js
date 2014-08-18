@@ -19,7 +19,7 @@
             logger.log('loading taskOrder details for id {0}', [taskorder.id]);
 
             vm.selectedTaskOrder = taskorder;
-            vm.fullTaskOrder.isLoading = true;
+            vm.fullTaskOrder = { isLoading: true };
 
             TaskOrder.get({id: taskorder.id}).$promise
                 .then(function (data) {

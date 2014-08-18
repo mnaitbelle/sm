@@ -7,12 +7,6 @@
 
     angular
         .module('scanprintMobile')
-//        .factory('TaskOrderProjection', ['$resource', 'config', function ($resource, config) {
-//            return $resource(config.apiRoot + '/taskorders/:id',
-//                {
-//                    id: '@id'
-//                });
-//        }])
         .factory('TaskOrder', ['$resource', 'config', function ($resource, config) {
             return $resource(config.apiRoot + '/taskorders/:id',
                 {

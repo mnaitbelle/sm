@@ -10,10 +10,7 @@
             templateUrl: 'scripts/directives/loading.html',
             scope: {
                 color: '=color'
-            },
-            controller: ['$scope', function($scope) {
-                //this is just to inject scope. won't work without
-            }]
+            }
         };
     });
 })();

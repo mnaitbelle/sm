@@ -11,7 +11,7 @@
     <div class="col-md-10">
         <div class="widget" style="margin-bottom: 8px;">
             <div class="widget-title">
-                <i class="fa fa-sitemap"></i> {{vm.selectedTaskOrder.number}}
+                <i class="fa fa-tasks"></i> {{vm.selectedTaskOrder.number}}
                 <p class="pull-right">{{vm.selectedTaskOrder.assignmentDate | date : 'fullDate'}}</p>
             </div>
             <div class="widget-body">
@@ -19,7 +19,7 @@
                     <loading></loading>
                 </div>
                 <div ng-hide="vm.fullTaskOrder.isLoading">
-                    <p>{{vm.fullTaskOrder.comments}}</p>
+                    <div>{{vm.fullTaskOrder.comments || 'No comments found for this task order.'}}</div>
                     <!--<p>{{vm.fullTaskOrder.priority}}</p>-->
                     <!--<p>{{vm.fullTaskOrder.status}}</p>-->
                     <!--<p>{{vm.fullTaskOrder}}</p>-->
@@ -27,21 +27,22 @@
             </div>
         </div>
 
-        <div class="widget">
+        <div class="widget" ng-show="vm.fullTaskOrder.items">
             <div class="widget-title">
-                <i class="fa fa-tasks"></i>Tasks
+                <i class="fa fa-sitemap"></i>Tasks
                 <p class="pull-right"></p>
             </div>
             <div class="widget-body medium no-padding">
                 <div class="table-responsive">
                     <table class="table">
                         <tbody>
-                        <tr ng-repeat="taskorder in vm.taskorders">
-                            <td>{{taskorder.number}}</td>
-                            <td>238.103.133.37</td>
-                            <td><span ng-show="$index %3 ==0" class="text-success"><i class="fa fa-check"></i></span>
-                            <span ng-show="$index %3 ==1" class="text-danger ng-scope"><i class="fa fa-warning"></i></span>
-                            <span ng-show="$index %3 ==2" class="text-success"><i class="fa fa-flash"></i></span>
+                        <tr ng-repeat="item in vm.fullTaskOrder.items">
+                            <td>{{item.date | date : 'shortDate' }}</td>
+                            <td>{{item.description}}</td>
+                            <td>{{item.status.name}}</td>
+                            <td><span ng-show="item.type == 'Inspection'" class="text-success"><i class="fa fa-check"></i></span>
+                                <span ng-show="item.type == 'Flag'" class="text-danger ng-scope"><i class="fa fa-warning"></i></span>
+                                <span ng-show="item.type == 'Audit'" class="text-success"><i class="fa fa-flash"></i></span>
                             </td>
                         </tr>
                         </tbody>
