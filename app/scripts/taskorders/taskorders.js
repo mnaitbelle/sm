@@ -16,7 +16,11 @@
 
         $scope.$watch('vm.selectedTaskOrder', function () {
                 logger.log('loading taskOrder details for id {0}', [vm.selectedTaskOrder.id]);
-                vm.fullTaskOrder = { isLoading: true };
+                vm.fullTaskOrder = {
+                    assignmentDate: vm.selectedTaskOrder.assignmentDate,
+                    number: vm.selectedTaskOrder.number,
+                    isLoading: true
+                };
                 TaskOrder.get({id: vm.selectedTaskOrder.id}).$promise
                     .then(function (data) {
                         vm.fullTaskOrder = data;

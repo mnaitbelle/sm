@@ -8,17 +8,10 @@
         function taskOrderDetails() {
             var directive = {
                 restrict: 'EA',
-                templateUrl: 'scripts/directives/itemPillsList.html',
+                templateUrl: 'scripts/directives/taskOrderDetails.html',
                 scope: {
-                    selectedItem: '=',
-                    items: '=',
-                    select: '&onSelect'
-                },
-                controller: ['$scope', function ($scope) {
-                    $scope.selectItem = function(item) {
-                        $scope.selectedItem = item;
-                    }
-                }]
+                    taskOrder: '='
+                }
             };
             return directive;
         });

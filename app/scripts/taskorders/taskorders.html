@@ -6,45 +6,6 @@
              on-select="vm.select()"></div>
     </div>
     <div class="col-md-10">
-        <div class="widget" style="margin-bottom: 8px;">
-            <div class="widget-title">
-                <i class="fa fa-tasks"></i> Task order {{vm.selectedTaskOrder.number}}
-                <p class="pull-right">{{vm.selectedTaskOrder.assignmentDate | date : 'fullDate'}}</p>
-            </div>
-            <div class="widget-body">
-                <div ng-show="vm.fullTaskOrder.isLoading">
-                    <loading></loading>
-                </div>
-                <div ng-hide="vm.fullTaskOrder.isLoading">
-                    <p>Priority: <span style="border-bottom: 2px solid {{vm.fullTaskOrder.taskOrderPriority.color}};">{{vm.fullTaskOrder.taskOrderPriority.name}}</span></p>
-                    <p>Status: <span style="border-bottom: 2px solid {{vm.fullTaskOrder.taskOrderStatu.color}};">{{vm.fullTaskOrder.taskOrderStatu.name}}</span></p>
-                    <br/>
-                    <div ng-show="vm.fullTaskOrder.comments">
-                        <h4>Notes</h4>
-                        <div>{{vm.fullTaskOrder.comments}}</div>
-                    </div>
-                    <br/>
-                    <div ng-show="vm.fullTaskOrder.items">
-                        <h4>Tasks</h4>
-                        <table class="table">
-                            <tbody>
-                            <tr ng-repeat="item in vm.fullTaskOrder.items">
-                                <td>{{item.date | date : 'shortDate' }}</td>
-                                <td>{{item.description}}</td>
-                                <td>{{item.status.name}}</td>
-                                <td><span ng-show="item.type == 'Inspection'" class="text-success"><i
-                                        class="fa fa-check"></i></span>
-                                    <span ng-show="item.type == 'Flag'" class="text-danger ng-scope"><i
-                                            class="fa fa-warning"></i></span>
-                                    <span ng-show="item.type == 'Audit'" class="text-success"><i
-                                            class="fa fa-flash"></i></span>
-                                </td>
-                            </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            </div>
-        </div>
+        <div task-order-details task-order="vm.fullTaskOrder"></div>
     </div>
 </div>
