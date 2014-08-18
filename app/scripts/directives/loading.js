@@ -9,7 +9,7 @@
             replace: 'false',
             templateUrl: 'scripts/directives/loading.html',
             scope: {
-                color: '=color'
+                color: '='
             }
         };
     });

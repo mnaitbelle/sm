@@ -1,12 +1,9 @@
 <div class="row clearfix">
     <div class="col-md-2">
-        <ul class="nav nav-pills nav-stacked">
-            <li ng-repeat="taskorder in vm.taskorders"
-                ng-class="{'active': vm.selectedTaskOrder == taskorder}">
-                <a ng-click="vm.select(taskorder)">{{taskorder.number}}
-                </a>
-            </li>
-        </ul>
+        <div item-pills-list
+             items="vm.taskorders"
+             selected-item="vm.selectedTaskOrder"
+             on-select="vm.select()"></div>
     </div>
     <div class="col-md-10">
         <div class="widget" style="margin-bottom: 8px;">
