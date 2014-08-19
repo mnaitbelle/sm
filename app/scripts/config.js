@@ -27,6 +27,11 @@
         notAuthorized: 'auth-not-authorized'
     });
 
+    app.value('cgBusyDefaults',{
+        message:'Loading Stuff',
+        templateUrl: 'scripts/templates/busy.html'
+    });
+
     app.constant('localStorageFiles', {
         previousLogin: 'previousLogin',
         sessionData: 'sessionData',

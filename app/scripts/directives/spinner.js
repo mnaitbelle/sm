@@ -3,13 +3,14 @@
 
     angular
         .module('scanprintMobile')
-        .directive('loading', function () {
+        .directive('spinner', function () {
         return {
             restrict: 'E',
             replace: 'false',
-            templateUrl: 'scripts/directives/loading.html',
+            templateUrl: 'scripts/directives/spinner.html',
             scope: {
-                color: '='
+                color: '=',
+                size: '='
             }
         };
     });

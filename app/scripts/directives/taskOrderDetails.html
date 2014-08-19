@@ -4,10 +4,7 @@
         <p class="pull-right">{{taskOrder.assignmentDate | date : 'fullDate'}}</p>
     </div>
     <div class="widget-body">
-        <div ng-show="taskOrder.isLoading">
-            <loading></loading>
-        </div>
-        <div ng-hide="taskOrder.isLoading">
+        <div cg-busy="taskOrder">
             <p>Priority: <span style="border-bottom: 2px solid {{taskOrder.taskOrderPriority.color}};">{{taskOrder.taskOrderPriority.name}}</span></p>
             <p>Status: <span style="border-bottom: 2px solid {{taskOrder.taskOrderStatu.color}};">{{taskOrder.taskOrderStatu.name}}</span></p>
             <br/>

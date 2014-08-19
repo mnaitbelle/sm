@@ -10,9 +10,11 @@
  */
 angular
     .module('scanprintMobile', [
+        'ngAnimate',
         'ui.router',
         'ngResource',
         'ui.bootstrap',
         'sm.localStorage',
-        'sm.logger'
+        'sm.logger',
+        'cgBusy'
     ]);
