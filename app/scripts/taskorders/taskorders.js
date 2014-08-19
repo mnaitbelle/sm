@@ -3,29 +3,13 @@
 
     angular
         .module('scanprintMobile')
-        .controller('taskordersController', ['onlineTasks', 'TaskOrder', 'Logger', '$scope', taskorders]);
+        .controller('taskordersController', ['onlineTasks', taskorders]);
 
-    function taskorders(onlineTasks, TaskOrder, Logger, $scope) {
+    function taskorders(onlineTasks) {
         /*jshint validthis:true */
         var vm = this;
 
         vm.taskorders = onlineTasks || [];
         vm.selectedTaskOrder = vm.taskorders[0];
-
-        var logger = Logger.getInstance('taskordersController');
-
-        $scope.$watch('vm.selectedTaskOrder', function () {
-                logger.log('loading taskOrder details for id {0}', [vm.selectedTaskOrder.id]);
-                vm.fullTaskOrder = {
-                    assignmentDate: vm.selectedTaskOrder.assignmentDate,
-                    number: vm.selectedTaskOrder.number,
-                    isLoading: true
-                };
-                TaskOrder.get({id: vm.selectedTaskOrder.id}).$promise
-                    .then(function (data) {
-                        vm.fullTaskOrder = data;
-                    });
-            }
-        );
     }
 })();
