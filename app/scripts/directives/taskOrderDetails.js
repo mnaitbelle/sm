@@ -21,10 +21,12 @@
                                 number: $scope.taskOrderProjection.number,
                                 isLoading: true
                             };
-                            TaskOrder.get({id: $scope.taskOrderProjection.id}).$promise
-                                .then(function (data) {
-                                    $scope.taskOrder = data;
-                                });
+
+                            $scope.taskOrder = TaskOrder.get({id: $scope.taskOrderProjection.id});
+//                            TaskOrder.get({id: $scope.taskOrderProjection.id}).$promise
+//                                .then(function (data) {
+//                                    $scope.taskOrder = data;
+//                                });
                         }
                     );
                 }]
