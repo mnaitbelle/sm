@@ -17,7 +17,7 @@
                 controller: ['$scope', function ($scope) {
                     $scope.selectItem = function(item) {
                         $scope.selectedItem = item;
-                    }
+                    };
                 }]
             };
             return directive;
