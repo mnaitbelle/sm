@@ -2,7 +2,7 @@
 <project version="4">
   <component name="JavaScriptLibraryMappings">
     <file url="file://$PROJECT_DIR$" libraries="{sm node_modules}" />
-    <file url="PROJECT" libraries="{angular-protractor-DefinitelyTyped}" />
+    <file url="PROJECT" libraries="{angular-protractor-DefinitelyTyped, angular-ui-DefinitelyTyped, angular-ui-bootstrap-DefinitelyTyped, angularLocalStorage-DefinitelyTyped, angularjs-DefinitelyTyped}" />
   </component>
 </project>
 
