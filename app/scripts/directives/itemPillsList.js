@@ -11,9 +11,7 @@
                 templateUrl: 'scripts/directives/itemPillsList.html',
                 scope: {
                     items: '='
-                },
-                controller: ['$scope', function ($scope) {
-                }]
+                }
             };
             return directive;
         });
