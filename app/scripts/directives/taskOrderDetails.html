@@ -5,12 +5,19 @@
     </div>
     <div class="widget-body">
         <div class="row">
-            <p class="lead">Priority: <span style="border-bottom: 2px solid {{taskOrder.taskOrderPriority.color}};">{{taskOrder.taskOrderPriority.name}}</span></p>
-            <p class="lead">Status: <span style="border-bottom: 2px solid {{taskOrder.taskOrderStatu.color}};">{{taskOrder.taskOrderStatu.name}}</span></p>
-            <br/>
+            <div class="col-xs-6">
+                <p class="text-center lead">Priority: <span style="border-bottom: 2px solid {{taskOrder.taskOrderPriority.color}};">{{taskOrder.taskOrderPriority.name}}</span>
+                </p>
+            </div>
+            <div class="col-xs-6">
+                <p class="text-center lead">Status: <span style="border-bottom: 2px solid {{taskOrder.taskOrderStatu.color}};">{{taskOrder.taskOrderStatu.name}}</span>
+                </p>
+            </div>
+            <hr/>
             <div cg-busy="taskOrder">
                 <div ng-show="taskOrder.comments">
                     <p class="lead">Notes</p>
+
                     <div>{{taskOrder.comments}}</div>
                     <br/>
                 </div>
@@ -20,16 +27,17 @@
                         <tbody>
                         <tr ng-repeat="item in taskOrder.items">
                             <td>{{item.date | date : 'shortDate' }}</td>
-                            <td><p>{{item.description}}</p>
-                                <p><i>{{item.status.name}}</i></p>
+                            <td><p>{{item.description}}<br/>
+                                <small style="border-bottom: 2px solid {{item.status.color}};">{{item.status.name}}</small></p>
                             </td>
-                            <td><span ng-show="item.type == 'Inspection'" class="text-success"><i
-                                    class="fa fa-check"></i></span>
-                                    <span ng-show="item.type == 'Flag'" class="text-danger"><i
-                                            class="fa fa-warning"></i></span>
-                                    <span ng-show="item.type == 'Audit'" class="text-success"><i
-                                            class="fa fa-flash"></i></span>
-                            </td>
+                            <!--<td>-->
+                                <!--<span ng-show="item.type == 'Inspection'" class="text-success"><i-->
+                                    <!--class="fa fa-check"></i></span>-->
+                                    <!--<span ng-show="item.type == 'Flag'" class="text-danger"><i-->
+                                            <!--class="fa fa-warning"></i></span>-->
+                                    <!--<span ng-show="item.type == 'Audit'" class="text-success"><i-->
+                                            <!--class="fa fa-flash"></i></span>-->
+                            <!--</td>-->
                             <td>
                                 <a class="btn btn-default" href="#">
                                     <i class="fa fa-cloud-download"></i> download</a>
