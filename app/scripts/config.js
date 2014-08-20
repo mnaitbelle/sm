@@ -29,6 +29,7 @@
 
     app.value('cgBusyDefaults',{
         message:'Loading Stuff',
+        delay: 150,
         templateUrl: 'scripts/templates/busy.html'
     });
 

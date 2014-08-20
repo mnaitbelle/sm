@@ -4,33 +4,40 @@
         <p class="pull-right">{{taskOrder.assignmentDate | date : 'fullDate'}}</p>
     </div>
     <div class="widget-body">
-        <div cg-busy="taskOrder">
-            <p>Priority: <span style="border-bottom: 2px solid {{taskOrder.taskOrderPriority.color}};">{{taskOrder.taskOrderPriority.name}}</span></p>
-            <p>Status: <span style="border-bottom: 2px solid {{taskOrder.taskOrderStatu.color}};">{{taskOrder.taskOrderStatu.name}}</span></p>
+        <div class="row">
+            <p class="lead">Priority: <span style="border-bottom: 2px solid {{taskOrder.taskOrderPriority.color}};">{{taskOrder.taskOrderPriority.name}}</span></p>
+            <p class="lead">Status: <span style="border-bottom: 2px solid {{taskOrder.taskOrderStatu.color}};">{{taskOrder.taskOrderStatu.name}}</span></p>
             <br/>
-            <div ng-show="taskOrder.comments">
-                <h4>Notes</h4>
-                <div>{{taskOrder.comments}}</div>
-                <br/>
-            </div>
-            <div ng-show="taskOrder.items">
-                <h4>Tasks</h4>
-                <table class="table">
-                    <tbody>
-                    <tr ng-repeat="item in taskOrder.items">
-                        <td>{{item.date | date : 'shortDate' }}</td>
-                        <td>{{item.description}}</td>
-                        <td>{{item.status.name}}</td>
-                        <td><span ng-show="item.type == 'Inspection'" class="text-success"><i
-                                class="fa fa-check"></i></span>
-                                    <span ng-show="item.type == 'Flag'" class="text-danger ng-scope"><i
+            <div cg-busy="taskOrder">
+                <div ng-show="taskOrder.comments">
+                    <p class="lead">Notes</p>
+                    <div>{{taskOrder.comments}}</div>
+                    <br/>
+                </div>
+                <div ng-show="taskOrder.items">
+                    <p class="lead">Tasks</p>
+                    <table class="table">
+                        <tbody>
+                        <tr ng-repeat="item in taskOrder.items">
+                            <td>{{item.date | date : 'shortDate' }}</td>
+                            <td><p>{{item.description}}</p>
+                                <p><i>{{item.status.name}}</i></p>
+                            </td>
+                            <td><span ng-show="item.type == 'Inspection'" class="text-success"><i
+                                    class="fa fa-check"></i></span>
+                                    <span ng-show="item.type == 'Flag'" class="text-danger"><i
                                             class="fa fa-warning"></i></span>
                                     <span ng-show="item.type == 'Audit'" class="text-success"><i
                                             class="fa fa-flash"></i></span>
-                        </td>
-                    </tr>
-                    </tbody>
-                </table>
+                            </td>
+                            <td>
+                                <a class="btn btn-default" href="#">
+                                    <i class="fa fa-cloud-download"></i> download</a>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
     </div>

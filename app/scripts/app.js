@@ -11,8 +11,8 @@
 angular
     .module('scanprintMobile', [
         'ngAnimate',
-        'ui.router',
         'ngResource',
+        'ui.router',
         'ui.bootstrap',
         'sm.localStorage',
         'sm.logger',
