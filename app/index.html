@@ -26,7 +26,9 @@
 
 <!-- main site html -->
 <div ng-controller="rootController as rootCtrl">
-    <ui-view>please wait...</ui-view>
+    <ui-view>
+        <spinner></spinner>
+    </ui-view>
 </div>
 
 <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
@@ -86,8 +88,8 @@
 
 <script src="scripts/login/login.js"></script>
 <script src="scripts/taskorders/taskorders.js"></script>
+<script src="scripts/taskorders/taskOrderDetails.js"></script>
 
-<script src="scripts/directives/taskOrderDetails.js"></script>
 <script src="scripts/directives/itemPillsList.js"></script>
 <script src="scripts/directives/spinner.js"></script>
 

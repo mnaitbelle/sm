@@ -1,31 +1,31 @@
 <div class="widget" style="margin-bottom: 8px;">
     <div class="widget-title">
-        <i class="fa fa-tasks"></i> Task order {{taskOrder.number}}
-        <p class="pull-right">{{taskOrder.assignmentDate | date : 'fullDate'}}</p>
+        <i class="fa fa-tasks"></i> Task order {{vm.taskOrder.number}}
+        <p class="pull-right">{{vm.taskOrder.assignmentDate | date : 'fullDate'}}</p>
     </div>
     <div class="widget-body">
         <div class="row">
             <div class="col-xs-6">
-                <p class="text-center lead">Priority: <span style="border-bottom: 2px solid {{taskOrder.taskOrderPriority.color}};">{{taskOrder.taskOrderPriority.name}}</span>
+                <p class="text-center lead">Priority: <span style="border-bottom: 2px solid {{taskOrder.taskOrderPriority.color}};">{{vm.taskOrder.taskOrderPriority.name}}</span>
                 </p>
             </div>
             <div class="col-xs-6">
-                <p class="text-center lead">Status: <span style="border-bottom: 2px solid {{taskOrder.taskOrderStatu.color}};">{{taskOrder.taskOrderStatu.name}}</span>
+                <p class="text-center lead">Status: <span style="border-bottom: 2px solid {{vm.taskOrder.taskOrderStatu.color}};">{{vm.taskOrder.taskOrderStatu.name}}</span>
                 </p>
             </div>
             <hr/>
             <div cg-busy="taskOrder">
-                <div ng-show="taskOrder.comments">
+                <div ng-show="vm.taskOrder.comments">
                     <p class="lead">Notes</p>
 
-                    <div>{{taskOrder.comments}}</div>
+                    <div>{{vm.taskOrder.comments}}</div>
                     <br/>
                 </div>
-                <div ng-show="taskOrder.items">
+                <div ng-show="vm.taskOrder.items">
                     <p class="lead">Tasks</p>
                     <table class="table">
                         <tbody>
-                        <tr ng-repeat="item in taskOrder.items">
+                        <tr ng-repeat="item in vm.taskOrder.items">
                             <td>{{item.date | date : 'shortDate' }}</td>
                             <td><p>{{item.description}}<br/>
                                 <small style="border-bottom: 1px solid {{item.status.color}};">{{item.status.name}}</small></p>

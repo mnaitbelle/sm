@@ -1,7 +1,9 @@
 <ul class="nav nav-pills nav-stacked">
     <li ng-repeat="item in items"
-        ng-class="{'active': item === selectedItem}">
-        <a ng-click="selectItem(item)">{{item.name || item.number}}
+        ng-controller="navItem"
+        ng-class="{'active': isActive('dashboard/taskorders/details/'+item.id)}">
+        <a ng-disabled="isActive('dashboard/taskorders/details/'+item.id)"
+           ui-sref="dashboard.taskorders.details({id:item.id})">{{item.name || item.number}}
         </a>
     </li>
 </ul>

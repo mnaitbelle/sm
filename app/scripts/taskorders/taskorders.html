@@ -1,12 +1,11 @@
 <div class="row">
     <div class="col-xs-2">
         <div item-pills-list
-             items="vm.taskorders"
-             selected-item="vm.selectedTaskOrder"
-             on-select="vm.select()"></div>
+             items="vm.taskorders"></div>
     </div>
     <div class="col-xs-10">
-        <div task-order-details
-             task-order-projection="vm.selectedTaskOrder"></div>
+        <ui-view>
+            <spinner></spinner>
+        </ui-view>
     </div>
 </div>

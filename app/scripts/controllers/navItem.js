@@ -11,7 +11,12 @@
             '$state',
             function ($scope, $state) {
             $scope.isActive = function (state) {
-                return state === $state.current.name;
+                var currentUrl = $state.current.url;
+
+                if ($state.params && $state.params.id) {
+                    currentUrl = currentUrl.replace(':id', $state.params.id);
+                }
+                return state === currentUrl;
             };
         }]);
 })();
