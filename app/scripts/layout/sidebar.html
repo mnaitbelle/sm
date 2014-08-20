@@ -1,0 +1,36 @@
+<div id="sidebar-wrapper">
+    <ul class="sidebar">
+        <li class="sidebar-main">
+            <a ng-click="toggleSidebar()">
+                <span>Scanprint &#0153;</span><span class="menu-icon glyphicon glyphicon-transfer"></span>
+            </a>
+        </li>
+        <li class="sidebar-title">
+            <span>Modules</span>
+        </li>
+        <li class="sidebar-list" ng-controller="navItem" ng-class="{'current': isActive('dashboard.taskorders')}">
+            <a href="#">Task orders <span class="menu-icon fa fa-tasks"></span></a>
+        </li>
+        <li class="sidebar-list" ng-controller="navItem" ng-class="{'current': isActive('dashboard.forms')}">
+            <a href="#">Forms <span class="menu-icon fa fa-check-square-o"></span></a>
+        </li>
+        <!--<li class="sidebar-title separator"><span>Settings</span></li>-->
+        <!--<li class="sidebar-list">-->
+        <!--<a href="#" target="_blank">Settings <span class="menu-icon fa fa-external-link"></span></a>-->
+        <!--</li>-->
+    </ul>
+    <div class="sidebar-footer">
+        <div class="col-xs-4">
+            <a href="https://www.advitam-group.com" target="_blank">
+                Advitam
+            </a>
+        </div>
+        <div class="col-xs-4">
+        </div>
+        <div class="col-xs-4">
+            <a href="mailto:support@advitam-group.com">
+                Support
+            </a>
+        </div>
+    </div>
+</div>

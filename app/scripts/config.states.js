@@ -18,16 +18,23 @@
             .state('dashboard', {
                 url: '/dashboard',
                 abstract: true,
-                templateUrl: 'scripts/dashboard/dashboard.html'
+                views: {
+                    '': {
+                        templateUrl: 'scripts/layout/main.html'
+                    }
+                }
             })
             .state('dashboard.taskorders', {
                 displayName: 'Task orders',
                 url: '/taskorders',
                 views: {
-//                    'navbar': {
-//                        templateUrl: 'scripts/navbar/navbar.html'
-//                    },
-                    '': {
+                    'sidebar': {
+                        templateUrl: 'scripts/layout/sidebar.html'
+                    },
+                    'header': {
+                        templateUrl: 'scripts/layout/header.html'
+                    },
+                    'content': {
                         url: '/taskorders',
                         templateUrl: 'scripts/taskorders/taskorders.html',
                         resolve: {

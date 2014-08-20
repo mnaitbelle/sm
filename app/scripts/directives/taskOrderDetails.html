@@ -28,7 +28,7 @@
                         <tr ng-repeat="item in taskOrder.items">
                             <td>{{item.date | date : 'shortDate' }}</td>
                             <td><p>{{item.description}}<br/>
-                                <small style="border-bottom: 2px solid {{item.status.color}};">{{item.status.name}}</small></p>
+                                <small style="border-bottom: 1px solid {{item.status.color}};">{{item.status.name}}</small></p>
                             </td>
                             <!--<td>-->
                                 <!--<span ng-show="item.type == 'Inspection'" class="text-success"><i-->
@@ -40,7 +40,7 @@
                             <!--</td>-->
                             <td>
                                 <a class="btn btn-default" href="#">
-                                    <i class="fa fa-cloud-download"></i> download</a>
+                                    <i class="fa fa-cloud-download"></i> download form</a>
                             </td>
                         </tr>
                         </tbody>
