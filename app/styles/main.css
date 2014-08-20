@@ -333,10 +333,10 @@ ul.sidebar .sidebar-list .menu-icon {
     background: #fafafa;
 }
 .widget .widget-body table thead * {
-    font-size: 14px !important;
+    /*font-size: 14px !important;*/
 }
 .widget .widget-body table tbody * {
-    font-size: 13px !important;
+    /*font-size: 13px !important;*/
 }
 .widget .widget-body .error {
     color: #ff0000;
@@ -384,7 +384,11 @@ ul.sidebar .sidebar-list .menu-icon {
 .widget .widget-body.no-padding .message {
     padding: 20px;
 }
-
-.task-order-item {
-    margin-bottom:12px;
+ul.sidebar .sidebar-list .current {
+    color: #fff;
+    border-left: 3px solid #e99d1a;
+    text-indent: 22px;
+}
+.dashboard-content {
+    font-family: "Helvetica Neue";
 }
