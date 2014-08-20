@@ -45,7 +45,7 @@
                 })
                 .state('dashboard.taskorders.details', {
                     displayName: 'Task order',
-                    url: 'dashboard/taskorders/details/:id',
+                    url: '/:id',
                     templateUrl: 'scripts/taskorders/taskOrderDetails.html',
                     resolve: {
                         taskDetails: ['$state', '$stateParams', 'TaskOrder', function ($state, $stateParams, TaskOrder) {

@@ -15,7 +15,6 @@
         /*jshint validthis:true */
         var vm = this;
 
-        vm.activate = activate;
         vm.title = 'login';
         vm.isLoading = false;
         vm.errorMessage = '';
@@ -47,7 +46,7 @@
                     vm.isLoading = true;
                     authService.login(credentials)
                         .then(function () {
-                            $state.go('dashboard.taskorders');
+                            vm.activate();
                         }, function (err) {
                             vm.isLoading = false;
                             /*jshint camelcase: false */
@@ -57,12 +56,12 @@
             }
         };
 
-        activate();
-
-        function activate() {
+        vm.activate = function() {
             if (authService.isAuth()) {
                 $state.go('dashboard.taskorders');
             }
-        }
+        };
+
+        vm.activate();
     }
 })();
