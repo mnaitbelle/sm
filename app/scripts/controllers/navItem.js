@@ -13,5 +13,5 @@
             $scope.isActive = function (state) {
                 return state === $state.current.name;
             };
-        }])
+        }]);
 })();
