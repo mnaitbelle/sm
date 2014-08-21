@@ -14,26 +14,30 @@
                 .state('dashboard', {
                     url: '/dashboard',
                     abstract: true,
-                    views: {
+                    views:{
                         'sidebar': {
-                            templateUrl: 'scripts/layout/sidebar.html'
+                            templateUrl: 'scripts/layout/left.html'
                         },
                         'header': {
-                            templateUrl: 'scripts/layout/header.html'
+                            templateUrl: 'scripts/layout/right.html'
                         }
-                    }
-                })
+                    }})
                 .state('dashboard.taskorders', {
                     displayName: 'Task orders',
                     url: '/taskorders',
-                    templateUrl: 'scripts/taskorders/taskorders.html',
-                    resolve: {
-                        onlineTasks: ['TaskOrder', function (TaskOrder) {
-                            return TaskOrder.query().$promise;
-                        }]
-                    },
-                    controller: 'taskordersController',
-                    controllerAs: 'vm'
+                    views: {
+                        'content': {
+                            url: '/taskorders',
+                            templateUrl: 'scripts/taskorders/taskorders.html',
+                            resolve: {
+                                onlineTasks: ['TaskOrder', function (TaskOrder) {
+                                    return TaskOrder.query().$promise;
+                                }]
+                            },
+                            controller: 'taskordersController',
+                            controllerAs: 'vm'
+                        }
+                    }
                 })
                 .state('dashboard.taskorders.details', {
                     displayName: 'Task orders',
@@ -50,9 +54,17 @@
                 .state('dashboard.forms', {
                     displayName: 'Forms',
                     url: '/forms',
-                    templateUrl: 'scripts/forms/forms.html',
-                    controller: 'formsController',
-                    controllerAs: 'vm'
+                    views: {
+                        'content': {
+                            url: '/forms',
+                            templateUrl: 'scripts/forms/forms.html',
+                            controller: 'formsController',
+                            controllerAs: 'vm'
+                        }
+                    }
                 });
-        }]);
-})();
+        }
+    ])
+    ;
+})
+();

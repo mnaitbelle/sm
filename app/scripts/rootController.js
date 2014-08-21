@@ -31,8 +31,6 @@
             $state.go('login');
         };
 
-        vm.online = window.navigator.onLine;
-
         $scope.$on('sessionExpired', function() {
             vm.logout();
         });

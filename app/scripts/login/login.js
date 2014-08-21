@@ -47,10 +47,10 @@
                     vm.isLoading = true;
                     authService.login(credentials)
                         .then(function (data) {
+                            debugger;
                             vm.activate();
                         }, function (err) {
                             vm.isLoading = false;
-                            debugger;
                             /*jshint camelcase: false */
                             vm.errorMessage = err.error_description;
                         });
