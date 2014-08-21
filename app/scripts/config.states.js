@@ -15,11 +15,11 @@
                     url: '/dashboard',
                     abstract: true,
                     views:{
-                        'sidebar': {
-                            templateUrl: 'scripts/layout/left.html'
+                        'menu': {
+                            templateUrl: 'scripts/layout/leftMenu.html'
                         },
-                        'header': {
-                            templateUrl: 'scripts/layout/right.html'
+                        'content': {
+                            templateUrl: 'scripts/layout/pageContent.html'
                         }
                     }})
                 .state('dashboard.taskorders', {
@@ -31,7 +31,7 @@
                             templateUrl: 'scripts/taskorders/taskorders.html',
                             resolve: {
                                 onlineTasks: ['TaskOrder', function (TaskOrder) {
-                                    return TaskOrder.query().$promise;
+                                    return TaskOrder.query();
                                 }]
                             },
                             controller: 'taskordersController',
@@ -44,7 +44,7 @@
                     url: '/:id',
                     templateUrl: 'scripts/taskorders/taskOrderDetails.html',
                     resolve: {
-                        taskDetails: ['$state', '$stateParams', 'TaskOrder', function ($state, $stateParams, TaskOrder) {
+                        taskDetails: ['$stateParams', 'TaskOrder', function ($stateParams, TaskOrder) {
                             return TaskOrder.get({id: $stateParams.id});
                         }]
                     },

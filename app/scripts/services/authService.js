@@ -34,8 +34,8 @@
 //
 //                    //todo: check credentials against local saved ones, which are based on the last succesful logins.
 //                    var sessionData = {
-//                        offline: true,
-//                        loginData: loginData
+//                        loggedOnline: false,
+//                        userName: loginData.login
 //                    };
 //
 //                    sessionService.setSession(sessionData);
@@ -60,6 +60,7 @@
 
                             var sessionData = {
                                 /*jshint camelcase: false */
+                                loggedOnline: true,
                                 token: response.access_token,
                                 userName: loginData.login
                             };

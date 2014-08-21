@@ -5,8 +5,7 @@
 
     var config = {
         appName: 'scanprint mobile',
-        version: '1.0',
-        busyIndicator: 'overlay', //overlay or spinner
+        version: '0.1',
         authTokenRoot: 'http://m.scanprint.net',
         apiRoot: 'http://m.scanprint.net/api'
     };
@@ -28,7 +27,7 @@
     });
 
     app.value('cgBusyDefaults',{
-        message:'Loading Stuff',
+        message:'please wait...',
         delay: 150,
         templateUrl: 'scripts/templates/busy.html'
     });

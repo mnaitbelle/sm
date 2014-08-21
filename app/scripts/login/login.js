@@ -59,12 +59,12 @@
 
         vm.activate = function() {
             if (authService.isAuth()) {
-                if ($scope.online) {
+//                if ($scope.online) {
                     $state.go('dashboard.taskorders');
-                }
-                else {
-                    $state.go('dashboard.forms');
-                }
+//                }
+//                else {
+//                    $state.go('dashboard.forms');
+//                }
             }
         };
 

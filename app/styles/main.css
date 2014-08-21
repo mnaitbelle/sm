@@ -385,10 +385,10 @@ ul.sidebar .sidebar-list .menu-icon {
     padding: 20px;
 }
 .current {
+    color: #fff;
     background: #2d3e63;
 }
 .current a {
-    color: #fff;
     border-left: 3px solid #e99d1a;
 }
 .dashboard-content {
