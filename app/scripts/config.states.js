@@ -26,19 +26,14 @@
                 .state('dashboard.taskorders', {
                     displayName: 'Task orders',
                     url: '/taskorders',
-                    views: {
-                        'content': {
-                            url: '/taskorders',
-                            templateUrl: 'scripts/taskorders/taskorders.html',
-                            resolve: {
-                                onlineTasks: ['TaskOrder', function (TaskOrder) {
-                                    return TaskOrder.query().$promise;
-                                }]
-                            },
-                            controller: 'taskordersController',
-                            controllerAs: 'vm'
-                        }
-                    }
+                    templateUrl: 'scripts/taskorders/taskorders.html',
+                    resolve: {
+                        onlineTasks: ['TaskOrder', function (TaskOrder) {
+                            return TaskOrder.query().$promise;
+                        }]
+                    },
+                    controller: 'taskordersController',
+                    controllerAs: 'vm'
                 })
                 .state('dashboard.taskorders.details', {
                     displayName: 'Task orders',
@@ -55,14 +50,9 @@
                 .state('dashboard.forms', {
                     displayName: 'Forms',
                     url: '/forms',
-                    views: {
-                        'content': {
-                            url: '/forms',
-                            templateUrl: 'scripts/forms/forms.html',
-                            controller: 'formsController',
-                            controllerAs: 'vm'
-                        }
-                    }
+                    templateUrl: 'scripts/forms/forms.html',
+                    controller: 'formsController',
+                    controllerAs: 'vm'
                 });
         }]);
 })();

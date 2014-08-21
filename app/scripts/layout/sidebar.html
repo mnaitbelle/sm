@@ -10,14 +10,12 @@
         </li>
         <!--ng-controller="navItem"-->
         <li class="sidebar-list"
-            ng-controller="navItem"
             ng-show="online"
-            ng-class="{'current': isActive('dashboard/taskorders')}">
+            ui-sref-active="current">
             <a ui-sref="dashboard.taskorders">Task orders <span class="menu-icon fa fa-tasks"></span></a>
         </li>
         <li class="sidebar-list"
-            ng-controller="navItem"
-            ng-class="{'current': isActive('dashboard/forms')}">
+            ui-sref-active="current">
             <a ui-sref="dashboard.forms">Forms <span class="menu-icon fa fa-check-square-o"></span></a>
         </li>
         <!--<li class="sidebar-title separator"><span>Settings</span></li>-->

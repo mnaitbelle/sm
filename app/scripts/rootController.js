@@ -10,17 +10,21 @@
         [
             '$scope',
             '$state',
+            '$stateParams',
             'sessionService',
             'localStorageService',
             'localStorageFiles',
             rootController
         ]);
 
-    function rootController($scope, $state, sessionService, localStorageService, localStorageFiles) {
+    function rootController($scope, $state, $stateParams, sessionService, localStorageService, localStorageFiles) {
         /*jshint validthis:true */
         var vm = this;
 
         vm.title = 'appController';
+
+        vm.$state = $state;
+        vm.$stateParams = $stateParams;
 
         vm.logout = function () {
             sessionService.destroy();
@@ -37,9 +41,7 @@
             return $state.current;
         };
 
-        vm.currentSession = function() {
-            return sessionService.current;
-        };
+        vm.currentSession = sessionService.getCurrent();
 
         var mobileView = 992;
 

@@ -6,15 +6,9 @@
         .controller('formsController', forms);
 
     function forms() {
+        debugger;
         /*jshint validthis:true */
         var vm = this;
-
-        vm.activate = activate;
-        vm.title = 'forms';
-
-        activate();
-
-        function activate() {
-        }
+        vm.formsOnDisk = [];
     }
 })();
