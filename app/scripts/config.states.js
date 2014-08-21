@@ -49,7 +49,7 @@
                     templateUrl: 'scripts/taskorders/taskOrderDetails.html',
                     resolve: {
                         taskDetails: ['$state', '$stateParams', 'TaskOrder', function ($state, $stateParams, TaskOrder) {
-                            return TaskOrder.get({id: $stateParams.id}).$promise;
+                            return TaskOrder.get({id: $stateParams.id});
                         }]
                     },
                     controller: 'taskOrderDetailsController',
