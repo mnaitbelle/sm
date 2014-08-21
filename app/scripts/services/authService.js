@@ -69,7 +69,6 @@
                             deferred.resolve(response);
 
                         }).error(function (err) {
-                            debugger;
                             sessionService.destroy();
                             deferred.reject(err);
                         });
