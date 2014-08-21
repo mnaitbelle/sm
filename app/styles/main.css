@@ -384,10 +384,12 @@ ul.sidebar .sidebar-list .menu-icon {
 .widget .widget-body.no-padding .message {
     padding: 20px;
 }
-ul.sidebar .sidebar-list .current {
+.current {
+    background: #2d3e63;
+}
+.current a {
     color: #fff;
     border-left: 3px solid #e99d1a;
-    text-indent: 22px;
 }
 .dashboard-content {
     font-family: "Helvetica Neue";

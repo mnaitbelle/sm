@@ -27,12 +27,18 @@
             $state.go('login');
         };
 
+        vm.online = window.navigator.onLine;
+
         $scope.$on('sessionExpired', function() {
             vm.logout();
         });
 
         vm.currentState = function() {
             return $state.current;
+        };
+
+        vm.currentSession = function() {
+            return sessionService.current;
         };
 
         var mobileView = 992;

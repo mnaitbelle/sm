@@ -29,36 +29,53 @@
 
             function _login(loginData) {
 
-                var data = 'grant_type=password&username=' + loginData.login + '&password=' + loginData.password;
+                if (!window.navigator.onLine) { //offline -> localStorage/localDb-based login
+                    var deferred = $q.defer();
 
-                var deferred = $q.defer();
+                    //todo: check credentials against local saved ones, which are based on the last succesful logins.
+                    var sessionData = {
+                        offline: true,
+                        loginData: loginData
+                    };
 
-                $http.post(config.authTokenRoot + '/token', data, { headers: { 'Content-Type': 'application/x-www-form-urlencoded' } })
-                    .success(function (response) {
+                    sessionService.setSession(sessionData);
+                    deferred.resolve(sessionData);
 
-                        if (loginData.remember) {
-                            localStorageService.set(localStorageFiles.previousLogin, loginData.login);
-                        }
-                        else {
-                            localStorageService.remove(localStorageFiles.previousLogin);
-                        }
+                    return deferred.promise;
+                }
+                else {
+                    var data = 'grant_type=password&username=' + loginData.login + '&password=' + loginData.password;
 
-                        var sessionData = {
-                            /*jshint camelcase: false */
-                            token: response.access_token,
-                            userName: loginData.login
-                        };
+                    var deferred = $q.defer();
 
-                        sessionService.setSession(sessionData);
+                    $http.post(config.authTokenRoot + '/token', data, { headers: { 'Content-Type': 'application/x-www-form-urlencoded' } })
+                        .success(function (response) {
 
-                        deferred.resolve(response);
+                            if (loginData.remember) {
+                                localStorageService.set(localStorageFiles.previousLogin, loginData.login);
+                            }
+                            else {
+                                localStorageService.remove(localStorageFiles.previousLogin);
+                            }
 
-                    }).error(function (err) {
-                        sessionService.destroy();
-                        deferred.reject(err);
-                    });
+                            var sessionData = {
+                                /*jshint camelcase: false */
+                                token: response.access_token,
+                                userName: loginData.login
+                            };
 
-                return deferred.promise;
+                            sessionService.setSession(sessionData);
+
+                            deferred.resolve(response);
+
+                        }).error(function (err) {
+                            debugger;
+                            sessionService.destroy();
+                            deferred.reject(err);
+                        });
+
+                    return deferred.promise;
+                }
             }
         }]);
 })();

@@ -5,13 +5,14 @@
         .module('scanprintMobile')
         .controller('loginController',
         [
+            '$scope',
             '$state',
             'authService',
             'localStorageService',
             login
         ]);
 
-    function login($state, authService, localStorageService) {
+    function login($scope, $state, authService, localStorageService) {
         /*jshint validthis:true */
         var vm = this;
 
@@ -45,10 +46,11 @@
                 else {
                     vm.isLoading = true;
                     authService.login(credentials)
-                        .then(function () {
+                        .then(function (data) {
                             vm.activate();
                         }, function (err) {
                             vm.isLoading = false;
+                            debugger;
                             /*jshint camelcase: false */
                             vm.errorMessage = err.error_description;
                         });
@@ -58,7 +60,12 @@
 
         vm.activate = function() {
             if (authService.isAuth()) {
-                $state.go('dashboard.taskorders');
+                if ($scope.online) {
+                    $state.go('dashboard.taskorders');
+                }
+                else {
+                    $state.go('dashboard.forms');
+                }
             }
         };
 

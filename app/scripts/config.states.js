@@ -15,8 +15,11 @@
                     url: '/dashboard',
                     abstract: true,
                     views: {
-                        '': {
-                            templateUrl: 'scripts/layout/main.html'
+                        'sidebar': {
+                            templateUrl: 'scripts/layout/sidebar.html'
+                        },
+                        'header': {
+                            templateUrl: 'scripts/layout/header.html'
                         }
                     }
                 })
@@ -24,12 +27,6 @@
                     displayName: 'Task orders',
                     url: '/taskorders',
                     views: {
-                        'sidebar': {
-                            templateUrl: 'scripts/layout/sidebar.html'
-                        },
-                        'header': {
-                            templateUrl: 'scripts/layout/header.html'
-                        },
                         'content': {
                             url: '/taskorders',
                             templateUrl: 'scripts/taskorders/taskorders.html',
@@ -44,7 +41,7 @@
                     }
                 })
                 .state('dashboard.taskorders.details', {
-                    displayName: 'Task order',
+                    displayName: 'Task orders',
                     url: '/:id',
                     templateUrl: 'scripts/taskorders/taskOrderDetails.html',
                     resolve: {
@@ -54,6 +51,18 @@
                     },
                     controller: 'taskOrderDetailsController',
                     controllerAs: 'vm'
+                })
+                .state('dashboard.forms', {
+                    displayName: 'Forms',
+                    url: '/forms',
+                    views: {
+                        'content': {
+                            url: '/forms',
+                            templateUrl: 'scripts/forms/forms.html',
+                            controller: 'formsController',
+                            controllerAs: 'vm'
+                        }
+                    }
                 });
         }]);
 })();
