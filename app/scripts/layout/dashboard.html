@@ -1,0 +1,79 @@
+<!--left menu-->
+<div ng-controller="rootController as rootCtrl" id="page-wrapper" ng-class="{'active': toggle}" ng-cloak>
+    <div id="sidebar-wrapper">
+        <ul class="sidebar">
+            <li class="sidebar-main">
+                <a ui-sref="dashboard.taskorders">
+                    <span>Scanprint &#0153;</span><span ng-click="toggleSidebar()" class="menu-icon glyphicon glyphicon-transfer"></span>
+                </a>
+            </li>
+            <li class="sidebar-title">
+                <span>Modules</span>
+            </li>
+            <!--ng-controller="navItem"-->
+            <li class="sidebar-list"
+                data-ng-class="{ current: rootCtrl.$state.includes('dashboard.taskorders') }">
+                <a ui-sref="dashboard.taskorders">Task orders <span class="menu-icon fa fa-tasks"></span></a>
+            </li>
+            <li class="sidebar-list"
+                data-ng-class="{ current: rootCtrl.$state.includes('dashboard.forms') }">
+                <a ui-sref="dashboard.forms">Forms <span class="menu-icon fa fa-check-square-o"></span></a>
+            </li>
+            <!--<li class="sidebar-title separator"><span>Settings</span></li>-->
+            <!--<li class="sidebar-list">-->
+            <!--<a href="#" target="_blank">Settings <span class="menu-icon fa fa-external-link"></span></a>-->
+            <!--</li>-->
+        </ul>
+        <div class="sidebar-footer">
+            <div class="col-xs-4">
+                <a href="https://www.advitam-group.com" target="_blank">
+                    Advitam
+                </a>
+            </div>
+            <div class="col-xs-4">
+            </div>
+            <div class="col-xs-4">
+                <a href="mailto:support@advitam-group.com">
+                    Support
+                </a>
+            </div>
+        </div>
+    </div>
+    <!--header + content-->
+    <div id="content-wrapper">
+        <div class="page-content">
+            <div class="row header">
+                <div class="col-xs-12">
+                    <div class="meta pull-left">
+                        <div class="page">
+                            {{rootCtrl.currentState().displayName}}
+                        </div>
+                        <div class="breadcrumb-links">
+                            {{rootCtrl.currentState().name}}
+                        </div>
+                    </div>
+                    <div class="user pull-right">
+                        <div class="item dropdown">
+                            <a href="#" class="dropdown-toggle">
+                                <img src="img/avatar.jpg">
+                            </a>
+                            <ul class="dropdown-menu dropdown-menu-right">
+                                <li class="dropdown-header">
+                                    {{rootCtrl.currentSession.loginData.login}}
+                                </li>
+                                <li class="divider"></li>
+                                <li class="link">
+                                    <a ng-click="rootCtrl.logout()">
+                                        Logout
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="dashboard-content" ui-view></div>
+        </div>
+    </div>
+</div>
+
