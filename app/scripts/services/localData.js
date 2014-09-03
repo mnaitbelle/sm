@@ -13,7 +13,8 @@
                         'question 1',
                         'question 2',
                         'question 3'
-                    ]
+                    ],
+                    lastSync: '1/12/2014'
                 },
                 {
                     title: 'form 2a',
@@ -24,15 +25,27 @@
                         'question 3a',
                         'question 4a',
                         'question 5a'
-                    ]
+                    ],
+                    lastSync: '12/5/2013',
+                    needsSync: true,
                 },
                 {
                     title: 'form 3',
-                    downloaded: '9/2/2014',
+                    downloaded: '3/19/2014',
                     questions: [
                         'question 1',
                         'question 2'
                     ]
+                },
+                {
+                    title: 'form 4',
+                    downloaded: '3/19/2014',
+                    questions: [
+                        'question 1',
+                        'question 2'
+                    ],
+                    needsSync: true,
+                    isSyncing: true
                 }
             ];
 

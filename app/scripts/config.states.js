@@ -17,7 +17,7 @@
                     templateUrl: 'scripts/layout/dashboard.html'
                 })
                 .state('dashboard.home', {
-                    abstract: true, //no use yet, but looks pretty cool!
+                    //abstract: true, //no use yet, but displays good UI ideas for future devs
                     displayName: 'Home',
                     url: '/home',
                     templateUrl: 'scripts/home/home.html'

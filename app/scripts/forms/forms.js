@@ -6,7 +6,6 @@
         .controller('formsController', ['$rootScope', 'LocalData', function ($rootScope, LocalData) {
             /*jshint validthis:true */
             var vm = this;
-            vm.formsOnDisk = LocalData.getForms();
 
             vm.clear = function () {
                 LocalData.clearForms();

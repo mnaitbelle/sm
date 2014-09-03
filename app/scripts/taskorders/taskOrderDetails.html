@@ -1,5 +1,5 @@
-<div class="widget" style="margin-bottom: 8px;" cg-busy="vm.taskOrder">
-    <div class="widget-title">
+<div class="widget" cg-busy="vm.taskOrder">
+        <div class="widget-title">
         <i class="fa fa-tasks"></i> Task order {{vm.taskOrder.number}}
         <p class="pull-right">{{vm.taskOrder.assignmentDate | date : 'fullDate'}}</p>
     </div>
@@ -17,7 +17,6 @@
             <div cg-busy="taskOrder">
                 <div ng-show="vm.taskOrder.comments">
                     <p class="lead">Notes</p>
-
                     <div>{{vm.taskOrder.comments}}</div>
                     <br/>
                 </div>
