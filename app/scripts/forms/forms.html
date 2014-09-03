@@ -1,12 +1,21 @@
 <div class="row">
-    <div ng-show="vm.formsOnDisk.length">
-        <ul>
-            <li ng-repeat="form in vm.formsOnDisk">{{form.title}}</li>
-        </ul>
-    </div>
     <div ng-hide="vm.formsOnDisk.length">
         <p>no forms found :(</p>
     </div>
+    <table class="table" ng-show="vm.formsOnDisk.length">
+        <theader>
+            <td>form</td>
+            <td>completion</td>
+            <td>status</td>
+        </theader>
+        <tbody>
+        <tr ng-repeat="form in vm.formsOnDisk">
+            <td>{{form.title}}</td>
+            <td>0%</td>
+            <td>in progress</td>
+        </tr>
+        </tbody>
+    </table>
     <div class="btn btn-info" ng-click="vm.init()">init</div>
     <div class="btn btn-info" ng-click="vm.clear()">clear</div>
 </div>

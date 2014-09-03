@@ -8,15 +8,15 @@
             var vm = this;
             vm.formsOnDisk = LocalData.getForms();
 
-            vm.clear = function() {
+            vm.clear = function () {
                 LocalData.clearForms();
             };
 
-            vm.init = function() {
+            vm.init = function () {
                 LocalData.initDummyForms();
             };
 
-            $rootScope.$on('forms.update', function() {
+            $rootScope.$on('forms.update', function () {
                 vm.formsOnDisk = LocalData.getForms(); //refreshes list
             });
         }
