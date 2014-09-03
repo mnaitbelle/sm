@@ -2,7 +2,7 @@
     'use strict';
 
     angular
-        .module('scanprintMobile')
+        .module('sm.main')
         .directive('copyToDisk', ['LocalData',
             function (LocalData) {
                 var dir = {

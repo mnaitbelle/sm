@@ -4,7 +4,7 @@
 (function () {
     'use strict';
 
-    var app = angular.module('scanprintMobile');
+    var app = angular.module('sm.main');
 
     app.factory('authService', [
         '$http',

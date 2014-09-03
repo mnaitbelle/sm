@@ -4,7 +4,7 @@
 
 var LoginPage = require("../mocks/login.js");
 
-describe('scanprintMobile login scenarios', function () {
+describe('sm.main login scenarios', function () {
 
     var ptor;
     var loginPage = new LoginPage();

@@ -2,7 +2,7 @@
     'use strict';
 
     angular
-        .module('scanprintMobile')
+        .module('sm.main')
         .directive('spinner', function () {
         return {
             restrict: 'E',

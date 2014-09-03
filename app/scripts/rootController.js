@@ -5,7 +5,7 @@
     'use strict';
 
     angular
-        .module('scanprintMobile')
+        .module('sm.main')
         .controller('rootController',
         [
             '$scope',

@@ -2,7 +2,7 @@
     'use strict';
 
     angular
-        .module('scanprintMobile')
+        .module('sm.main')
         .controller('formsController', ['$rootScope', 'LocalData', function ($rootScope, LocalData) {
             /*jshint validthis:true */
             var vm = this;

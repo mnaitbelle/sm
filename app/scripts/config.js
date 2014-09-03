@@ -1,7 +1,7 @@
 (function() {
     'use strict';
 
-    var app = angular.module('scanprintMobile');
+    var app = angular.module('sm.main');
 
     var config = {
         appName: 'scanprint mobile',

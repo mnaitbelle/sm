@@ -6,7 +6,7 @@
     'use strict';
 
     angular
-        .module('scanprintMobile')
+        .module('sm.main')
         .factory('TaskOrder', ['$resource', 'config', function ($resource, config) {
             return $resource(config.apiRoot + '/taskorders/:id',
                 {

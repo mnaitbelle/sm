@@ -3,7 +3,7 @@
 describe('login form', function () {
 
     // load the controller's module
-    beforeEach(module('scanprintMobile'));
+    beforeEach(module('sm.main'));
 
     var vm;
 

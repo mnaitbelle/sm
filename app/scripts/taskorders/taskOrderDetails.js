@@ -2,7 +2,7 @@
     'use strict';
 
     angular
-        .module('scanprintMobile')
+        .module('sm.main')
         .controller('taskOrderDetailsController', ['taskDetails',
             function (taskDetails) {
                 var vm = this;

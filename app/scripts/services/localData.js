@@ -2,7 +2,7 @@
     'use strict';
 
     angular
-        .module('scanprintMobile')
+        .module('sm.main')
         .factory('LocalData', ['$rootScope', 'localFiles', function ($rootScope, localFiles) {
 
             var dummyForms = [

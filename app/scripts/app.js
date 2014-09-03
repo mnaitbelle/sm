@@ -9,7 +9,7 @@
  * Main module of the application.
  */
 angular
-    .module('scanprintMobile', [
+    .module('sm.main', [
         'ngAnimate',
         'ngResource',
         'ui.router',
