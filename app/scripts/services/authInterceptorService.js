@@ -32,7 +32,8 @@
             };
 
             var _responseError = function (rejection) {
-                if (rejection.status === 401) {
+                if (rejection.status === 401)
+                {
                     $rootScope.$broadcast('sessionExpired');
                 }
                 return $q.reject(rejection);

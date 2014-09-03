@@ -28,25 +28,23 @@
             }
 
             function _login(loginData) {
+                var deferred = $q.defer();
 
-//                if (!window.navigator.onLine) { //offline -> localStorage/localDb-based login
-//                    var deferred = $q.defer();
-//
-//                    //todo: check credentials against local saved ones, which are based on the last succesful logins.
-//                    var sessionData = {
-//                        loggedOnline: false,
-//                        userName: loginData.login
-//                    };
-//
-//                    sessionService.setSession(sessionData);
-//                    deferred.resolve(sessionData);
-//
-//                    return deferred.promise;
-//                }
-//                else {
+                if (true) { //offline -> localStorage/localDb-based login //!window.navigator.onLine
+
+                    //todo: check credentials against local saved ones, which are based on the last succesful logins.
+                    var sessionData = {
+                        loggedOnline: false,
+                        userName: loginData.login
+                    };
+
+                    sessionService.setSession(sessionData);
+                    deferred.resolve(sessionData);
+
+                    return deferred.promise;
+                }
+                else {
                     var data = 'grant_type=password&username=' + loginData.login + '&password=' + loginData.password;
-
-                    var deferred = $q.defer();
 
                     $http.post(config.authTokenRoot + '/token', data, { headers: { 'Content-Type': 'application/x-www-form-urlencoded' } })
                         .success(function (response) {
@@ -75,7 +73,7 @@
                         });
 
                     return deferred.promise;
-                //}
+                }
             }
         }]);
 })();

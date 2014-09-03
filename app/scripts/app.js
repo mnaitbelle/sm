@@ -14,7 +14,6 @@ angular
         'ngResource',
         'ui.router',
         'ui.bootstrap',
-        'sm.localStorage',
         'sm.logger',
         'cgBusy'
     ]);

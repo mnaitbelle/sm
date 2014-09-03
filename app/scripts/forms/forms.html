@@ -1,8 +1,10 @@
-<div ng-show="formsOnDisk.length">
-    <ul>
-        <li ng-repeat="form in formsOnDisk">{{form.name}}</li>
-    </ul>
-</div>
-<div ng-hide="formsOnDisk.length">
-    <p>no forms found :(</p>
+<div class="row">
+    <div ng-show="formsOnDisk.length">
+        <ul>
+            <li ng-repeat="form in formsOnDisk">{{form.name}}</li>
+        </ul>
+    </div>
+    <div ng-hide="formsOnDisk.length">
+        <p>no forms found :(</p>
+    </div>
 </div>
