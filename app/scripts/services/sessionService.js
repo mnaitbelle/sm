@@ -18,11 +18,12 @@
         return sessionService;
 
         function _current() {
-            return localStorage.getItem(localStorageFiles.sessionData);
+            return JSON.parse(localStorage.getItem(localStorageFiles.sessionData));
         }
 
         function _setSession(data) {
-            localStorage.setItem(localStorageFiles.sessionData, data);
+            debugger;
+            localStorage.setItem(localStorageFiles.sessionData, JSON.stringify(data));
         }
 
         function _destroy() {

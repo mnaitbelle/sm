@@ -5,14 +5,13 @@
         .module('scanprintMobile')
         .controller('loginController',
         [
-            '$scope',
             '$state',
             'authService',
-            'localStorageService',
+            'localStorageFiles',
             login
         ]);
 
-    function login($scope, $state, authService, localStorageService) {
+    function login($state, authService, localStorageFiles) {
         /*jshint validthis:true */
         var vm = this;
 
@@ -20,20 +19,11 @@
         vm.isLoading = false;
         vm.errorMessage = '';
 
-        if (localStorageService.get('previouslogin')) {
-            vm.credentials = {
-                login: localStorageService.get('previouslogin'),
-                password: '',
-                remember: true
-            };
-        }
-        else {
-            vm.credentials = {
-                login: '',
-                password: '',
-                remember: false
-            };
-        }
+        vm.credentials = {
+            login: localStorage.getItem(localStorageFiles.previousLogin) || '',
+            password: '',
+            remember: localStorage.getItem(localStorageFiles.previousLogin) !== null || false
+        };
 
         vm.loginUser = function (credentials) {
             if (credentials.login === '') {

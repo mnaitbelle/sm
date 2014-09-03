@@ -10,11 +10,10 @@
         '$http',
         '$q',
         'config',
-        'localStorageService',
         'sessionService',
         'localStorageFiles',
 
-        function ($http, $q, config, localStorageService, sessionService, localStorageFiles) {
+        function ($http, $q, config, sessionService, localStorageFiles) {
 
             var authService = {
                 login: _login,
@@ -29,6 +28,13 @@
 
             function _login(loginData) {
                 var deferred = $q.defer();
+
+                if (loginData.remember) {
+                    localStorage.setItem(localStorageFiles.previousLogin, loginData.login);
+                }
+                else {
+                    localStorage.removeItem(localStorageFiles.previousLogin);
+                }
 
                 if (true) { //offline -> localStorage/localDb-based login //!window.navigator.onLine
 
@@ -48,13 +54,6 @@
 
                     $http.post(config.authTokenRoot + '/token', data, { headers: { 'Content-Type': 'application/x-www-form-urlencoded' } })
                         .success(function (response) {
-
-                            if (loginData.remember) {
-                                localStorageService.set(localStorageFiles.previousLogin, loginData.login);
-                            }
-                            else {
-                                localStorageService.remove(localStorageFiles.previousLogin);
-                            }
 
                             var sessionData = {
                                 /*jshint camelcase: false */
