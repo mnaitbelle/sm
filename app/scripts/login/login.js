@@ -7,11 +7,11 @@
         [
             '$state',
             'authService',
-            'localStorageFiles',
+            'localFiles',
             login
         ]);
 
-    function login($state, authService, localStorageFiles) {
+    function login($state, authService, localFiles) {
         /*jshint validthis:true */
         var vm = this;
 
@@ -20,9 +20,9 @@
         vm.errorMessage = '';
 
         vm.credentials = {
-            login: localStorage.getItem(localStorageFiles.previousLogin) || '',
+            login: localStorage.getItem(localFiles.previousLogin) || '',
             password: '',
-            remember: localStorage.getItem(localStorageFiles.previousLogin) !== null || false
+            remember: localStorage.getItem(localFiles.previousLogin) !== null || false
         };
 
         vm.loginUser = function (credentials) {

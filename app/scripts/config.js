@@ -32,9 +32,10 @@
         templateUrl: 'scripts/templates/busy.html'
     });
 
-    app.constant('localStorageFiles', {
+    app.constant('localFiles', {
         previousLogin: 'previousLogin',
         sessionData: 'sessionData',
-        screenState: 'screenState'
+        screenState: 'screenState',
+        forms: 'forms'
     });
 })();

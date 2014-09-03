@@ -11,9 +11,9 @@
         '$q',
         'config',
         'sessionService',
-        'localStorageFiles',
+        'localFiles',
 
-        function ($http, $q, config, sessionService, localStorageFiles) {
+        function ($http, $q, config, sessionService, localFiles) {
 
             var authService = {
                 login: _login,
@@ -30,10 +30,10 @@
                 var deferred = $q.defer();
 
                 if (loginData.remember) {
-                    localStorage.setItem(localStorageFiles.previousLogin, loginData.login);
+                    localStorage.setItem(localFiles.previousLogin, loginData.login);
                 }
                 else {
-                    localStorage.removeItem(localStorageFiles.previousLogin);
+                    localStorage.removeItem(localFiles.previousLogin);
                 }
 
                 if (true) { //offline -> localStorage/localDb-based login //!window.navigator.onLine

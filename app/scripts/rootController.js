@@ -12,11 +12,11 @@
             '$state',
             '$stateParams',
             'sessionService',
-            'localStorageFiles',
+            'localFiles',
             rootController
         ]);
 
-    function rootController($scope, $state, $stateParams, sessionService, localStorageFiles) {
+    function rootController($scope, $state, $stateParams, sessionService, localFiles) {
         /*jshint validthis:true */
         var vm = this;
 
@@ -48,7 +48,7 @@
 
         $scope.$watch($scope.getWidth, function (newValue) {
             if (newValue >= mobileView) {
-                if (localStorage.getItem(localStorageFiles.screenState) === false) {
+                if (localStorage.getItem(localFiles.screenState) === false) {
                     $scope.toggle = false;
                 }
                 else {
@@ -62,7 +62,7 @@
 
         $scope.toggleSidebar = function () {
             $scope.toggle = !$scope.toggle;
-            localStorage.setItem(localStorageFiles.screenState, $scope.toggle);
+            localStorage.setItem(localFiles.screenState, $scope.toggle);
         };
 
         window.onresize = function () {

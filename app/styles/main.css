@@ -390,6 +390,7 @@ ul.sidebar .sidebar-list .menu-icon {
 }
 .current a {
     border-left: 3px solid #e99d1a;
+    text-indent: 22px;
 }
 .dashboard-content {
     font-family: "Helvetica Neue";

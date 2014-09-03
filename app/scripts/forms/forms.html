@@ -1,10 +1,12 @@
 <div class="row">
-    <div ng-show="formsOnDisk.length">
+    <div ng-show="vm.formsOnDisk.length">
         <ul>
-            <li ng-repeat="form in formsOnDisk">{{form.name}}</li>
+            <li ng-repeat="form in vm.formsOnDisk">{{form.title}}</li>
         </ul>
     </div>
-    <div ng-hide="formsOnDisk.length">
+    <div ng-hide="vm.formsOnDisk.length">
         <p>no forms found :(</p>
     </div>
+    <div class="btn btn-info" ng-click="vm.init()">init</div>
+    <div class="btn btn-info" ng-click="vm.clear()">clear</div>
 </div>

@@ -3,11 +3,22 @@
 
     angular
         .module('scanprintMobile')
-        .controller('formsController', forms);
+        .controller('formsController', ['$rootScope', 'LocalData', function ($rootScope, LocalData) {
+            /*jshint validthis:true */
+            var vm = this;
+            vm.formsOnDisk = LocalData.getForms();
 
-    function forms() {
-        /*jshint validthis:true */
-        var vm = this;
-        vm.formsOnDisk = [];
-    }
+            vm.clear = function() {
+                LocalData.clearForms();
+            };
+
+            vm.init = function() {
+                LocalData.initDummyForms();
+            };
+
+            $rootScope.$on('forms.update', function() {
+                vm.formsOnDisk = LocalData.getForms(); //refreshes list
+            });
+        }
+        ]);
 })();
