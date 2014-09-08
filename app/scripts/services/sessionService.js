@@ -9,20 +9,19 @@
     app.factory('sessionService', ['localFiles',
         function (localFiles) {
 
-        var sessionService = {
+        var service = {
             getCurrent: _current,
             setSession: _setSession,
             destroy: _destroy
         };
 
-        return sessionService;
+        return service;
 
         function _current() {
             return JSON.parse(localStorage.getItem(localFiles.sessionData));
         }
 
         function _setSession(data) {
-            debugger;
             localStorage.setItem(localFiles.sessionData, JSON.stringify(data));
         }
 

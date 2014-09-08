@@ -3,9 +3,12 @@
 
     angular
         .module('sm.main')
-        .controller('taskOrderDetailsController', ['taskDetails',
-            function (taskDetails) {
+        .controller('taskOrderDetailsController', ['taskDetails', 'LocalData',
+            function (taskDetails, LocalData) {
                 var vm = this;
                 vm.taskOrder = taskDetails;
+                vm.copyToDisk = function(item) {
+                    LocalData.addForm(item);
+                };
             }]);
 })();

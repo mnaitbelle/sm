@@ -1,44 +1,61 @@
 <div class="widget" cg-busy="vm.taskOrder">
-        <div class="widget-title">
+    <div class="widget-title">
         <i class="fa fa-tasks"></i> Task order {{vm.taskOrder.number}}
         <p class="pull-right">{{vm.taskOrder.assignmentDate | date : 'fullDate'}}</p>
     </div>
     <div class="widget-body">
         <div class="row">
             <div class="col-xs-6">
-                <p class="text-center lead">Priority: <span style="border-bottom: 2px solid {{taskOrder.taskOrderPriority.color}};">{{vm.taskOrder.taskOrderPriority.name}}</span>
+                <p class="text-center lead">Priority: <span
+                        style="border-bottom: 2px solid {{taskOrder.taskOrderPriority.color}};">{{vm.taskOrder.taskOrderPriority.name}}</span>
                 </p>
             </div>
             <div class="col-xs-6">
-                <p class="text-center lead">Status: <span style="border-bottom: 2px solid {{vm.taskOrder.taskOrderStatu.color}};">{{vm.taskOrder.taskOrderStatu.name}}</span>
+                <p class="text-center lead">Status: <span
+                        style="border-bottom: 2px solid {{vm.taskOrder.taskOrderStatu.color}};">{{vm.taskOrder.taskOrderStatu.name}}</span>
                 </p>
             </div>
             <hr/>
             <div cg-busy="taskOrder">
                 <div ng-show="vm.taskOrder.comments">
                     <p class="lead">Notes</p>
+
                     <div>{{vm.taskOrder.comments}}</div>
                     <br/>
                 </div>
                 <div ng-show="vm.taskOrder.items">
                     <p class="lead">Tasks</p>
                     <table class="table">
+                        <thead>
+                        <tr>
+                        <td></td>
+                        <td></td>
+                            <td>
+                                <a class="btn btn-default" href="#">
+                                    <i class="fa fa-cloud-download"></i> download all</a>
+                            </td>
+                        </tr>
+                        </thead>
                         <tbody>
                         <tr ng-repeat="item in vm.taskOrder.items">
                             <td>{{item.date | date : 'shortDate' }}</td>
-                            <td><p>{{item.description}}<br/>
-                                <small style="border-bottom: 1px solid {{item.status.color}};">{{item.status.name}}</small></p>
+                            <td>
+                                <p>{{item.description}}<br/>
+                                    <small style="border-bottom: 1px solid {{item.status.color}};">
+                                        {{item.status.name}}
+                                    </small>
+                                </p>
                             </td>
                             <!--<td>-->
-                                <!--<span ng-show="item.type == 'Inspection'" class="text-success"><i-->
-                                    <!--class="fa fa-check"></i></span>-->
-                                    <!--<span ng-show="item.type == 'Flag'" class="text-danger"><i-->
-                                            <!--class="fa fa-warning"></i></span>-->
-                                    <!--<span ng-show="item.type == 'Audit'" class="text-success"><i-->
-                                            <!--class="fa fa-flash"></i></span>-->
+                            <!--<span ng-show="item.type == 'Inspection'" class="text-success"><i-->
+                            <!--class="fa fa-check"></i></span>-->
+                            <!--<span ng-show="item.type == 'Flag'" class="text-danger"><i-->
+                            <!--class="fa fa-warning"></i></span>-->
+                            <!--<span ng-show="item.type == 'Audit'" class="text-success"><i-->
+                            <!--class="fa fa-flash"></i></span>-->
                             <!--</td>-->
                             <td>
-                                <a copy-to-disk class="btn btn-default" href="#">
+                                <a class="btn btn-default" ng-click="vm.copyToDisk(item)">
                                     <i class="fa fa-cloud-download"></i> download form</a>
                             </td>
                         </tr>

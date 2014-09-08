@@ -36,6 +36,6 @@
         previousLogin: 'previousLogin',
         sessionData: 'sessionData',
         screenState: 'screenState',
-        forms: 'forms'
+        form: 'form'
     });
 })();

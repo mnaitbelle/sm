@@ -30,15 +30,17 @@
             $state.go('login');
         };
 
-        $scope.$on('sessionExpired', function() {
+        $scope.$on('sessionExpired', function () {
             vm.logout();
         });
 
-        vm.currentState = function() {
+        vm.currentState = function () {
             return $state.current;
         };
 
         vm.currentSession = sessionService.getCurrent();
+
+        //sidebar management
 
         var mobileView = 992;
 

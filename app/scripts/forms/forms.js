@@ -12,12 +12,15 @@
             };
 
             vm.init = function () {
-                LocalData.initDummyForms();
+                //LocalData.initDummyForms();
+                LocalData.getForms();
             };
 
             $rootScope.$on('forms.update', function () {
                 vm.formsOnDisk = LocalData.getForms(); //refreshes list
             });
+
+            vm.init();
         }
         ]);
 })();

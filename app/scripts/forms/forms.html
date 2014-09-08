@@ -1,35 +1,30 @@
-<div class="page-content">
-    <div class="btn btn-info" ng-click="vm.init()">display dummy</div>
+<div class="col-xs-12">
+    <div class="btn btn-info" ng-click="vm.init()">generate dummies</div>
     <div class="btn btn-info" ng-click="vm.clear()">clear list</div>
     <div ng-hide="vm.formsOnDisk.length">
         <p>no forms found :(</p>
     </div>
     <table class="table" ng-show="vm.formsOnDisk.length">
         <thead>
-            <tr>
-                <th>form</th>
-                <th>completion</th>
-                <th>status</th>
-                <th></th>
-                <th></th>
-            </tr>
+        <tr>
+            <th>form</th>
+            <th>completion</th>
+            <th>status</th>
+            <th></th>
+        </tr>
         </thead>
         <tbody>
         <tr ng-repeat="form in vm.formsOnDisk">
-            <td>{{form.title}}<br/>
-                <small>downloaded {{form.downloaded | date : 'fullDate'}}</small>
+            <td>
+                <a class="btn btn-primary" href="#">
+                    <i class="fa fa-play"></i> {{form.title}}</a>
             </td>
             <td>0%</td>
-            <td>in progress</td>
+            <td><span style="border-bottom: 2px solid #f88;">in progress</span></td>
             <td>
-                <a copy-to-disk class="btn btn-default" href="#">
-                    <i class="fa fa-play"></i> continue</a>
-            </td>
-            <td>
+                <p class="small"> downloaded {{form.downloaded | date : 'fullDate'}}</p>
                 <p ng-hide="form.isSyncing" class="small">{{form | syncInfo}}</p>
-
-                <p ng-show="form.isSyncing" class="small">
-                    <i class="fa fa-refresh fa-spin"></i> synchronizing...</p>
+                <p ng-show="form.isSyncing" class="small"><i class="fa fa-refresh fa-spin"></i> synchronizing...</p>
             </td>
         </tr>
         </tbody>
