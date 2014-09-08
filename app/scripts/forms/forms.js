@@ -7,16 +7,11 @@
             /*jshint validthis:true */
             var vm = this;
 
-            vm.clear = function () {
-                LocalData.clearForms();
-            };
-
             vm.init = function () {
-                //LocalData.initDummyForms();
-                LocalData.getForms();
+                LocalData.getItems(LocalData.stores.form);
             };
 
-            $rootScope.$on('forms.update', function () {
+            $rootScope.$on('form.update', function () {
                 vm.formsOnDisk = LocalData.getForms(); //refreshes list
             });
 

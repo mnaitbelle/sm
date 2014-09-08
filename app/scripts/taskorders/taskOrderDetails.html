@@ -55,8 +55,7 @@
                             <!--class="fa fa-flash"></i></span>-->
                             <!--</td>-->
                             <td>
-                                <a class="btn btn-default" ng-click="vm.copyToDisk(item)">
-                                    <i class="fa fa-cloud-download"></i> download form</a>
+                                <copy-to-disk table="form" item-id="{{item.id}}" clicked="vm.copyToDisk(item)" refresh-on="form.update"></copy-to-disk>
                             </td>
                         </tr>
                         </tbody>

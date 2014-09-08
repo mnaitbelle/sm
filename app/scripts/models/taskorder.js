@@ -11,6 +11,7 @@
             return $resource(config.apiRoot + '/taskorders/:id',
                 {
                     id: '@id'
-                });
+                }
+            );
         }]);
 })();
