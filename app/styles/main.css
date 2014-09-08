@@ -63,6 +63,9 @@ body {
 .red {
     background: #ae2323 !important;
 }
+.gray {
+    background: #6D6970 !important;
+}
 .form-group .help-block.form-group-inline-message {
     padding-top: 5px;
 }
@@ -364,17 +367,17 @@ ul.sidebar .sidebar-list .menu-icon {
 }
 .widget .widget-icon {
     background: #30426a;
-    width: 65px;
-    height: 65px;
+    width: 32px;
+    height: 32px;
     border-radius: 50%;
     text-align: center;
     vertical-align: middle;
     margin-right: 15px;
 }
 .widget .widget-icon i {
-    line-height: 66px;
+    line-height: 33px;
     color: #ffffff;
-    font-size: 30px;
+    font-size: 16px;
 }
 .widget .widget-content .title {
     font-size: 28px;

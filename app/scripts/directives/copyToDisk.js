@@ -20,8 +20,10 @@
 
                     if ($scope.refreshOn) {
                         $scope.$on($scope.refreshOn, function (e, a) {
-                            if (a.insertedItem.id === $scope.itemId) {
-                                vm.init();
+                            for (var i in a.insertedItems) {
+                                if (a.insertedItems[i].id === $scope.itemId) {
+                                    vm.init();
+                                }
                             }
                         });
                     }

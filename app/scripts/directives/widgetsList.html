@@ -1,0 +1,67 @@
+<!--<div class="row">-->
+<!--<div class="col-lg-3 col-md-6 col-xs-12">-->
+<!--<div class="widget" ng-repeat="item in items" ui-sref-active="active">-->
+<!--<div class="widget-body">-->
+<!--<div class="widget-icon green pull-left">-->
+<!--<i class="fa fa-users"></i>-->
+<!--</div>-->
+<!--<div class="widget-content pull-left">-->
+<!--<div class="title">80</div>-->
+<!--<div class="comment">Users</div>-->
+<!--<a ng-disabled="isActive('dashboard/taskorders/'+item.id)"-->
+<!--ui-sref="dashboard.taskorders.details({id:item.id})">{{item.name || item.number}}-->
+<!--</a>-->
+<!--</div>-->
+<!--<div class="clearfix"></div>-->
+<!--</div>-->
+<!--</div>-->
+<!--</div>-->
+<!--</div>-->
+<!---->
+<!--<ul class="nav nav-pills nav-stacked">-->
+<!--<li ng-repeat="item in items"-->
+<!--ui-sref-active="active">-->
+<!--<a ng-disabled="isActive('dashboard/taskorders/'+item.id)"-->
+<!--ui-sref="dashboard.taskorders.details({id:item.id})">{{item.name || item.number}}-->
+<!--</a>-->
+<!--</li>-->
+<!--</ul>-->
+
+<div class="row">
+    <div class="col-xs-3" ng-repeat="item in items | limitTo:4">
+        <a ng-disabled="isActive('dashboard/taskorders/'+item.id)"
+           ui-sref="dashboard.taskorders.details({id:item.id})">
+            <div class="widget" style="height: 120px;" ui-sref-active="active">
+                <div class="widget-body">
+                    <div class="widget-content">
+                        <div class="title">{{item.name || item.number}}</div>
+                        <div class="comment">{{item.assignmentDate | date: 'shortDate'}}</div>
+                        {{isActive('dashboard/taskorders/'+item.id)}}
+                        {{active}}
+                    </div>
+                </div>
+            </div>
+        </a>
+    </div>
+</div>
+
+<!--<ul class="nav nav-pills">-->
+<!--<li ng-repeat="item in items | limitTo: 3"-->
+<!--ui-sref-active="active">-->
+<!--<div class="widget" ui-sref-active="active">-->
+<!--<div class="widget-body">-->
+<!--<div class="widget-icon green pull-left">-->
+<!--<i class="fa fa-users"></i>-->
+<!--</div>-->
+<!--<div class="widget-content pull-left">-->
+<!--<div class="title">{{item.name || item.number}}</div>-->
+<!--<div class="comment">{{item.assignmentDate | date: 'shortDate'}}</div>-->
+<!--<a ng-disabled="isActive('dashboard/taskorders/'+item.id)"-->
+<!--ui-sref="dashboard.taskorders.details({id:item.id})">{{item.name || item.number}}-->
+<!--</a>-->
+<!--</div>-->
+<!--<div class="clearfix"></div>-->
+<!--</div>-->
+<!--</div>-->
+<!--</li>-->
+<!--</ul>-->

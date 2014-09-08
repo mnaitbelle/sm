@@ -7,15 +7,14 @@
             /*jshint validthis:true */
             var vm = this;
 
-            vm.init = function () {
-                LocalData.getItems(LocalData.stores.form);
+            vm.refresh = function () {
+                LocalData.getItems(LocalData.stores.form)
+                    .then(function(forms) {
+                        vm.formsOnDisk = forms;
+                });
             };
 
-            $rootScope.$on('form.update', function () {
-                vm.formsOnDisk = LocalData.getForms(); //refreshes list
-            });
-
-            vm.init();
+            vm.refresh();
         }
         ]);
 })();

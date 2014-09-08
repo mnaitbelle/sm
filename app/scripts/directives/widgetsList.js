@@ -3,12 +3,12 @@
 
     angular
         .module('sm.main')
-        .directive('itemPillsList',
+        .directive('widgetsList',
 
-        function itemPillsList() {
+        function widgetsList() {
             var directive = {
                 restrict: 'EA',
-                templateUrl: 'scripts/directives/itemPillsList.html',
+                templateUrl: 'scripts/directives/widgetsList.html',
                 scope: {
                     items: '='
                 }

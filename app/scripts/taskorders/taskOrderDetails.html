@@ -17,49 +17,54 @@
             </div>
             <hr/>
             <div cg-busy="taskOrder">
-                <div ng-show="vm.taskOrder.comments">
-                    <p class="lead">Notes</p>
+                <div class="row">
+                    <div class="col-md-6">
+                        <p class="lead">Notes</p>
 
-                    <div>{{vm.taskOrder.comments}}</div>
-                    <br/>
-                </div>
-                <div ng-show="vm.taskOrder.items">
-                    <p class="lead">Tasks</p>
-                    <table class="table">
-                        <thead>
-                        <tr>
-                        <td></td>
-                        <td></td>
-                            <td>
-                                <a class="btn btn-default" href="#">
-                                    <i class="fa fa-cloud-download"></i> download all</a>
-                            </td>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        <tr ng-repeat="item in vm.taskOrder.items">
-                            <td>{{item.date | date : 'shortDate' }}</td>
-                            <td>
-                                <p>{{item.description}}<br/>
-                                    <small style="border-bottom: 1px solid {{item.status.color}};">
-                                        {{item.status.name}}
-                                    </small>
-                                </p>
-                            </td>
-                            <!--<td>-->
-                            <!--<span ng-show="item.type == 'Inspection'" class="text-success"><i-->
-                            <!--class="fa fa-check"></i></span>-->
-                            <!--<span ng-show="item.type == 'Flag'" class="text-danger"><i-->
-                            <!--class="fa fa-warning"></i></span>-->
-                            <!--<span ng-show="item.type == 'Audit'" class="text-success"><i-->
-                            <!--class="fa fa-flash"></i></span>-->
-                            <!--</td>-->
-                            <td>
-                                <copy-to-disk table="form" item-id="{{item.id}}" clicked="vm.copyToDisk(item)" refresh-on="form.update"></copy-to-disk>
-                            </td>
-                        </tr>
-                        </tbody>
-                    </table>
+                        <div ng-show="vm.taskOrder.comments">
+                            <div>{{vm.taskOrder.comments}}</div>
+                        </div>
+                        <div ng-hide="vm.taskOrder.comments">
+                            <div>No comments were written for this task.</div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <p class="lead">Tasks</p>
+                        <!--<a class="btn btn-default" href="#">-->
+                            <!--<i class="fa fa-cloud-download"></i> download all</a>-->
+
+                        <div ng-show="vm.taskOrder.items">
+                            <table class="table">
+                                <tbody>
+                                <tr ng-repeat="item in vm.taskOrder.items">
+                                    <td>{{item.date | date : 'shortDate' }}</td>
+                                    <td>
+                                        <p>{{item.description}}<br/>
+                                            <small style="border-bottom: 1px solid {{item.status.color}};">
+                                                {{item.status.name}}
+                                            </small>
+                                        </p>
+                                    </td>
+                                    <!--<td>-->
+                                    <!--<span ng-show="item.type == 'Inspection'" class="text-success"><i-->
+                                    <!--class="fa fa-check"></i></span>-->
+                                    <!--<span ng-show="item.type == 'Flag'" class="text-danger"><i-->
+                                    <!--class="fa fa-warning"></i></span>-->
+                                    <!--<span ng-show="item.type == 'Audit'" class="text-success"><i-->
+                                    <!--class="fa fa-flash"></i></span>-->
+                                    <!--</td>-->
+                                    <td>
+                                        <copy-to-disk table="form" item-id="{{item.id}}" clicked="vm.copyToDisk(item)"
+                                                      refresh-on="form.update"></copy-to-disk>
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div ng-hide="vm.taskOrder.items">
+                            <div>No tasks found for this task.</div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
