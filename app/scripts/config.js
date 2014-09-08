@@ -35,7 +35,6 @@
     app.constant('localFiles', {
         previousLogin: 'previousLogin',
         sessionData: 'sessionData',
-        screenState: 'screenState',
-        form: 'form'
+        screenState: 'screenState'
     });
 })();

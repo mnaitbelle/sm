@@ -8,7 +8,7 @@
                 var vm = this;
                 vm.taskOrder = taskDetails;
                 vm.copyToDisk = function(item) {
-                    LocalData.addForm(item);
+                    LocalData.insertItem(LocalData.stores.form, item);
                 };
             }]);
 })();

@@ -16,6 +16,6 @@
                 else {
                     return 'syncing soon...';
                 }
-            }
-        })
+            };
+        });
 })();
