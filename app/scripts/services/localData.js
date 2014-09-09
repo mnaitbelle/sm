@@ -83,11 +83,11 @@
                 var req = store.get(id);
 
                 req.onsuccess = function (e) {
-                    if (!!e.target.result == false) {
-                        deferred.resolve(null);
+                    if (e.target.result) {
+                        deferred.resolve(e.target.result);
                     }
                     else {
-                        deferred.resolve(e.target.result);
+                        deferred.resolve(null);
                     }
                 };
 
