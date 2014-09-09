@@ -1,86 +1,144 @@
 (function () {
     'use strict';
-
+    /*global indexedDB, IDBKeyRange */
     angular
         .module('sm.main')
-        .factory('LocalData', ['$rootScope', 'localFiles', function ($rootScope, localFiles) {
+        .factory('LocalData', ['$rootScope', '$q', function ($rootScope, $q) {
 
-            var dummyForms = [
-                {
-                    title: 'form 1',
-                    downloaded: '9/3/2014',
-                    questions: [
-                        'question 1',
-                        'question 2',
-                        'question 3'
-                    ],
-                    lastSync: '1/12/2014'
-                },
-                {
-                    title: 'form 2a',
-                    downloaded: '9/2/2014',
-                    questions: [
-                        'question 1a',
-                        'question 2a',
-                        'question 3a',
-                        'question 4a',
-                        'question 5a'
-                    ],
-                    lastSync: '12/5/2013',
-                    needsSync: true,
-                },
-                {
-                    title: 'form 3',
-                    downloaded: '3/19/2014',
-                    questions: [
-                        'question 1',
-                        'question 2'
-                    ]
-                },
-                {
-                    title: 'form 4',
-                    downloaded: '3/19/2014',
-                    questions: [
-                        'question 1',
-                        'question 2'
-                    ],
-                    needsSync: true,
-                    isSyncing: true
+            //init
+            var sm = {};
+            sm.indexedDb = {};
+            sm.indexedDb.db = null;
+
+            var dbName = 'smDb1';
+            var version = 3;
+            var request = indexedDB.open(dbName, version);
+
+            request.onupgradeneeded = function (e) {
+                var db = e.target.result;
+
+                e.target.transaction.onerror = sm.indexedDb.onerror;
+
+                if (db.objectStoreNames.contains(fac.stores.form)) {
+                    db.deleteObjectStore(fac.stores.form);
                 }
-            ];
+                db.createObjectStore(fac.stores.form, {keyPath: 'id'});
 
-            var getForms = function() {
-                if (!localStorage.getItem(localFiles.forms)) {
-                    return [];
+                if (db.objectStoreNames.contains(fac.stores.question)) {
+                    db.deleteObjectStore(fac.stores.question);
+                }
+                db.createObjectStore(fac.stores.question, {keyPath: 'id'});
+            };
+
+            request.onsuccess = function (e) {
+                sm.indexedDb.db = e.target.result;
+            };
+
+            request.onerror = sm.indexedDb.onerror;
+
+            //methods implementation
+
+            var getItems = function (tableName, params) {
+                var deferred = $q.defer();
+
+                var db = sm.indexedDb.db;
+                var trans = db.transaction([tableName]);
+                var store = trans.objectStore(tableName);
+                var keyRange = {};
+
+                if (params) {
+
                 }
                 else {
-                    return JSON.parse(localStorage.getItem(localFiles.forms));
+                    // Get everything in the store;
+                    keyRange = IDBKeyRange.lowerBound(0);
                 }
+
+                var cursorRequest = store.openCursor(keyRange);
+
+                var result = [];
+
+                cursorRequest.onsuccess = function (e) {
+                    var cursor = e.target.result;
+                    if (cursor) {
+                        result.push(cursor.value);
+                        cursor.continue();
+                    }
+                    else {
+                        deferred.resolve(result);
+                    }
+                };
+
+                cursorRequest.onerror = sm.indexedDb.onerror;
+                return deferred.promise;
             };
 
-            var addNewForm = function (newForm) {
-                localStorage.setItem(localFiles.forms, JSON.stringify(getForms()).push(newForm));
-                $rootScope.$broadcast('forms.update');
+            var getItem = function (tableName, id) {
+                var deferred = $q.defer();
+
+                var db = sm.indexedDb.db;
+                var trans = db.transaction([tableName]);
+                var store = trans.objectStore(tableName);
+
+                var req = store.get(id);
+
+                req.onsuccess = function (e) {
+                    if (!!e.target.result == false) {
+                        deferred.resolve(null);
+                    }
+                    else {
+                        deferred.resolve(e.target.result);
+                    }
+                };
+
+                req.onerror = function (err) {
+                    deferred.reject(err);
+                };
+
+                return deferred.promise;
             };
 
-            var clearForms = function () {
-                localStorage.removeItem(localFiles.forms);
-                $rootScope.$broadcast('forms.update');
+            var insertItems = function (tableName, items) {
+                var db = sm.indexedDb.db;
+                var trans = db.transaction([tableName], 'readwrite');
+                var store = trans.objectStore(tableName);
+
+                for (var i in items) {
+                    store.put(items[i]);
+                }
+
+                trans.oncomplete = function () {
+                    $rootScope.$broadcast(tableName + '.update', {insertedItems: items});
+                };
             };
 
-            var initDummyForms = function () {
-                localStorage.setItem(localFiles.forms, JSON.stringify(dummyForms));
-                $rootScope.$broadcast('forms.update');
+            var deleteItem = function (tableName, id) {
+                var db = sm.indexedDb.db;
+                var trans = db.transaction([tableName], 'readwrite');
+                var store = trans.objectStore(tableName);
+
+                var request = store.delete(id);
+
+                trans.oncomplete = function (e) {
+                    $rootScope.$broadcast(tableName + '.update', e);
+                };
+
+                request.onerror = function (e) {
+                    console.log(e);
+                };
             };
 
             var fac = {
-                getForms: getForms,
-                addForm: addNewForm,
-                clearForms: clearForms,
-                initDummyForms: initDummyForms
+                insertItems: insertItems,
+                getItem: getItem,
+                getItems: getItems,
+                deleteItem: deleteItem,
+                stores: {
+                    form: 'form',
+                    question: 'question'
+                }
             };
 
             return fac;
-
         }]);
 })();

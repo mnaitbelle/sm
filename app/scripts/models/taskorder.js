@@ -1,7 +1,7 @@
 /**
- * Created by vgrafe on 8/12/14.
- * Projection factory is intended to be use for initial loading (query) only.
- */
+* Created by vgrafe on 8/12/14.
+* Projection factory is intended to be use for initial loading (query) only.
+*/
 (function () {
     'use strict';
 
