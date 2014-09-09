@@ -22,6 +22,13 @@
                     url: '/home',
                     templateUrl: 'scripts/home/home.html'
                 })
+                .state('dashboard.calendar', {
+                    displayName: 'Calendar',
+                    url: '/calendar',
+                    templateUrl: 'scripts/calendar/calendar.html',
+                    controller: 'calendarController',
+                    controllerAs: 'vm'
+                })
                 .state('dashboard.taskorders', {
                     displayName: 'Task orders',
                     url: '/taskorders',

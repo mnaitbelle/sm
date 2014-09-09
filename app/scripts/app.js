@@ -14,6 +14,7 @@ angular
         'ngResource',
         'ui.router',
         'ui.bootstrap',
+        'ui.calendar',
         'sm.logger',
         'cgBusy'
     ]);
