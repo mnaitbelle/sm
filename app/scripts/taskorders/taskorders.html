@@ -1,12 +1,12 @@
-<div cg-busy="vm.taskorders.$promise">
-    <div class="row">
-        <div class="col-xs-12">
+<div class="row">
+    <div class="col-xs-12">
+        <div cg-busy="vm.taskorders.$promise">
             <div widgets-list items="vm.taskorders"></div>
         </div>
     </div>
-    <div class="row">
-        <div class="col-xs-12">
-            <ui-view></ui-view>
-        </div>
+</div>
+<div class="row">
+    <div class="col-xs-12">
+        <ui-view></ui-view>
     </div>
 </div>

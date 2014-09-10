@@ -3,20 +3,24 @@
 
     angular
         .module('sm.main')
-        .controller('calendarController', ['$scope', '$stateParams', 'CalendarItems',
+        .controller('calendarController', ['$scope', '$state', '$stateParams', 'CalendarItems',
 
-            function ($scope, $stateParams, CalendarItems) {
+            function ($scope, $state, $stateParams, CalendarItems) {
                 /*jshint validthis:true */
                 var vm = this;
 
                 vm.eventClick = function (event, jsEvent, view) {
-
+                    $state.go('dashboard.taskorder', {id: event.id});
                 };
+
                 vm.eventSources = [];
+                vm.query = {};
 
                 vm.refresh = function (view, element) {
                     if (view) {
-                        vm.query = CalendarItems.getTaskOrders(view.start.getFullYear(), view.start.getMonth() +1)
+                        localStorage.calendarYearStart = view.start.getFullYear();//todo to implement
+                        localStorage.calendarMonthStart = view.start.getMonth() + 1;//todo to implement
+                        vm.query = CalendarItems.getTaskOrders(view.start.getFullYear(), view.start.getMonth() + 1)
                             .success(function (items) {
                                 vm.eventSources.length = 0;
                                 vm.eventSources.push({
@@ -27,15 +31,13 @@
                     }
                 };
 
-                vm.calendar = {
-                        editable: false,
-                        header: {
-                            right: 'prev,next'
-                        },
-                        eventClick: vm.eventClick,
-                        viewRender: vm.refresh
+                vm.calendarOptions = {
+                    editable: false,
+                    header: {
+                        right: 'prev,next'
+                    },
+                    eventClick: vm.eventClick,
+                    viewRender: vm.refresh
                 };
-
-                vm.refresh();
             }]);
 })();

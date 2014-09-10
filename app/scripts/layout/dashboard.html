@@ -4,7 +4,8 @@
         <ul class="sidebar">
             <li class="sidebar-main">
                 <a ui-sref="dashboard.taskorders">
-                    <span>Scanprint &#0153;</span><span ng-click="toggleSidebar()" class="menu-icon glyphicon glyphicon-transfer"></span>
+                    <span>Scanprint &#0153;</span><span ng-click="toggleSidebar()"
+                                                        class="menu-icon glyphicon glyphicon-transfer"></span>
                 </a>
             </li>
             <li class="sidebar-title">
@@ -15,11 +16,16 @@
                 data-ng-class="{ current: rootCtrl.$state.includes('dashboard.calendar') }">
                 <a ui-sref="dashboard.calendar">Calendar <span class="menu-icon fa fa-calendar"></span></a>
             </li>
-            <li class="sidebar-title separator"><span>Tasks</span></li>
+            <li class="sidebar-list"
+                data-ng-class="{ current: rootCtrl.$state.includes('dashboard.map') }">
+                <a ui-sref="dashboard.calendar">Map <span class="menu-icon fa fa-map-marker"></span></a>
+            </li>
+            <li class="sidebar-title separator"><span>Tasks orders</span></li>
             <li class="sidebar-list"
                 data-ng-class="{ current: rootCtrl.$state.includes('dashboard.taskorders') }">
-                <a ui-sref="dashboard.taskorders">Task orders <span class="menu-icon fa fa-tasks"></span></a>
+                <a ui-sref="dashboard.taskorders">List <span class="menu-icon fa fa-tasks"></span></a>
             </li>
+            <li class="sidebar-title separator"><span>Current work</span></li>
             <li class="sidebar-list"
                 data-ng-class="{ current: rootCtrl.$state.includes('dashboard.forms') }">
                 <a ui-sref="dashboard.forms">Forms <span class="menu-icon fa fa-check-square-o"></span></a>
@@ -73,7 +79,11 @@
                     </div>
                 </div>
             </div>
-            <div class="dashboard-content" ui-view></div>
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="dashboard-content" ui-view></div>
+                </div>
+            </div>
         </div>
     </div>
 </div>

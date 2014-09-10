@@ -5,7 +5,7 @@
 
     app.config(['$stateProvider', '$urlRouterProvider',
         function ($stateProvider, $urlRouterProvider) {
-            $urlRouterProvider.otherwise('/login');
+            $urlRouterProvider.otherwise('/calendar');
             $stateProvider
                 .state('login', {
                     url: '/login',
@@ -13,7 +13,7 @@
                 })
                 .state('dashboard', {
                     url: '/dashboard',
-                    abstract: true, //will let us inherit common dependencies for child states
+                    abstract: true,
                     templateUrl: 'scripts/layout/dashboard.html'
                 })
                 .state('dashboard.home', {
@@ -43,6 +43,18 @@
                 })
                 .state('dashboard.taskorders.details', {
                     displayName: 'Task orders',
+                    url: '/:id',
+                    templateUrl: 'scripts/taskorders/taskOrderDetails.html',
+                    resolve: {
+                        taskDetails: ['$stateParams', 'TaskOrder', function ($stateParams, TaskOrder) {
+                            return TaskOrder.get({id: $stateParams.id});
+                        }]
+                    },
+                    controller: 'taskOrderDetailsController',
+                    controllerAs: 'vm'
+                })
+                .state('dashboard.taskorder', {
+                    displayName: 'Task order',
                     url: '/:id',
                     templateUrl: 'scripts/taskorders/taskOrderDetails.html',
                     resolve: {
