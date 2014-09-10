@@ -9,14 +9,14 @@
                 /*jshint validthis:true */
                 var vm = this;
 
-                vm.eventClick = function (event, jsEvent, view) {
+                vm.eventClick = function (event) {
                     $state.go('dashboard.taskorder', {id: event.id});
                 };
 
                 vm.eventSources = [];
                 vm.query = {};
 
-                vm.refresh = function (view, element) {
+                vm.refresh = function (view) {
                     if (view) {
                         localStorage.calendarYearStart = view.start.getFullYear();//todo to implement
                         localStorage.calendarMonthStart = view.start.getMonth() + 1;//todo to implement
