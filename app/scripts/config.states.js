@@ -47,6 +47,7 @@
                     templateUrl: 'scripts/taskorders/taskOrderDetails.html',
                     resolve: {
                         taskDetails: ['$stateParams', 'TaskOrder', function ($stateParams, TaskOrder) {
+                            debugger;
                             return TaskOrder.get({id: $stateParams.id});
                         }]
                     },
@@ -55,10 +56,11 @@
                 })
                 .state('dashboard.taskorder', {
                     displayName: 'Task order',
-                    url: '/:id',
+                    url: 'taskorder/:id',
                     templateUrl: 'scripts/taskorders/taskOrderDetails.html',
                     resolve: {
                         taskDetails: ['$stateParams', 'TaskOrder', function ($stateParams, TaskOrder) {
+                            debugger;
                             return TaskOrder.get({id: $stateParams.id});
                         }]
                     },
