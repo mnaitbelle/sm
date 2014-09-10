@@ -14,7 +14,13 @@
                 .state('dashboard', {
                     url: '/dashboard',
                     abstract: true,
-                    templateUrl: 'scripts/layout/dashboard.html'
+                    templateUrl: 'scripts/layout/dashboard.html',
+                    resolve: {
+                        openDb: ['LocalData', function (LocalData) {
+                            //opens the db as soon as a resolved resource for the whole website
+                            return LocalData.openDb();
+                        }]
+                    }
                 })
                 .state('dashboard.home', {
                     //abstract: true, //no use yet, but displays good UI ideas for future devs
@@ -55,7 +61,7 @@
                 })
                 .state('dashboard.taskorder', {
                     displayName: 'Task order',
-                    url: 'taskorder/:id',
+                    url: '/taskorder/:id',
                     templateUrl: 'scripts/taskorders/taskOrderDetails.html',
                     resolve: {
                         taskDetails: ['$stateParams', 'TaskOrder', function ($stateParams, TaskOrder) {
@@ -70,12 +76,7 @@
                     url: '/forms',
                     templateUrl: 'scripts/forms/forms.html',
                     controller: 'formsController',
-                    controllerAs: 'vm',
-                    resolve: {
-                        openDb: ['LocalData', function (LocalData) {
-                            return LocalData.openDb();
-                        }]
-                    }
+                    controllerAs: 'vm'
                 });
         }
     ])

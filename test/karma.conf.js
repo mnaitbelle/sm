@@ -21,6 +21,7 @@ module.exports = function (config) {
             'bower_components/angular-ui-router/release/angular-ui-router.min.js',
             'bower_components/angular-bootstrap/ui-bootstrap-tpls.js',
             'bower_components/angular-animate/angular-animate.min.js',
+            'bower_components/angular-ui-calendar/src/calendar.js',
             'app/scripts/**/*.js'
         ],
 

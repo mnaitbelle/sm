@@ -22,15 +22,11 @@ describe('login form', function () {
 
         vm = $controller('loginController', {
             authService: authService, localStorageService: localStorageSrv, $scope: scope
-        })
+        });
     }));
 
-    it('should have a loginController', function () {
+    it('should have a controller', function () {
         expect(vm).toBeDefined();
-    });
-
-    it('should not be loading stuff', function () {
-        expect(vm.isLoading).toBeFalsy();
     });
 
     it('should have no error message set', function () {

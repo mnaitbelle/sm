@@ -1,7 +1,6 @@
 <div class="col-xs-12">
-    <div class="btn btn-info" ng-click="vm.init()">refresh</div>
     <div ng-hide="vm.formsOnDisk.length">
-        <p>no forms found :(</p>
+        <p>no forms found.</p>
     </div>
     <accordion>
         <accordion-group ng-repeat="form in vm.formsOnDisk" heading="{{form.description}}">

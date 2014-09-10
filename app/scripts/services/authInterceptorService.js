@@ -14,8 +14,6 @@
 
             var _request = function (req) {
 
-                $rootScope.isLoading = true;
-
                 req.headers = req.headers || {};
 
                 var authData = sessionService.getCurrent();
@@ -27,7 +25,6 @@
             };
 
             var _response = function (response) {
-                $rootScope.isLoading = false;
                 return response;
             };
 
