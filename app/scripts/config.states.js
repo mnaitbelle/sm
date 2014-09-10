@@ -5,7 +5,7 @@
 
     app.config(['$stateProvider', '$urlRouterProvider',
         function ($stateProvider, $urlRouterProvider) {
-            $urlRouterProvider.otherwise('/calendar');
+            $urlRouterProvider.otherwise('dashboard/calendar'); //todo make a proper home page ? or keep calendar as default
             $stateProvider
                 .state('login', {
                     url: '/login',
@@ -70,7 +70,12 @@
                     url: '/forms',
                     templateUrl: 'scripts/forms/forms.html',
                     controller: 'formsController',
-                    controllerAs: 'vm'
+                    controllerAs: 'vm',
+                    resolve: {
+                        openDb: ['LocalData', function (LocalData) {
+                            return LocalData.openDb();
+                        }]
+                    }
                 });
         }
     ])

@@ -12,29 +12,37 @@
 
             var dbName = 'smDb1';
             var version = 3;
-            var request = indexedDB.open(dbName, version);
 
-            request.onupgradeneeded = function (e) {
-                var db = e.target.result;
+            var openDb = function () {
 
-                e.target.transaction.onerror = sm.indexedDb.onerror;
+                var deferred = $q.defer();
 
-                if (db.objectStoreNames.contains(fac.stores.form)) {
-                    db.deleteObjectStore(fac.stores.form);
-                }
-                db.createObjectStore(fac.stores.form, {keyPath: 'id'});
+                var request = indexedDB.open(dbName, version);
+                request.onupgradeneeded = function (e) {
+                    var db = e.target.result;
 
-                if (db.objectStoreNames.contains(fac.stores.question)) {
-                    db.deleteObjectStore(fac.stores.question);
-                }
-                db.createObjectStore(fac.stores.question, {keyPath: 'id'});
+                    e.target.transaction.onerror = sm.indexedDb.onerror;
+
+                    if (db.objectStoreNames.contains(fac.stores.form)) {
+                        db.deleteObjectStore(fac.stores.form);
+                    }
+                    db.createObjectStore(fac.stores.form, {keyPath: 'id'});
+
+                    if (db.objectStoreNames.contains(fac.stores.question)) {
+                        db.deleteObjectStore(fac.stores.question);
+                    }
+                    db.createObjectStore(fac.stores.question, {keyPath: 'id'});
+                };
+
+                request.onsuccess = function (e) {
+                    sm.indexedDb.db = e.target.result;
+                    deferred.resolve(sm.indexedDb.db);
+                };
+
+                request.onerror = sm.indexedDb.onerror;
+
+                return deferred.promise;
             };
-
-            request.onsuccess = function (e) {
-                sm.indexedDb.db = e.target.result;
-            };
-
-            request.onerror = sm.indexedDb.onerror;
 
             //methods implementation
 
@@ -129,6 +137,7 @@
             };
 
             var fac = {
+                openDb: openDb,
                 insertItems: insertItems,
                 getItem: getItem,
                 getItems: getItems,
