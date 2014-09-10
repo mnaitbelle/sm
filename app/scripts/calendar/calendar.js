@@ -12,13 +12,13 @@
                 vm.eventClick = function (event, jsEvent, view) {
 
                 };
-
                 vm.eventSources = [];
 
                 vm.refresh = function (view, element) {
                     if (view) {
-                        return CalendarItems.getTaskOrders(view.start.getFullYear(), view.start.getMonth() +1)
+                        vm.query = CalendarItems.getTaskOrders(view.start.getFullYear(), view.start.getMonth() +1)
                             .success(function (items) {
+                                vm.eventSources.length = 0;
                                 vm.eventSources.push({
                                     events: items,
                                     allDayDefault: true
