@@ -1,53 +1,49 @@
-<div class="outer">
-    <div class="middle">
-        <div class="inner">
-            <div class="container" ng-controller="loginController as vm" style="padding-top:36px;">
-                <div class="row">
-                    <div class="col-md-offset-1 col-md-7">
-                        <p class="login-app-name">Scanprint mobile &#0153;</p>
+<div class="login wrapper">
+    <div class="login content container" ng-controller="loginController as vm">
+        <div class="row">
+            <div class="col-sm-offset-1 col-sm-6">
+                <p class="login-app-name">Scanprint mobile &#0153;</p>
+            </div>
+            <div class="col-sm-4">
+                <div class="login-panel panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Please Sign In</h3>
                     </div>
-                    <div class="col-md-3">
-                        <div class="login-panel panel panel-default">
-                            <div class="panel-heading">
-                                <h3 class="panel-title">Please Sign In</h3>
-                            </div>
-                            <div class="panel-body">
-                                <form role="form">
-                                    <fieldset>
-                                        <div class="form-group">
-                                            <!--add type="email" below...-->
-                                            <input ng-model="vm.credentials.login" class="form-control"
-                                                   placeholder="E-mail"
-                                                   name="email" autofocus/>
-                                        </div>
-                                        <div class="form-group">
-                                            <input ng-model="vm.credentials.password" class="form-control"
-                                                   placeholder="Password"
-                                                   name="password" type="password" value=""/>
-                                        </div>
-                                        <div class="checkbox">
-                                            <label>
-                                                <input ng-model="vm.credentials.remember" name="remember"
-                                                       type="checkbox"
-                                                       value="Remember Me">Remember Me
-                                            </label>
-                                        </div>
-                                        <!-- Change this to a button or input when using this as a form -->
-                                        <button id="loginButton" ng-hide="vm.isLoading"
-                                                ng-click="vm.loginUser(vm.credentials)"
-                                                class="btn btn-lg btn-success btn-block">Login
-                                        </button>
-                                        <button ng-show="vm.isLoading"
-                                                class="btn btn-lg btn-success btn-block disabled">
-                                            <spinner color="'white'"></spinner>
-                                        </button>
-                                        <p ng-if="vm.errorMessage" style="margin-top:10px;" id="errorMessage"
-                                           class="text-danger">
-                                            {{vm.errorMessage}}</p>
-                                    </fieldset>
-                                </form>
-                            </div>
-                        </div>
+                    <div class="panel-body">
+                        <form role="form">
+                            <fieldset>
+                                <div class="form-group">
+                                    <!--add type="email" below...-->
+                                    <input ng-model="vm.credentials.login" class="form-control"
+                                           placeholder="E-mail"
+                                           name="email" autofocus/>
+                                </div>
+                                <div class="form-group">
+                                    <input ng-model="vm.credentials.password" class="form-control"
+                                           placeholder="Password"
+                                           name="password" type="password" value=""/>
+                                </div>
+                                <div class="checkbox">
+                                    <label style="color: #333;">
+                                        <input ng-model="vm.credentials.remember" name="remember"
+                                               type="checkbox"
+                                               value="Remember Me">Remember Me
+                                    </label>
+                                </div>
+                                <!-- Change this to a button or input when using this as a form -->
+                                <button id="loginButton" ng-hide="vm.isLoading"
+                                        ng-click="vm.loginUser(vm.credentials)"
+                                        class="btn btn-lg btn-success btn-block">Login
+                                </button>
+                                <button ng-show="vm.isLoading"
+                                        class="btn btn-lg btn-success btn-block disabled">
+                                    <spinner color="'white'"></spinner>
+                                </button>
+                                <p ng-if="vm.errorMessage" style="margin-top:10px;" id="errorMessage"
+                                   class="text-danger">
+                                    {{vm.errorMessage}}</p>
+                            </fieldset>
+                        </form>
                     </div>
                 </div>
             </div>

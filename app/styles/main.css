@@ -418,3 +418,35 @@ ul.sidebar .sidebar-list .menu-icon {
     margin-left: auto;
     margin-right: auto;
 }
+.login {
+    padding: 120px;
+    color: #fff;
+    text-align: center;
+    text-shadow: 0 1px 3px rgba(0,0,0,.4), 0 0 30px rgba(0,0,0,.075);
+
+    background-image: -webkit-gradient(
+            linear,
+            left bottom,
+            right top,
+            color-stop(0, #2C5F96),
+            color-stop(1, #06102B)
+    );
+    background-image: -o-linear-gradient(right top, #2C5F96 0%, #06102B 100%);
+    background-image: -moz-linear-gradient(right top, #2C5F96 0%, #06102B 100%);
+    background-image: -webkit-linear-gradient(right top, #2C5F96 0%, #06102B 100%);
+    background-image: -ms-linear-gradient(right top, #2C5F96 0%, #06102B 100%);
+    background-image: linear-gradient(to right top, #2C5F96 0%, #06102B 100%);
+}
+
+.login.wrapper {
+    overflow:hidden;
+    position: fixed;
+    display: table;
+    height: 100%;
+    width: 100%;
+}
+.login.content {
+    display: table-row;
+    height: 100%;
+    background: transparent;
+}
