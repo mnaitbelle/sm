@@ -5,17 +5,21 @@
     </div>
     <div class="widget-body">
         <div class="row">
-            <div class="col-xs-6">
+            <div class="col-md-3">
                 <p class="text-center lead">Priority: <span
-                        style="border-bottom: 2px solid {{taskOrder.taskOrderPriority.color}};">{{vm.taskOrder.taskOrderPriority.name}}</span>
+                        style="border-bottom: 2px solid {{vm.taskOrder.taskOrderPriority.color}};">{{vm.taskOrder.taskOrderPriority.name}}</span>
                 </p>
             </div>
-            <div class="col-xs-6">
+            <div class="col-md-3">
                 <p class="text-center lead">Status: <span
                         style="border-bottom: 2px solid {{vm.taskOrder.taskOrderStatu.color}};">{{vm.taskOrder.taskOrderStatu.name}}</span>
                 </p>
             </div>
-            <hr/>
+            <div class="col-md-6">
+                <copy-to-disk table="taskorder" class="pull-right" item-id="{{vm.taskOrder.id}}" clicked="vm.copyToDisk(vm.taskOrder)"
+                              refresh-on="taskorder.update"></copy-to-disk>
+            </div>
+        </div>
             <div cg-busy="taskOrder">
                 <div class="row">
                     <div class="col-md-6">
@@ -33,15 +37,15 @@
                         <!--<a class="btn btn-default" href="#">-->
                             <!--<i class="fa fa-cloud-download"></i> download all</a>-->
 
-                        <div ng-show="vm.taskOrder.items">
+                        <div ng-show="vm.taskOrder.forms">
                             <table class="table">
                                 <tbody>
-                                <tr ng-repeat="item in vm.taskOrder.items">
-                                    <td>{{item.date | date : 'shortDate' }}</td>
+                                <tr ng-repeat="task in vm.taskOrder.forms">
+                                    <td>{{task.date | date : 'shortDate' }}</td>
                                     <td>
-                                        <p>{{item.description}}<br/>
+                                        <p>{{task.description}}<br/>
                                             <small style="border-bottom: 1px solid {{item.status.color}};">
-                                                {{item.status.name}}
+                                                {{task.status.name}}
                                             </small>
                                         </p>
                                     </td>
@@ -53,20 +57,15 @@
                                     <!--<span ng-show="item.type == 'Audit'" class="text-success"><i-->
                                     <!--class="fa fa-flash"></i></span>-->
                                     <!--</td>-->
-                                    <td>
-                                        <copy-to-disk table="form" item-id="{{item.id}}" clicked="vm.copyToDisk(item)"
-                                                      refresh-on="form.update"></copy-to-disk>
-                                    </td>
                                 </tr>
                                 </tbody>
                             </table>
                         </div>
-                        <div ng-hide="vm.taskOrder.items">
+                        <div ng-hide="vm.taskOrder.forms">
                             <div>No tasks found for this task.</div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
 </div>

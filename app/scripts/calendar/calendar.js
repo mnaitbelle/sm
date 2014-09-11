@@ -18,10 +18,25 @@
 
                 vm.refresh = function (view) {
                     if (view) {
-                        localStorage.calendarYearStart = view.start.getFullYear();//todo to implement
-                        localStorage.calendarMonthStart = view.start.getMonth() + 1;//todo to implement
+                        //todo implement last viewed month persistence
+                        localStorage.calendarYearStart = view.start.getFullYear();
+                        localStorage.calendarMonthStart = view.start.getMonth() + 1;
                         vm.query = CalendarItems.getTaskOrders(view.start.getFullYear(), view.start.getMonth() + 1)
                             .success(function (items) {
+
+                                //builds chronologic list
+                                vm.eventGroups = {};
+                                for (var i in items) {
+                                    if (!vm.eventGroups[items[i].start]) {
+                                        vm.eventGroups[items[i].start] = {
+                                            date: items[i].start,
+                                            events: []
+                                        };
+                                    }
+                                    vm.eventGroups[items[i].start].events.push(items[i]);
+                                }
+
+                                //builds calendar items
                                 vm.eventSources.length = 0;
                                 vm.eventSources.push({
                                     events: items,

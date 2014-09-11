@@ -1,3 +1,16 @@
 <div cg-busy="vm.query">
-    <div ui-calendar="vm.calendarOptions" ng-model="vm.eventSources" calendar="myCalendar"></div>
+    <div class="row">
+        <div class="col-md-9">
+            <div ui-calendar="vm.calendarOptions" ng-model="vm.eventSources" calendar="myCalendar"></div>
+        </div>
+        <div class="col-md-3">
+            <h2 style="margin-top:0px;">Event list</h2>
+            <ul class="nav navbar-default nav-pills nav-stacked" ng-repeat="eventGroup in vm.eventGroups">
+                {{eventGroup.date | date:'EEEE d'}}
+                <li ng-repeat="event in eventGroup.events">
+                    <a ui-sref="dashboard.taskorder({id:event.id})">{{event.title}}</a>
+                </li>
+            </ul>
+        </div>
+    </div>
 </div>

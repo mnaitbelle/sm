@@ -7,19 +7,28 @@
             function (taskDetails, LocalData, Question) {
                 var vm = this;
                 vm.taskOrder = taskDetails;
-                vm.copyToDisk = function (form) {
+                vm.copyToDisk = function (taskorder) {
 
-                    LocalData.insertItems(LocalData.stores.form, [form]);
+                    var dbTaskOrder =
+                    {
+                        id: taskorder.id,
+                        number: taskorder.number,
+                        assignmentDate: taskorder.assignmentDate,
+                        taskOrderPriority: taskorder.taskOrderPriority,
+                        taskOrderStatu: taskorder.taskOrderStatu,
+                        comments: taskorder.comments
 
-                    Question.get({id: form.id}, function (data) {
-                        var questions = data;
+                    };
 
-                        for (var i in questions) {
-                            questions[i].formId = form.id;
-                        }
-
-                        LocalData.insertItems(LocalData.stores.question, questions);
-                    });
+                    LocalData.insertItems(LocalData.stores.taskorder, [dbTaskOrder])
+                        .then(function () {
+                            LocalData.insertItems(LocalData.stores.form, taskorder.forms)
+                                .then(function () {
+                                    Question.get({id: taskorder.id}, function (questions) {
+                                        LocalData.insertItems(LocalData.stores.question, questions);
+                                    });
+                                });
+                        });
                 };
             }]);
 })();

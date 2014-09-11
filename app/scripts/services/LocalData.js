@@ -11,7 +11,7 @@
             sm.indexedDb.db = null;
 
             var dbName = 'smDb1';
-            var version = 3;
+            var version = 4;
 
             var openDb = function () {
 
@@ -32,6 +32,11 @@
                         db.deleteObjectStore(fac.stores.question);
                     }
                     db.createObjectStore(fac.stores.question, {keyPath: 'id'});
+
+                    if (db.objectStoreNames.contains(fac.stores.taskorder)) {
+                        db.deleteObjectStore(fac.stores.taskorder);
+                    }
+                    db.createObjectStore(fac.stores.taskorder, {keyPath: 'id'});
                 };
 
                 request.onsuccess = function (e) {
@@ -107,17 +112,27 @@
             };
 
             var insertItems = function (tableName, items) {
+                var deferred = $q.defer();
+
                 var db = sm.indexedDb.db;
                 var trans = db.transaction([tableName], 'readwrite');
                 var store = trans.objectStore(tableName);
 
-                for (var i in items) {
-                    store.put(items[i]);
+                if (items.length === 0) {
+                    deferred.resolve(null);
+                }
+                else {
+                    for (var i in items) {
+                        store.put(items[i]);
+                    }
+
+                    trans.oncomplete = function () {
+                        $rootScope.$broadcast(tableName + '.update', {insertedItems: items});
+                        deferred.resolve(null);
+                    };
                 }
 
-                trans.oncomplete = function () {
-                    $rootScope.$broadcast(tableName + '.update', {insertedItems: items});
-                };
+                return deferred.promise;
             };
 
             var deleteItem = function (tableName, id) {
@@ -143,6 +158,7 @@
                 getItems: getItems,
                 deleteItem: deleteItem,
                 stores: {
+                    taskorder: 'taskorder',
                     form: 'form',
                     question: 'question'
                 }
