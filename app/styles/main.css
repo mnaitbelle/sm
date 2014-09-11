@@ -139,6 +139,12 @@ div.input-mask {
     margin-top: 10px;
     border-radius: 2px;
 }
+.user-button {
+    width: 40px;
+    height: 40px;
+    margin-top: 10px;
+    border-radius: 2px;
+}
 .row.header .user > .item ul.dropdown-menu {
     border-radius: 2px;
     -webkit-box-shadow: 0 6px 12px rgba(0, 0, 0, 0.05);
@@ -397,4 +403,21 @@ ul.sidebar .sidebar-list .menu-icon {
 }
 .dashboard-content {
     font-family: "Helvetica Neue";
+}
+.login-app-name {
+    font-size: 32px;
+}
+.outer {
+    display: table;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+}
+.middle {
+    display: table-cell;
+    vertical-align: middle;
+}
+.inner {
+    margin-left: auto;
+    margin-right: auto;
 }

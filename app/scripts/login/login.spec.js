@@ -8,8 +8,7 @@ describe('login form', function () {
     var vm;
 
     // Initialize the controller and a mock scope
-    beforeEach(inject(function ($rootScope, $controller, $injector) {
-        var authService = $injector.get('authService');
+    beforeEach(inject(function ($rootScope, $controller) {
         var scope = $rootScope.$new();
 
         var localStorageSrv = {
@@ -21,7 +20,7 @@ describe('login form', function () {
         spyOn(localStorageSrv, "get");
 
         vm = $controller('loginController', {
-            authService: authService, localStorageService: localStorageSrv, $scope: scope
+            localStorageService: localStorageSrv, $scope: scope
         });
     }));
 
