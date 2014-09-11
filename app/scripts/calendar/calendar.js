@@ -13,6 +13,7 @@
                     $state.go('dashboard.taskorder', {id: event.id});
                 };
 
+                vm.events = [];
                 vm.eventSources = [];
                 vm.query = {};
 
@@ -23,6 +24,8 @@
                         localStorage.calendarMonthStart = view.start.getMonth() + 1;
                         vm.query = CalendarItems.getTaskOrders(view.start.getFullYear(), view.start.getMonth() + 1)
                             .success(function (items) {
+
+                                vm.events = items;
 
                                 //builds chronologic list
                                 vm.eventGroups = {};
