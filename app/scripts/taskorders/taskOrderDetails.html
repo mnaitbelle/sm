@@ -16,7 +16,7 @@
                 </p>
             </div>
             <div class="col-md-6">
-                <copy-to-disk table="taskorder" class="pull-right" item-id="{{vm.taskOrder.id}}" clicked="vm.copyToDisk(vm.taskOrder)"
+                <copy-to-disk ng-show="vm.taskOrder.forms" table="taskorder" class="pull-right" item-id="{{vm.taskOrder.id}}" clicked="vm.copyToDisk(vm.taskOrder)"
                               refresh-on="taskorder.update"></copy-to-disk>
             </div>
         </div>
