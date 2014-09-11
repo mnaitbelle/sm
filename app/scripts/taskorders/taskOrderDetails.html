@@ -1,23 +1,23 @@
 <div class="widget" cg-busy="vm.taskOrder">
     <div class="widget-title">
         <i class="fa fa-tasks"></i> Task order {{vm.taskOrder.number}}
-        <p class="pull-right">{{vm.taskOrder.assignmentDate | date : 'fullDate'}}</p>
+        <copy-to-disk class="pull-right" ng-show="vm.taskOrder.forms" table="taskorder" class="pull-right" item-id="{{vm.taskOrder.id}}" clicked="vm.copyToDisk(vm.taskOrder)"
+                      refresh-on="taskorder.update"></copy-to-disk>
     </div>
     <div class="widget-body">
         <div class="row">
-            <div class="col-md-3">
+            <div class="col-md-4">
                 <p class="text-center lead">Priority: <span
                         style="border-bottom: 2px solid {{vm.taskOrder.taskOrderPriority.color}};">{{vm.taskOrder.taskOrderPriority.name}}</span>
                 </p>
             </div>
-            <div class="col-md-3">
+            <div class="col-md-4">
                 <p class="text-center lead">Status: <span
                         style="border-bottom: 2px solid {{vm.taskOrder.taskOrderStatu.color}};">{{vm.taskOrder.taskOrderStatu.name}}</span>
                 </p>
             </div>
-            <div class="col-md-6">
-                <copy-to-disk ng-show="vm.taskOrder.forms" table="taskorder" class="pull-right" item-id="{{vm.taskOrder.id}}" clicked="vm.copyToDisk(vm.taskOrder)"
-                              refresh-on="taskorder.update"></copy-to-disk>
+            <div class="col-md-4">
+                <p class="text-center lead">{{vm.taskOrder.assignmentDate | date : 'fullDate'}}</p>
             </div>
         </div>
             <div cg-busy="taskOrder">
