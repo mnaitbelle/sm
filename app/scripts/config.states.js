@@ -30,7 +30,15 @@
                 })
                 .state('dashboard.calendar', {
                     displayName: 'Calendar',
-                    url: '/calendar',
+                    url: '/calendar/:year/:month',
+                    params: {
+                        year: {
+                            value: new Date().getFullYear()
+                        },
+                        month: {
+                            value: new Date().getMonth()
+                        }
+                    },
                     templateUrl: 'scripts/calendar/calendar.html',
                     controller: 'calendarController',
                     controllerAs: 'vm'

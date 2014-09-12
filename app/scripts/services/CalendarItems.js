@@ -15,7 +15,7 @@
         return service;
 
         function getTaskOrders(year, month) {
-            return $http.get(config.apiRoot + '/calendar/' + year + '/' + month);
+            return $http.get(config.apiRoot + '/calendar/' + year + '-' + month);
         }
     }
 })();

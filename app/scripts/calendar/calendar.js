@@ -13,6 +13,13 @@
                     $state.go('dashboard.taskorder', {id: event.id});
                 };
 
+                vm.currentDate = new Date($stateParams.year, $stateParams.month, 1);
+
+                vm.previousDate = new Date(vm.currentDate.getTime());
+                vm.previousDate.setMonth(vm.previousDate.getMonth() - 1);
+                vm.nextDate = new Date(vm.currentDate.getTime());
+                vm.nextDate.setMonth(vm.nextDate.getMonth() + 1);
+
                 vm.events = [];
                 vm.eventSources = [];
                 vm.query = {};
@@ -20,13 +27,9 @@
                 vm.refresh = function (view) {
                     if (view) {
                         //todo implement last viewed month persistence
-                        localStorage.calendarYearStart = view.start.getFullYear();
-                        localStorage.calendarMonthStart = view.start.getMonth() + 1;
                         vm.query = CalendarItems.getTaskOrders(view.start.getFullYear(), view.start.getMonth() + 1)
                             .success(function (items) {
-
                                 vm.events = items;
-
                                 //builds chronologic list
                                 vm.eventGroups = {};
                                 for (var i in items) {
@@ -52,7 +55,8 @@
                 vm.calendarOptions = {
                     editable: false,
                     header: {
-                        right: 'prev,next'
+                        left: '',
+                        right: ''
                     },
                     eventClick: vm.eventClick,
                     viewRender: vm.refresh
