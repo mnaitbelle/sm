@@ -34,6 +34,7 @@
                     vm.errorMessage = 'Please enter a password.';
                 }
                 else {
+                    vm.errorMessage = '';
                     vm.isLoading = true;
                     authService.login(credentials)
                         .then(function () {

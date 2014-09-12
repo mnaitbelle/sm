@@ -1,7 +1,7 @@
 <div class="login wrapper">
     <div class="login content container" ng-controller="loginController as vm">
         <div class="row">
-            <div class="col-sm-offset-1 col-sm-6">
+            <div class="col-sm-7">
                 <p class="login-app-name">Scanprint mobile &#0153;</p>
             </div>
             <div class="col-sm-4">
@@ -15,12 +15,12 @@
                                 <div class="form-group">
                                     <!--add type="email" below...-->
                                     <input ng-model="vm.credentials.login" class="form-control"
-                                           placeholder="E-mail"
+                                           placeholder="email"
                                            name="email" autofocus/>
                                 </div>
                                 <div class="form-group">
                                     <input ng-model="vm.credentials.password" class="form-control"
-                                           placeholder="Password"
+                                           placeholder="password"
                                            name="password" type="password" value=""/>
                                 </div>
                                 <div class="checkbox">
@@ -33,10 +33,10 @@
                                 <!-- Change this to a button or input when using this as a form -->
                                 <button id="loginButton" ng-hide="vm.isLoading"
                                         ng-click="vm.loginUser(vm.credentials)"
-                                        class="btn btn-lg btn-success btn-block">Login
+                                        class="btn btn-lg btn-primary btn-block">Login
                                 </button>
                                 <button ng-show="vm.isLoading"
-                                        class="btn btn-lg btn-success btn-block disabled">
+                                        class="btn btn-lg btn-primary btn-block disabled">
                                     <spinner color="'white'"></spinner>
                                 </button>
                                 <p ng-if="vm.errorMessage" style="margin-top:10px;" id="errorMessage"
