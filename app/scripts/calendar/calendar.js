@@ -30,7 +30,6 @@
                         vm.query = CalendarItems.getTaskOrders(vm.currentDate.getFullYear(), vm.currentDate.getMonth() + 1)
                             .success(function (items) {
                                 vm.events = items;
-                                debugger;
 
                                 //builds chronologic list
                                 vm.eventGroups = {};
@@ -61,7 +60,10 @@
                         right: ''
                     },
                     eventClick: vm.eventClick,
-                    viewRender: vm.refresh
-                };
+                    viewRender: vm.refresh,
+                    year: vm.currentDate.getFullYear(),
+                    month: vm.currentDate.getMonth(),
+                    date: 1
+            };
             }]);
 })();
