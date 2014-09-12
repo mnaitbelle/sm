@@ -27,9 +27,11 @@
                 vm.refresh = function (view) {
                     if (view) {
                         //todo implement last viewed month persistence
-                        vm.query = CalendarItems.getTaskOrders(view.start.getFullYear(), view.start.getMonth() + 1)
+                        vm.query = CalendarItems.getTaskOrders(vm.currentDate.getFullYear(), vm.currentDate.getMonth() + 1)
                             .success(function (items) {
                                 vm.events = items;
+                                debugger;
+
                                 //builds chronologic list
                                 vm.eventGroups = {};
                                 for (var i in items) {
