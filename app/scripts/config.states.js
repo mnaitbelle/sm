@@ -23,7 +23,7 @@
                     }
                 })
                 .state('dashboard.home', {
-                    //abstract: true, //no use yet, but displays good UI ideas for future devs
+                    abstract: true, //no use yet, but displays good UI ideas for future devs
                     displayName: 'Home',
                     url: '/home',
                     templateUrl: 'scripts/home/home.html'
@@ -31,6 +31,7 @@
                 .state('dashboard.calendar', {
                     displayName: 'Calendar',
                     url: '/calendar/:year/:month',
+                    //optional parameters / default values are set on today's date
                     params: {
                         year: {
                             value: new Date().getFullYear()

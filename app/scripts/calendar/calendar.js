@@ -13,44 +13,43 @@
                     $state.go('dashboard.taskorder', {id: event.id});
                 };
 
+                //defines dates for UI and routing
                 vm.currentDate = new Date($stateParams.year, $stateParams.month, 1);
-
                 vm.previousDate = new Date(vm.currentDate.getTime());
                 vm.previousDate.setMonth(vm.previousDate.getMonth() - 1);
                 vm.nextDate = new Date(vm.currentDate.getTime());
                 vm.nextDate.setMonth(vm.nextDate.getMonth() + 1);
 
+                //inits empty vars for seamless databinding
                 vm.events = [];
                 vm.eventSources = [];
                 vm.query = {};
 
-                vm.refresh = function (view) {
-                    if (view) {
-                        //todo implement last viewed month persistence
-                        vm.query = CalendarItems.getTaskOrders(vm.currentDate.getFullYear(), vm.currentDate.getMonth() + 1)
-                            .success(function (items) {
-                                vm.events = items;
+                vm.renderCalendar = function () {
+                    //todo implement last viewed month persistence
+                    vm.query = CalendarItems.getTaskOrders(vm.currentDate.getFullYear(), vm.currentDate.getMonth() + 1)
+                        .success(function (items) {
+                            vm.events = items;
 
-                                //builds chronologic list
-                                vm.eventGroups = {};
-                                for (var i in items) {
-                                    if (!vm.eventGroups[items[i].start]) {
-                                        vm.eventGroups[items[i].start] = {
-                                            date: items[i].start,
-                                            events: []
-                                        };
-                                    }
-                                    vm.eventGroups[items[i].start].events.push(items[i]);
+                            //builds chronologic list
+                            vm.eventGroups = {};
+                            for (var i in items) {
+                                if (!vm.eventGroups[items[i].start]) {
+                                    vm.eventGroups[items[i].start] = {
+                                        date: items[i].start,
+                                        events: []
+                                    };
                                 }
+                                vm.eventGroups[items[i].start].events.push(items[i]);
+                            }
 
-                                //builds calendar items
-                                vm.eventSources.length = 0;
-                                vm.eventSources.push({
-                                    events: items,
-                                    allDayDefault: true
-                                });
+                            //builds calendar items
+                            vm.eventSources.length = 0;
+                            vm.eventSources.push({
+                                events: items,
+                                allDayDefault: true
                             });
-                    }
+                        });
                 };
 
                 vm.calendarOptions = {
@@ -60,10 +59,12 @@
                         right: ''
                     },
                     eventClick: vm.eventClick,
-                    viewRender: vm.refresh,
+                    viewRender: vm.renderCalendar,
+
+                    //sets displayed date for the calendar
                     year: vm.currentDate.getFullYear(),
                     month: vm.currentDate.getMonth(),
                     date: 1
-            };
+                };
             }]);
 })();
