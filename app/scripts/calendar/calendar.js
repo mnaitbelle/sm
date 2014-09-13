@@ -8,6 +8,7 @@
             function ($scope, $state, $stateParams, events) {
                 /*jshint validthis:true */
                 var vm = this;
+                vm.events = events.data;
 
                 vm.eventClick = function (event) {
                     $state.go('dashboard.taskorder', {id: event.id});
@@ -19,8 +20,6 @@
                 vm.previousDate.setMonth(vm.previousDate.getMonth() - 1);
                 vm.nextDate = new Date(vm.currentDate.getTime());
                 vm.nextDate.setMonth(vm.nextDate.getMonth() + 1);
-
-                vm.events = events.data;
 
                 //builds chronologic list
                 vm.eventGroups = {};
@@ -34,14 +33,14 @@
                     vm.eventGroups[vm.events[i].start].events.push(vm.events[i]);
                 }
 
+                vm.eventSources = [];
+
                 //builds calendar items
-                vm.eventSources = [
+                vm.eventSources.push(
                     {
                         events: vm.events,
                         allDayDefault: true
-                    }
-                ];
-
+                    });
 
                 vm.calendarOptions = {
                     editable: false,

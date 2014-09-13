@@ -31,8 +31,7 @@
                 .state('dashboard.calendar', {
                     displayName: 'Calendar',
                     url: '/calendar/:year/:month',
-                    //optional parameters / default values are set on today's date
-                    params: {
+                    params: { //optional parameters - default values are set on today's date
                         year: {
                             value: new Date().getFullYear()
                         },
@@ -42,7 +41,7 @@
                     },
                     resolve: {
                         events: ['$stateParams', 'CalendarItems', function ($stateParams, CalendarItems){
-                            return CalendarItems.getTaskOrders($stateParams.year, $stateParams.month + 1);
+                            return CalendarItems.getTaskOrders($stateParams.year, parseInt($stateParams.month) + 1);
                         }]
                     },
                     templateUrl: 'scripts/calendar/calendar.html',
