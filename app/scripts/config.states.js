@@ -40,6 +40,11 @@
                             value: new Date().getMonth()
                         }
                     },
+                    resolve: {
+                        events: ['$stateParams', 'CalendarItems', function ($stateParams, CalendarItems){
+                            return CalendarItems.getTaskOrders($stateParams.year, $stateParams.month + 1);
+                        }]
+                    },
                     templateUrl: 'scripts/calendar/calendar.html',
                     controller: 'calendarController',
                     controllerAs: 'vm'

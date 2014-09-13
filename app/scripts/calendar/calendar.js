@@ -3,9 +3,9 @@
 
     angular
         .module('sm.main')
-        .controller('calendarController', ['$scope', '$state', '$stateParams', 'CalendarItems',
+        .controller('calendarController', ['$scope', '$state', '$stateParams', 'events',
 
-            function ($scope, $state, $stateParams, CalendarItems) {
+            function ($scope, $state, $stateParams, events) {
                 /*jshint validthis:true */
                 var vm = this;
 
@@ -20,37 +20,28 @@
                 vm.nextDate = new Date(vm.currentDate.getTime());
                 vm.nextDate.setMonth(vm.nextDate.getMonth() + 1);
 
-                //inits empty vars for seamless databinding
-                vm.events = [];
-                vm.eventSources = [];
-                vm.query = {};
+                vm.events = events.data;
 
-                vm.renderCalendar = function () {
-                    //todo implement last viewed month persistence
-                    vm.query = CalendarItems.getTaskOrders(vm.currentDate.getFullYear(), vm.currentDate.getMonth() + 1)
-                        .success(function (items) {
-                            vm.events = items;
+                //builds chronologic list
+                vm.eventGroups = {};
+                for (var i in vm.events) {
+                    if (!vm.eventGroups[vm.events[i].start]) {
+                        vm.eventGroups[vm.events[i].start] = {
+                            date: vm.events[i].start,
+                            events: []
+                        };
+                    }
+                    vm.eventGroups[vm.events[i].start].events.push(vm.events[i]);
+                }
 
-                            //builds chronologic list
-                            vm.eventGroups = {};
-                            for (var i in items) {
-                                if (!vm.eventGroups[items[i].start]) {
-                                    vm.eventGroups[items[i].start] = {
-                                        date: items[i].start,
-                                        events: []
-                                    };
-                                }
-                                vm.eventGroups[items[i].start].events.push(items[i]);
-                            }
+                //builds calendar items
+                vm.eventSources = [
+                    {
+                        events: vm.events,
+                        allDayDefault: true
+                    }
+                ];
 
-                            //builds calendar items
-                            vm.eventSources.length = 0;
-                            vm.eventSources.push({
-                                events: items,
-                                allDayDefault: true
-                            });
-                        });
-                };
 
                 vm.calendarOptions = {
                     editable: false,
