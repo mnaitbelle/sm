@@ -3,6 +3,37 @@
 
     angular
         .module('sm.main')
+        .controller('copyToDiskController', ['$scope', 'LocalData', function ($scope, LocalData) {
+
+            var vm = this;
+
+            vm.wasInitialized = false;
+
+            if ($scope.refreshOn) {
+                $scope.$on($scope.refreshOn, function (e, a) {
+                    for (var i in a.insertedItems) {
+                        if (a.insertedItems[i].id === $scope.itemId) {
+                            vm.init();
+                        }
+                    }
+                });
+            }
+
+            vm.init = function() {
+                LocalData.getItem($scope.table, $scope.itemId)
+                    .then(function (item) {
+                        vm.isOnDisk = item;
+                        vm.wasInitialized = true;
+                    });
+            };
+
+            $scope.$watch('itemId', function()
+            {
+                if ($scope.itemId) {
+                    vm.init();
+                }
+            });
+        }])
         .directive('copyToDisk',
         function () {
             var dir = {
@@ -14,29 +45,7 @@
                     clicked: '&'
                 },
                 restrict: 'E',
-                controller: ['$scope', 'LocalData', function ($scope, LocalData) {
-
-                    var vm = this;
-
-                    if ($scope.refreshOn) {
-                        $scope.$on($scope.refreshOn, function (e, a) {
-                            for (var i in a.insertedItems) {
-                                if (a.insertedItems[i].id === $scope.itemId) {
-                                    vm.init();
-                                }
-                            }
-                        });
-                    }
-
-                    vm.init = function() {
-                        LocalData.getItem($scope.table, $scope.itemId)
-                            .then(function (item) {
-                                vm.isOnDisk = item;
-                            });
-                    };
-
-                    vm.init();
-                }],
+                controller: 'copyToDiskController',
                 controllerAs: 'vm'
             };
             return dir;

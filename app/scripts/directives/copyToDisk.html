@@ -1,3 +1,6 @@
-<div ng-hide="vm.isOnDisk" class="btn btn-default" ng-click="clicked()">
-    <i class="fa fa-cloud-download"></i> download forms</div>
-<div ng-show="vm.isOnDisk" class="btn btn-default disabled">on disk</div>
+<div ng-show="vm.wasInitialized">
+    <div ng-hide="vm.isOnDisk" class="btn btn-default" ng-click="clicked()">
+        <i class="fa fa-cloud-download"></i> download forms
+    </div>
+    <div ng-show="vm.isOnDisk" class="btn btn-default disabled">on disk</div>
+</div>

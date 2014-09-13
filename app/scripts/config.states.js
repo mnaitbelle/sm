@@ -17,7 +17,7 @@
                     templateUrl: 'scripts/layout/dashboard.html',
                     resolve: {
                         openDb: ['LocalData', function (LocalData) {
-                            //opens the db as soon as a resolved resource for the whole website
+                            //inits the db first as a resolved resource for the whole website
                             return LocalData.openDb();
                         }]
                     }
