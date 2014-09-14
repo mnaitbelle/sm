@@ -1,6 +1,6 @@
 'use strict';
 
-describe('calendar module', function () {
+describe('copyToDisk directive controller', function () {
 
     // load the controller's module
     beforeEach(module('sm.main'));
@@ -21,7 +21,7 @@ describe('calendar module', function () {
         });
     }));
 
-    it('should process correct dates from urlparams', function () {
-        expect(vm.nextDate).toEqual(new Date(testYear, testMonth+1, 1));
+    it('should exist', function () {
+        expect(vm).toBeDefined();
     });
 });

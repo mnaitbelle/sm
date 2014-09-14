@@ -8,6 +8,7 @@
             function ($scope, $state, $stateParams, events) {
                 /*jshint validthis:true */
                 var vm = this;
+
                 vm.events = events.data;
 
                 vm.eventClick = function (event) {
