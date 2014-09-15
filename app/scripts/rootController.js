@@ -31,6 +31,7 @@
         };
 
         $scope.$on('sessionExpired', function () {
+            debugger;
             vm.logout();
         });
 

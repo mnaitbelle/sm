@@ -6,22 +6,29 @@ describe('copyToDisk directive controller', function () {
     beforeEach(module('sm.main'));
 
     var vm;
-    var testYear = 2012, testMonth = 3;
 
     // Initialize the controller and a mock scope
     beforeEach(inject(function ($rootScope, $controller) {
         var scope = $rootScope.$new();
-        var localData = {
-            year: testYear,
-            month: testMonth
+
+        scope.table = 'taskorder';
+        scope.itemId = '123';
+        scope.refreshOn = 'taskorder.update';
+
+        var localDataMock = {
+            getItem: function (table, itemId) {
+                return table === 'taskorder' && itemId === '123';
+            }
         };
 
         vm = $controller('copyToDiskController', {
-            $scope: scope, LocalData: localData
+            $scope: scope, LocalData: localDataMock
         });
     }));
 
-    it('should exist', function () {
-        expect(vm).toBeDefined();
+    it('should display the current item as on disk when its id is 123 and type is taskorder', function () {
+        vm.refresh();
+        expect(vm.isOnDisk).toBeTruthy();
+        expect(vm.wasInitialized).toBeTruthy();
     });
 });

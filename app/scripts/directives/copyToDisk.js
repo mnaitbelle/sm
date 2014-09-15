@@ -19,7 +19,7 @@
                 });
             }
 
-            vm.init = function() {
+            vm.refresh = function() {
                 LocalData.getItem($scope.table, $scope.itemId)
                     .then(function (item) {
                         vm.isOnDisk = item;
@@ -30,7 +30,7 @@
             $scope.$watch('itemId', function()
             {
                 if ($scope.itemId) {
-                    vm.init();
+                    vm.refresh();
                 }
             });
         }])

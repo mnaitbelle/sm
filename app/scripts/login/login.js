@@ -48,14 +48,11 @@
             }
         };
 
-        vm.activate = function() {
+        vm.activate = function () {
             if (authService.isAuth()) {
-//                if ($scope.online) {
-                    $state.go('dashboard.calendar');
-//                }
-//                else {
-//                    $state.go('dashboard.forms');
-//                }
+                var currentYear = new Date().getFullYear();
+                var currentMonth = new Date().getMonth() + 1;
+                $state.go('dashboard.calendar', {year: currentYear, month: currentMonth});
             }
         };
 

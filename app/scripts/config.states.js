@@ -40,7 +40,7 @@
                         }
                     },
                     resolve: {
-                        events: ['$stateParams', 'CalendarItems', function ($stateParams, CalendarItems){
+                        events: ['$stateParams', 'CalendarItems', function ($stateParams, CalendarItems) {
                             return CalendarItems.getTaskOrders($stateParams.year, parseInt($stateParams.month) + 1);
                         }]
                     },
