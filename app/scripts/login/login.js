@@ -50,9 +50,7 @@
 
         vm.activate = function () {
             if (authService.isAuth()) {
-                var currentYear = new Date().getFullYear();
-                var currentMonth = new Date().getMonth();
-                $state.go('dashboard.calendar', {year: currentYear, month: currentMonth});
+                $state.go('dashboard.calendar');
             }
         };
 

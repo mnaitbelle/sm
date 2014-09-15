@@ -41,7 +41,12 @@
                     },
                     resolve: {
                         events: ['$stateParams', 'CalendarItems', function ($stateParams, CalendarItems) {
-                            return CalendarItems.getTaskOrders($stateParams.year, parseInt($stateParams.month) + 1);
+                            if (!$stateParams.year || !$stateParams.month) {
+                                    return CalendarItems.getTaskOrders(new Date().getFullYear(), new Date().getMonth() + 1);
+                            }
+                            else {
+                                return CalendarItems.getTaskOrders($stateParams.year, parseInt($stateParams.month) + 1);
+                            }
                         }]
                     },
                     templateUrl: 'scripts/calendar/calendar.html',

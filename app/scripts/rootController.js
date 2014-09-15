@@ -22,16 +22,12 @@
 
         vm.title = 'appController';
 
-        vm.$state = $state;
-        vm.$stateParams = $stateParams;
-
         vm.logout = function () {
             sessionService.destroy();
             $state.go('login');
         };
 
         $scope.$on('sessionExpired', function () {
-            debugger;
             vm.logout();
         });
 
@@ -51,12 +47,10 @@
 
         $scope.$watch($scope.getWidth, function (newValue) {
             if (newValue >= mobileView) {
-                if (localStorage.getItem(localFiles.screenState) === false) {
-                    $scope.toggle = false;
+                if (!localStorage.getItem(localFiles.screenState)) {
+                    localStorage.setItem(localFiles.screenState, true);
                 }
-                else {
-                    $scope.toggle = true;
-                }
+                $scope.toggle = localStorage.getItem(localFiles.screenState);
             }
             else {
                 $scope.toggle = false;
